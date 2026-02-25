@@ -36,8 +36,8 @@ export default function HPJourney({
     <>
       {/* Main Journey Section */}
       <section className="w-full bg-black text-[#171717]">
-        <div className="mx-auto w-full max-w-[1240px] px-5 py-[100px]">
-          <div className="grid gap-12 md:gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
+        <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] lg:px-[124px] py-[100px]">
+          <div className="grid gap-12 md:gap-[60px] lg:grid-cols-2 lg:gap-24 lg:items-start max-w-[1500px]">
             {/* Left Column: Titles & Quote */}
             <div className="space-y-6 md:space-y-8 lg:space-y-12">
               {/* Title Section */}
@@ -54,8 +54,8 @@ export default function HPJourney({
 
               {/* Quote Section */}
               {quote && (
-                <div className="relative mt-12 pr-4 lg:pr-12">
-                  <p className="text-[28px] md:text-[32px] lg:text-[36px] font-bold text-[#737373] leading-[1.3] text-center lg:text-left tracking-tight">
+                <div className="relative mt-12 md:mt-[40px] pr-4 lg:pr-12 w-full">
+                  <p className="text-[28px] md:text-[40px] font-semibold text-[#6C6C6C] leading-[1.3] text-center lg:text-left tracking-tight">
                     “{quote}”
                   </p>
                 </div>

@@ -12,8 +12,8 @@ export default function HPPartners({ title, logos }: Props) {
 
   return (
     <section className="w-full bg-black text-white border-t border-white/10">
-      <div className="mx-auto w-full max-w-[1240px] px-5 py-[100px]">
-        <div className="flex flex-col items-center gap-12">
+      <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[124px] py-[100px]">
+        <div className="flex flex-col items-center gap-12 md:gap-[80px]">
           {title && (
             <h3 className="text-[24px] md:text-[40px] font-semibold text-center text-white leading-[1.3]">
               {title}

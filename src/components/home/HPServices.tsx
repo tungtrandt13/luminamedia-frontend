@@ -17,14 +17,14 @@ export default function HPServices({ title, description, services, ctaText, ctaU
 
   return (
     <section className="w-full bg-white text-black">
-      <div className="mx-auto w-full max-w-[1500px] px-5 py-[100px]">
-        <div className="mb-10 md:mb-16 max-w-[1314px] space-y-4 md:space-y-6">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-tight text-black">
-            Các dịch vụ của <br />
+      <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
+        <div className="mb-10 md:mb-[80px] max-w-[1314px] space-y-4 md:space-y-6">
+          <h2 className="text-[32px] sm:text-[40px] md:text-[56px] font-semibold leading-tight text-black md:whitespace-pre-line">
+            Các dịch vụ của{'\n'}
             <span className="text-[#AF7E2D]">VISS International</span>
           </h2>
           {description && (
-            <p className="max-w-[800px] text-[16px] md:text-[18px] lg:text-[20px] text-black font-light leading-snug">
+            <p className="max-w-[497px] text-[16px] md:text-[20px] text-black font-light leading-[1.6]">
               {description}
             </p>
           )}

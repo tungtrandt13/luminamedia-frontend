@@ -18,8 +18,8 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
 
   return (
     <section className="w-full bg-black text-white overflow-hidden">
-      <div className="mx-auto w-full max-w-[1240px] px-5 py-[100px]">
-        <div className="mb-10 lg:mb-[80px] flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-16">
+      <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
+        <div className="mb-10 lg:mb-[80px] flex flex-col md:flex-row md:items-center justify-between gap-6 lg:gap-16">
           <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.21] shrink-0">
             {title || t('title')}
           </h2>

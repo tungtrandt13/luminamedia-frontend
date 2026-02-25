@@ -67,11 +67,11 @@ export default function HPContact({ title, description, ctaText }: Props) {
 
   return (
     <section className="w-full bg-[#FFF8ED] text-black">
-      <div className="mx-auto w-full max-w-[1500px] px-5 py-[100px]">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-[115px] items-start justify-center w-full">
+      <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-[115px] items-start justify-center w-full max-w-[1500px] mx-auto">
           <div className="flex-1 flex flex-col gap-8 md:gap-[60px] w-full lg:max-w-[50%]">
             <div className="flex flex-col gap-[32px]">
-              <h2 className="text-[32px] sm:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-black">
+              <h2 className="text-[32px] sm:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-black text-center lg:text-left">
                 {title ? (
                   title.split('VISS International').map((part, i, arr) => (
                     <span key={i}>
@@ -84,18 +84,18 @@ export default function HPContact({ title, description, ctaText }: Props) {
                 )}
               </h2>
               {description && (
-                <p className="text-[16px] md:text-[20px] text-black font-light leading-snug">
+                <p className="text-[16px] md:text-[20px] text-black font-light leading-snug text-center lg:text-left lg:max-w-[600px]">
                   {description}
                 </p>
               )}
             </div>
 
-            <button className="self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
+            <button className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
               {t('view_all')}
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none">
+          <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
             <div className="flex flex-col sm:flex-row gap-[10px]">
               <input
                 required
