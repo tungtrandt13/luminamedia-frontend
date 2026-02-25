@@ -557,3 +557,124 @@ export async function getAboutPage(locale: string): Promise<AboutPageData | null
     return null;
   }
 }
+
+/**
+ * Fetch Google Ads page data from Strapi and transform to GoogleAdsPageData format.
+ */
+import { GoogleAdsPageData } from './mock-data/google-ads-mock';
+
+export async function getGoogleAdsPage(locale: string): Promise<GoogleAdsPageData | null> {
+  try {
+    const populateQuery = {
+      locale: locale,
+      populate: {
+        ads_hero: {
+          populate: {
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        ads_services: {
+          populate: {
+            items: { populate: '*' }
+          }
+        },
+        ads_why_us: {
+          populate: {
+            points: { populate: '*' },
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        ads_packages: {
+          populate: {
+            packages: { populate: '*' }
+          }
+        },
+        ads_testimonials: {
+          populate: {
+            reviews: {
+              populate: {
+                avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        ads_contact: { populate: '*' }
+      }
+    };
+
+    const res = await strapiFetch<StrapiResponse<any>>({
+      path: '/api/google-ad',
+      query: populateQuery
+    });
+
+    // Strapi 5 single type response is usually directly in data
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    // Transform Strapi response to GoogleAdsPageData
+    const transformed: GoogleAdsPageData = {
+      ads_hero: {
+        title: raw.ads_hero?.title || '',
+        description: raw.ads_hero?.description || '',
+        cta_text: raw.ads_hero?.cta_text || '',
+        image: getStrapiMedia(raw.ads_hero?.image) || ''
+      },
+      ads_services: {
+        title: raw.ads_services?.title || '',
+        items: (raw.ads_services?.items || []).map((item: any) => ({
+          id: item.id,
+          title: item.title || '',
+          features: (item.features || []).map((f: any) => f.text || '')
+        }))
+      },
+      ads_why_us: {
+        title: raw.ads_why_us?.title || '',
+        highlighted_text: raw.ads_why_us?.highlighted_text || '',
+        points: (raw.ads_why_us?.points || []).map((p: any) => ({
+          id: p.id,
+          text: p.text || ''
+        })),
+        image: getStrapiMedia(raw.ads_why_us?.image) || ''
+      },
+      ads_packages: {
+        title: raw.ads_packages?.title || '',
+        packages: (raw.ads_packages?.packages || []).map((pkg: any) => ({
+          id: pkg.id,
+          title: pkg.title || '',
+          items: (pkg.items || []).map((item: any) => item.text || '')
+        }))
+      },
+      ads_testimonials: {
+        title: raw.ads_testimonials?.title || '',
+        reviews: (raw.ads_testimonials?.reviews || []).map((r: any) => ({
+          id: r.id,
+          quote: r.quote || '',
+          author: r.author || '',
+          role: r.role || '',
+          avatar: getStrapiMedia(r.avatar) || ''
+        }))
+      },
+      ads_contact: {
+        title: raw.ads_contact?.title || '',
+        description: raw.ads_contact?.description || '',
+        cta_text: raw.ads_contact?.cta_text || '',
+        fields: {
+          name: raw.ads_contact?.name_label || 'Họ và tên',
+          phone: raw.ads_contact?.phone_label || 'Số điện thoại',
+          website: raw.ads_contact?.website_label || 'Link website',
+          email: raw.ads_contact?.email_label || 'Email',
+          service_interest: raw.ads_contact?.service_label || 'Dịch vụ quan tâm',
+          message: raw.ads_contact?.message_label || 'Bạn cần hỗ trợ điều gì?'
+        }
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching Google Ads page:', error);
+    return null;
+  }
+}
