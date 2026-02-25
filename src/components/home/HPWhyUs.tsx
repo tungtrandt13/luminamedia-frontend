@@ -1,0 +1,107 @@
+import Link from 'next/link';
+import { getStrapiMedia } from '@/lib/strapi';
+import type { HPStatCard } from '@/lib/strapi';
+import { useTranslations } from 'next-intl';
+
+interface Props {
+  title?: string;
+  description?: string;
+  primaryCtaText?: string;
+  primaryCtaUrl?: string;
+  secondaryCtaText?: string;
+  secondaryCtaUrl?: string;
+  stats?: HPStatCard[];
+  image?: any;
+}
+
+export default function HPWhyUs({
+  title,
+  description,
+  primaryCtaText,
+  primaryCtaUrl,
+  secondaryCtaText,
+  secondaryCtaUrl,
+  stats,
+  image,
+}: Props) {
+  const t = useTranslations('HomePage.hp_why_us');
+  const imageUrl = getStrapiMedia(image);
+
+  return (
+    <section className="w-full bg-black text-white relative overflow-hidden">
+      <div className="mx-auto w-full max-w-[1500px] px-5 py-[100px]">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 lg:gap-[126px]">
+
+          {/* Left Column: Text & Buttons */}
+          <div className="flex-1 flex flex-col gap-8 md:gap-[50px] w-full lg:max-w-none">
+            <div className="space-y-4 md:space-y-5">
+              <h2 className="text-[32px] sm:text-[40px] font-semibold leading-[1.3] whitespace-pre-line">
+                {title ? (
+                  title.split('VISSER').map((part, i, arr) => (
+                    <span key={i}>
+                      {part}
+                      {i < arr.length - 1 && <span className="text-[#AF7E2D]">VISSER</span>}
+                    </span>
+                  ))
+                ) : (
+                  <span className="text-[#AF7E2D]">VISSER</span>
+                )}
+              </h2>
+              {description && (
+                <p className="text-[16px] md:text-[20px] text-white font-light leading-snug whitespace-pre-line max-w-[600px]">
+                  {description}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 lg:gap-[20px]">
+              {primaryCtaText && primaryCtaUrl && (
+                <Link
+                  href={primaryCtaUrl}
+                  className="rounded-[8px] border border-white px-[40px] py-[20px] text-[16px] font-medium text-white transition-all hover:bg-white hover:text-black flex items-center justify-center shrink-0"
+                >
+                  {primaryCtaText}
+                </Link>
+              )}
+              {secondaryCtaText && secondaryCtaUrl && (
+                <Link
+                  href={secondaryCtaUrl}
+                  className="rounded-[8px] border border-white px-[40px] py-[20px] text-[16px] font-medium text-white transition-all hover:bg-white hover:text-black flex items-center justify-center shrink-0"
+                >
+                  {secondaryCtaText}
+                </Link>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column: Image & Stats overlapping */}
+          <div className="flex flex-col md:flex-row items-center justify-center lg:justify-end relative w-full lg:w-[631px] shrink-0">
+            {(() => {
+              const statsArray = Array.isArray(stats) ? stats : (stats as any)?.data || [];
+              if (statsArray.length === 0) return null;
+              return (
+                <div className="flex flex-col gap-4 lg:gap-[20px] z-10 w-full md:w-auto md:mr-[-80px] relative">
+                  {statsArray.map((s: any) => (
+                    <div key={s.id} className="bg-[#FFF8ED] text-black px-6 py-5 lg:px-[40px] lg:py-[20px] rounded-[16px] w-full md:w-[250px] lg:w-[300px] flex flex-col justify-center min-h-[118px] shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl">
+                      <div className="text-[40px] lg:text-[56px] font-semibold text-[#AF7E2D] leading-none mb-2">{s.value}</div>
+                      <div className="text-[16px] lg:text-[20px] font-light leading-snug">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+
+            <div className="w-full md:w-[400px] h-[400px] lg:h-[577px] shrink-0 z-0 overflow-hidden rounded-[16px] mt-8 md:mt-0 relative border border-white/10">
+              {imageUrl ? (
+                <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+              ) : (
+                <div className="flex h-full items-center justify-center bg-zinc-800 text-white/20">No Image</div>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
