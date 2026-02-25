@@ -180,6 +180,71 @@ export interface HomepageData {
   };
 }
 
+export interface AboutHero {
+  title: string;
+  headline: string;
+  bg_image: string; // url
+}
+
+export interface AboutStory {
+  subtitle: string;
+  title: string;
+  description: string;
+  commitments: string[];
+}
+
+export interface AboutPhilosophy {
+  title: string;
+  principles: { label: string; value: string }[];
+  images: string[];
+}
+
+export interface AboutCoreValue {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface AboutTeamMember {
+  id: number;
+  name: string;
+  role: string;
+  avatar: string; // url
+}
+
+export interface AboutTestimonial {
+  id: number;
+  quote: string;
+  author: string;
+  role: string;
+  avatar: string; // url
+}
+
+export interface AboutContact {
+  title: string;
+  description: string;
+  cta_text: string;
+}
+
+export interface AboutPageData {
+  about_hero: AboutHero;
+  about_story: AboutStory;
+  about_philosophy: AboutPhilosophy;
+  about_core_values: {
+    title: string;
+    values: AboutCoreValue[];
+  };
+  about_team: {
+    title: string;
+    members: AboutTeamMember[];
+  };
+  about_testimonials: {
+    title: string;
+    reviews: AboutTestimonial[];
+  };
+  about_contact: AboutContact;
+}
+
 export interface StrapiResponse<T> {
   data: T;
   meta: any;
@@ -358,6 +423,137 @@ export async function getGlobalSettings(locale: string): Promise<GlobalSettings 
     return data || null;
   } catch (error) {
     console.error('Error fetching Global Settings:', error);
+    return null;
+  }
+}
+
+/**
+ * Fetch About Us page data from Strapi and transform to AboutPageData format.
+ * Falls back to null if API is unavailable.
+ */
+export async function getAboutPage(locale: string): Promise<AboutPageData | null> {
+  try {
+    const populateQuery = {
+      locale: locale,
+      populate: {
+        hero: {
+          populate: {
+            bg_image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        story: {
+          populate: {
+            commitments: { populate: '*' }
+          }
+        },
+        philosophy: {
+          populate: {
+            principles: { populate: '*' },
+            images: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        core_values: {
+          populate: {
+            values: { populate: '*' }
+          }
+        },
+        team: {
+          populate: {
+            members: {
+              populate: {
+                avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        testimonials: {
+          populate: {
+            reviews: {
+              populate: {
+                avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        contact: { populate: '*' }
+      }
+    };
+
+    const res = await strapiFetch<StrapiResponse<any[]>>({
+      path: '/api/about',
+      query: populateQuery
+    });
+
+    // Handle both single object and array responses
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    // Transform Strapi response to AboutPageData
+    const transformed: AboutPageData = {
+      about_hero: {
+        title: raw.hero?.title || '',
+        headline: raw.hero?.headline || '',
+        bg_image: getStrapiMedia(raw.hero?.bg_image) || ''
+      },
+      about_story: {
+        subtitle: raw.story?.subtitle || '',
+        title: raw.story?.title || '',
+        description: raw.story?.description || '',
+        // Strapi commitments are {id, text} objects, mock data uses string[]
+        commitments: (raw.story?.commitments || []).map((c: any) =>
+          typeof c === 'string' ? c : c.text || ''
+        )
+      },
+      about_philosophy: {
+        title: raw.philosophy?.title || '',
+        principles: (raw.philosophy?.principles || []).map((p: any) => ({
+          label: p.label || '',
+          value: p.value || ''
+        })),
+        images: (raw.philosophy?.images || []).map((img: any) =>
+          getStrapiMedia(img) || ''
+        )
+      },
+      about_core_values: {
+        title: raw.core_values?.title || '',
+        values: (raw.core_values?.values || []).map((v: any) => ({
+          id: v.id,
+          title: v.title || '',
+          description: v.description || ''
+        }))
+      },
+      about_team: {
+        title: raw.team?.title || '',
+        members: (raw.team?.members || []).map((m: any) => ({
+          id: m.id,
+          name: m.name || '',
+          role: m.role || '',
+          avatar: getStrapiMedia(m.avatar) || ''
+        }))
+      },
+      about_testimonials: {
+        title: raw.testimonials?.title || '',
+        reviews: (raw.testimonials?.reviews || []).map((r: any) => ({
+          id: r.id,
+          quote: r.quote || '',
+          author: r.author || '',
+          role: r.role || '',
+          avatar: getStrapiMedia(r.avatar) || ''
+        }))
+      },
+      about_contact: {
+        title: raw.contact?.title || '',
+        description: raw.contact?.description || '',
+        cta_text: raw.contact?.cta_text || ''
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching About page:', error);
     return null;
   }
 }
