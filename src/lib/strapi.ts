@@ -562,6 +562,7 @@ export async function getAboutPage(locale: string): Promise<AboutPageData | null
  * Fetch Google Ads page data from Strapi and transform to GoogleAdsPageData format.
  */
 import { GoogleAdsPageData } from './mock-data/google-ads-mock';
+import { RentAdsPageData } from './mock-data/rent-ads-mock';
 
 export async function getGoogleAdsPage(locale: string): Promise<GoogleAdsPageData | null> {
   try {
@@ -678,3 +679,138 @@ export async function getGoogleAdsPage(locale: string): Promise<GoogleAdsPageDat
     return null;
   }
 }
+
+/**
+ * Helper to replace literal '\n' strings from Strapi with actual newline characters
+ * so that 'whitespace-pre-wrap' or 'whitespace-pre-line' CSS works correctly.
+ */
+function formatStrapiText(text: string | undefined | null): string {
+  if (!text) return '';
+  return text.replace(/\\n/g, '\n');
+}
+
+/**
+ * Fetch Rent Ads Account page data from Strapi and transform to RentAdsPageData format.
+ */
+export async function getRentAdsPage(locale: string): Promise<RentAdsPageData | null> {
+  try {
+    const populateQuery = {
+      locale: locale,
+      populate: {
+        rent_hero: { populate: '*' },
+        rent_why_us: {
+          populate: {
+            cards: {
+              populate: { points: '*' }
+            }
+          }
+        },
+        rent_advantages: {
+          populate: { points: '*' }
+        },
+        rent_pricing: {
+          populate: {
+            packages: { populate: '*' },
+            benefits: { populate: '*' }
+          }
+        },
+        rent_process: {
+          populate: { steps: '*' }
+        },
+        rent_testimonials: {
+          populate: {
+            reviews: {
+              populate: {
+                avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        rent_contact: { populate: '*' }
+      }
+    };
+
+    const res = await strapiFetch<StrapiResponse<any>>({
+      path: '/api/rent-ad',
+      query: populateQuery
+    });
+
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    // Transform Strapi response to RentAdsPageData
+    const transformed: RentAdsPageData = {
+      rent_hero: {
+        title: formatStrapiText(raw.rent_hero?.title),
+        headline: formatStrapiText(raw.rent_hero?.headline),
+        description: formatStrapiText(raw.rent_hero?.description),
+        cta_text: raw.rent_hero?.cta_text || ''
+      },
+      rent_why_us: {
+        title: formatStrapiText(raw.rent_why_us?.title),
+        cards: (raw.rent_why_us?.cards || []).map((card: any) => ({
+          id: card.id,
+          title: formatStrapiText(card.title),
+          points: (card.points || []).map((p: any) => formatStrapiText(p.text))
+        }))
+      },
+      rent_advantages: {
+        title: formatStrapiText(raw.rent_advantages?.title),
+        description: formatStrapiText(raw.rent_advantages?.description),
+        points: (raw.rent_advantages?.points || []).map((p: any) => formatStrapiText(p.text))
+      },
+      rent_pricing: {
+        title: formatStrapiText(raw.rent_pricing?.title),
+        description: formatStrapiText(raw.rent_pricing?.description),
+        tiers: (raw.rent_pricing?.packages || []).map((pkg: any) => ({
+          id: pkg.id,
+          fee_percentage: pkg.fee_percentage || '',
+          budget_range: pkg.budget_range || ''
+        })),
+        benefits_title: formatStrapiText(raw.rent_pricing?.benefits_title),
+        benefits: (raw.rent_pricing?.benefits || []).map((b: any) => formatStrapiText(b.text))
+      },
+      rent_process: {
+        title: formatStrapiText(raw.rent_process?.title),
+        steps: (raw.rent_process?.steps || []).map((step: any) => ({
+          id: step.id,
+          step_number: step.step_number || '',
+          title: formatStrapiText(step.title),
+          description: formatStrapiText(step.description)
+        }))
+      },
+      rent_testimonials: {
+        title: formatStrapiText(raw.rent_testimonials?.title),
+        reviews: (raw.rent_testimonials?.reviews || []).map((r: any) => ({
+          id: r.id,
+          quote: formatStrapiText(r.quote),
+          author: formatStrapiText(r.author),
+          role: formatStrapiText(r.role),
+          avatar: getStrapiMedia(r.avatar) || ''
+        }))
+      },
+      rent_contact: {
+        title: formatStrapiText(raw.rent_contact?.title),
+        description: formatStrapiText(raw.rent_contact?.description),
+        cta_text: raw.rent_contact?.cta_text || '',
+        fields: {
+          name: raw.rent_contact?.name_label || 'Họ và tên',
+          phone: raw.rent_contact?.phone_label || 'Số điện thoại',
+          website: raw.rent_contact?.website_label || 'Link website',
+          email: raw.rent_contact?.email_label || 'Email',
+          service_interest: raw.rent_contact?.service_label || 'Dịch vụ quan tâm',
+          message: raw.rent_contact?.message_label || 'Bạn cần hỗ trợ điều gì?'
+        }
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching Rent Ads page:', error);
+    return null;
+  }
+}
+
