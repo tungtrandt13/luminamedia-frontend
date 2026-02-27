@@ -1072,3 +1072,212 @@ export async function getTiktokShopOpsPage(locale: string): Promise<TiktokShopOp
     return null;
   }
 }
+import { TrainingPageData } from './mock-data/training-mock';
+
+/**
+ * Fetch Training page data from Strapi and transform to TrainingPageData format.
+ */
+export async function getTrainingPage(locale: string): Promise<TrainingPageData | null> {
+  try {
+    const makePopulate = () => ({
+      training_hero: {
+        populate: {
+          image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+        }
+      },
+      training_courses: {
+        populate: {
+          items: {
+            populate: {
+              list: { populate: '*' }
+            }
+          }
+        }
+      },
+      training_gallery: {
+        populate: {
+          images: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+        }
+      },
+      training_instructor: {
+        populate: {
+          details: { populate: '*' },
+          image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+        }
+      }
+    });
+
+    let raw: any = null;
+
+    // Try with locale first
+    try {
+      const res = await strapiFetch<StrapiResponse<any>>({
+        path: '/api/training',
+        query: { locale, populate: makePopulate() }
+      });
+      raw = Array.isArray(res.data)
+        ? res.data.find((item: any) => item.locale === locale)
+        : res.data;
+    } catch {
+      // If locale-specific fetch fails, try without locale (get default)
+      const res = await strapiFetch<StrapiResponse<any>>({
+        path: '/api/training',
+        query: { populate: makePopulate() }
+      });
+      raw = Array.isArray(res.data)
+        ? res.data[0]
+        : res.data;
+    }
+
+    if (!raw) return null;
+
+    const transformed: TrainingPageData = {
+      training_hero: {
+        title: formatStrapiText(raw.training_hero?.title),
+        description: formatStrapiText(raw.training_hero?.description),
+        cta_text: raw.training_hero?.cta_text || '',
+        image: getStrapiMedia(raw.training_hero?.image) || ''
+      },
+      training_courses: {
+        title: formatStrapiText(raw.training_courses?.title),
+        highlighted_text: formatStrapiText(raw.training_courses?.highlighted_text),
+        items: (raw.training_courses?.items || []).map((item: any) => ({
+          id: item.id,
+          title: item.title || '',
+          icon: item.icon || 'basic',
+          list: (item.list || []).map((l: any) => formatStrapiText(typeof l === 'string' ? l : l.text))
+        })),
+        cta_text: raw.training_courses?.cta_text || ''
+      },
+      training_gallery: {
+        title: formatStrapiText(raw.training_gallery?.title),
+        highlighted_text: formatStrapiText(raw.training_gallery?.highlighted_text),
+        images: (raw.training_gallery?.images || []).map((img: any) => getStrapiMedia(img) || '')
+      },
+      training_instructor: {
+        title: formatStrapiText(raw.training_instructor?.title),
+        name: formatStrapiText(raw.training_instructor?.name),
+        role: formatStrapiText(raw.training_instructor?.role),
+        details: (raw.training_instructor?.details || []).map((d: any) => formatStrapiText(typeof d === 'string' ? d : d.text)),
+        quote: formatStrapiText(raw.training_instructor?.quote),
+        image: getStrapiMedia(raw.training_instructor?.image) || ''
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching Training page:', error);
+    return null;
+  }
+}
+
+import { CareersPageData } from './mock-data/careers-mock';
+
+/**
+ * Fetch Career Page data from Strapi and transform to CareersPageData format.
+ */
+export async function getCareerPage(locale: string): Promise<CareersPageData | null> {
+  try {
+    const makePopulate = () => ({
+      hero: {
+        populate: {
+          image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+        }
+      },
+      jobs_section: {
+        populate: {
+          jobs: { populate: '*' }
+        }
+      },
+      benefits_section: {
+        populate: {
+          details: { populate: '*' }
+        }
+      },
+      core_values_section: {
+        populate: {
+          values: { populate: '*' }
+        }
+      },
+      apply_section: { populate: '*' }
+    });
+
+    let raw: any = null;
+
+    // Try with locale first
+    try {
+      const res = await strapiFetch<StrapiResponse<any>>({
+        path: '/api/career-page',
+        query: { locale, populate: makePopulate() }
+      });
+      raw = Array.isArray(res.data)
+        ? res.data.find((item: any) => item.locale === locale)
+        : res.data;
+    } catch {
+      // If locale-specific fetch fails, try without locale (default)
+      const res = await strapiFetch<StrapiResponse<any>>({
+        path: '/api/career-page',
+        query: { populate: makePopulate() }
+      });
+      raw = Array.isArray(res.data)
+        ? res.data[0]
+        : res.data;
+    }
+
+    if (!raw) return null;
+
+    const transformed: CareersPageData = {
+      hero: {
+        title: formatStrapiText(raw.hero?.title),
+        description: formatStrapiText(raw.hero?.description),
+        cta_text: raw.hero?.cta_text || '',
+        image: getStrapiMedia(raw.hero?.image) || ''
+      },
+      jobs: {
+        title: formatStrapiText(raw.jobs_section?.title),
+        jobs: (raw.jobs_section?.jobs || []).map((job: any) => ({
+          id: job.id,
+          title: formatStrapiText(job.title),
+          company: formatStrapiText(job.company),
+          salary: formatStrapiText(job.salary),
+          experience: formatStrapiText(job.experience),
+          location: formatStrapiText(job.location),
+          deadline: job.deadline || ''
+        }))
+      },
+      benefits: {
+        title: formatStrapiText(raw.benefits_section?.title),
+        description: formatStrapiText(raw.benefits_section?.description),
+        details_title: formatStrapiText(raw.benefits_section?.details_title),
+        details: (raw.benefits_section?.details || []).map((d: any) =>
+          formatStrapiText(typeof d === 'string' ? d : d.text)
+        )
+      },
+      core_values: {
+        title: formatStrapiText(raw.core_values_section?.title),
+        values: (raw.core_values_section?.values || []).map((v: any) => ({
+          id: v.id,
+          title: formatStrapiText(v.title),
+          description: formatStrapiText(v.description)
+        }))
+      },
+      apply: {
+        title: formatStrapiText(raw.apply_section?.title),
+        subtitle: formatStrapiText(raw.apply_section?.subtitle),
+        cta_text: raw.apply_section?.cta_text || '',
+        fields: {
+          name: raw.apply_section?.name_label || 'Họ và tên',
+          phone: raw.apply_section?.phone_label || 'Số điện thoại',
+          cv_link: raw.apply_section?.cv_link_label || 'Link CV',
+          email: raw.apply_section?.email_label || 'Email',
+          message: raw.apply_section?.message_label || 'Nội dung'
+        }
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching Career page:', error);
+    return null;
+  }
+}
