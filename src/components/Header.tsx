@@ -33,12 +33,12 @@ export default function Header({ locale, services, globalSettings }: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  
+
   // Ensure component is mounted to avoid hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   // Debug: Log pathname and locale (remove in production)
   useEffect(() => {
     if (process.env.NODE_ENV === 'development' && mounted) {
@@ -55,12 +55,12 @@ export default function Header({ locale, services, globalSettings }: Props) {
   const mapMenuLabel = (url: string): string | null => {
     // Remove locale prefix if exists (e.g., /vi/about -> /about)
     const urlWithoutLocale = url.replace(/^\/(vi|en)\//, '/').replace(/^\/(vi|en)$/, '/');
-    
+
     // Map URL patterns to translation keys
     if (urlWithoutLocale === '/about' || urlWithoutLocale.includes('/about')) return t('about');
     if (urlWithoutLocale === '/training' || urlWithoutLocale.includes('/training')) return t('training');
-    if (urlWithoutLocale === '/careers' || urlWithoutLocale.includes('/careers') || 
-        urlWithoutLocale === '/recruitment' || urlWithoutLocale.includes('/recruitment')) {
+    if (urlWithoutLocale === '/careers' || urlWithoutLocale.includes('/careers') ||
+      urlWithoutLocale === '/recruitment' || urlWithoutLocale.includes('/recruitment')) {
       return t('recruitment');
     }
     if (urlWithoutLocale === '/contact' || urlWithoutLocale.includes('/contact')) return t('contact');
@@ -71,15 +71,15 @@ export default function Header({ locale, services, globalSettings }: Props) {
 
   const menuItems = globalSettings?.menu_items
     ? [...globalSettings.menu_items]
-        .sort((a: MenuItem, b: MenuItem) => a.order - b.order)
-        .map((item: MenuItem) => {
-          const translatedLabel = mapMenuLabel(item.url);
-          return {
-            ...item,
-            // Replace label with translation if we can map it, otherwise keep original
-            label: translatedLabel !== null ? translatedLabel : item.label
-          };
-        })
+      .sort((a: MenuItem, b: MenuItem) => a.order - b.order)
+      .map((item: MenuItem) => {
+        const translatedLabel = mapMenuLabel(item.url);
+        return {
+          ...item,
+          // Replace label with translation if we can map it, otherwise keep original
+          label: translatedLabel !== null ? translatedLabel : item.label
+        };
+      })
     : [];
 
   const getLocalizedPath = (targetLocale: string) => {
@@ -87,14 +87,14 @@ export default function Header({ locale, services, globalSettings }: Props) {
     // We need to handle both cases:
     // 1. Pathname with locale: /en, /en/services
     // 2. Pathname without locale: /, /services (next-intl strips locale prefix)
-    
+
     let pathWithoutLocale = pathname;
-    
+
     // Try to remove locale prefix if it exists
     // Case 1: /locale/path -> /path
     if (pathname.startsWith(`/${locale}/`)) {
       pathWithoutLocale = pathname.slice(`/${locale}`.length);
-    } 
+    }
     // Case 2: /locale (exact match) -> /
     else if (pathname === `/${locale}`) {
       pathWithoutLocale = '/';
@@ -105,26 +105,27 @@ export default function Header({ locale, services, globalSettings }: Props) {
     else {
       pathWithoutLocale = pathname;
     }
-    
+
     // Ensure path starts with /
     if (!pathWithoutLocale.startsWith('/')) {
       pathWithoutLocale = '/' + pathWithoutLocale;
     }
-    
+
     // Always use full path with locale prefix for navigation
     // This ensures navigation always happens, even for default locale
     // Middleware will handle redirecting /vi to / if needed
-    const result = pathWithoutLocale === '/' 
-      ? `/${targetLocale}` 
+    const result = pathWithoutLocale === '/'
+      ? `/${targetLocale}`
       : `/${targetLocale}${pathWithoutLocale}`;
-    
+
     if (process.env.NODE_ENV === 'development') {
       console.log(`[getLocalizedPath] ${locale} -> ${targetLocale}: pathname="${pathname}" -> result="${result}"`);
     }
-    
+
     return result;
   };
 
+  // Figma menu order: Giới thiệu (1) → Dịch vụ dropdown (2) → Đào tạo (3) → Tuyển dụng (4) → Liên hệ (5)
   const fallbackMenuItems = [
     { label: t('about'), url: `/${locale}/about`, order: 1 },
     { label: t('training'), url: `/${locale}/training`, order: 3 },
@@ -133,6 +134,11 @@ export default function Header({ locale, services, globalSettings }: Props) {
   ];
 
   const displayMenuItems = menuItems.length > 0 ? menuItems : fallbackMenuItems;
+
+  // Split menu items around the Services dropdown position (order=2)
+  // Items before dropdown (order < 2) and after dropdown (order > 2)
+  const menuItemsBefore = displayMenuItems.filter(item => item.order < 2);
+  const menuItemsAfter = displayMenuItems.filter(item => item.order >= 2 && !item.url.includes('/services'));
 
   return (
     <header className="w-full bg-black sticky top-0 z-50 border-b border-white/5">
@@ -150,8 +156,9 @@ export default function Header({ locale, services, globalSettings }: Props) {
         </Link>
 
         {/* Navigation - Desktop & iPad */}
+        {/* Figma order: Giới thiệu → Dịch vụ ▾ → Đào tạo → Tuyển dụng → Liên hệ */}
         <nav className="hidden lg:flex items-center justify-between flex-1 max-w-[659px] mx-10">
-          {displayMenuItems.map((item, index) => (
+          {menuItemsBefore.map((item, index) => (
             <Link
               key={item.url || index}
               href={item.url}
@@ -161,6 +168,15 @@ export default function Header({ locale, services, globalSettings }: Props) {
             </Link>
           ))}
           <ServicesDropdown locale={locale} services={services} label={tHeader('servicesDropdown.title')} />
+          {menuItemsAfter.map((item, index) => (
+            <Link
+              key={item.url || index}
+              href={item.url}
+              className="text-white font-semibold text-[18px] xl:text-[20px] leading-[1.21] hover:text-brand-gold transition-colors whitespace-nowrap"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Language Switcher & Mobile Menu Toggle */}
@@ -170,9 +186,8 @@ export default function Header({ locale, services, globalSettings }: Props) {
               href={getLocalizedPath('vi')}
               prefetch={false}
               scroll={true}
-              className={`grid h-[32px] w-[32px] md:h-[35px] md:w-[35px] place-items-center text-[16px] md:text-[20px] font-semibold rounded-sm transition-all ${
-                locale === 'vi' ? 'bg-brand-gold text-white' : 'bg-transparent text-white hover:text-brand-gold'
-              }`}
+              className={`grid h-[32px] w-[32px] md:h-[35px] md:w-[35px] place-items-center text-[16px] md:text-[20px] font-semibold rounded-sm transition-all ${locale === 'vi' ? 'bg-brand-gold text-white' : 'bg-transparent text-white hover:text-brand-gold'
+                }`}
               onClick={(e) => {
                 if (locale !== 'vi') {
                   e.preventDefault();
@@ -191,9 +206,8 @@ export default function Header({ locale, services, globalSettings }: Props) {
               href={getLocalizedPath('en')}
               prefetch={false}
               scroll={true}
-              className={`grid h-[32px] w-[32px] md:h-[35px] md:w-[35px] place-items-center text-[16px] md:text-[20px] font-semibold rounded-sm transition-all ${
-                locale === 'en' ? 'bg-brand-gold text-white' : 'bg-transparent text-white hover:text-brand-gold'
-              }`}
+              className={`grid h-[32px] w-[32px] md:h-[35px] md:w-[35px] place-items-center text-[16px] md:text-[20px] font-semibold rounded-sm transition-all ${locale === 'en' ? 'bg-brand-gold text-white' : 'bg-transparent text-white hover:text-brand-gold'
+                }`}
               onClick={(e) => {
                 if (locale !== 'en') {
                   e.preventDefault();

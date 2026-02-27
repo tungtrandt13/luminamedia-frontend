@@ -14,7 +14,11 @@
   "header": {
     "servicesDropdown": {
       "title": "Services",
-      "viewAll": "View all"
+      "viewAll": "View all",
+      "googleAds": "Google Advertising",
+      "rentAds": "Rent Ads Account",
+      "tiktokAds": "TikTok Advertising",
+      "tiktokShopOps": "TikTok Shop Operations"
     }
   },
   "footer": {

@@ -14,7 +14,11 @@
   "header": {
     "servicesDropdown": {
       "title": "Dịch vụ",
-      "viewAll": "Xem tất cả"
+      "viewAll": "Xem tất cả",
+      "googleAds": "Dịch vụ quảng cáo Google",
+      "rentAds": "Thuê tài khoản quảng cáo",
+      "tiktokAds": "Dịch vụ quảng cáo TikTok",
+      "tiktokShopOps": "Vận hành gian hàng TikTok Shop"
     }
   },
   "footer": {
