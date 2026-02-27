@@ -16,6 +16,8 @@ export default function HPContact({ title, description, ctaText }: Props) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const normalizeStrapiText = (value?: string) => (value ? value.replace(/\\n/g, '\n') : '');
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -73,7 +75,7 @@ export default function HPContact({ title, description, ctaText }: Props) {
             <div className="flex flex-col gap-[32px]">
               <h2 className="text-[32px] sm:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-black text-center lg:text-left">
                 {title ? (
-                  title.split('VISS International').map((part, i, arr) => (
+                  normalizeStrapiText(title).split('VISS International').map((part, i, arr) => (
                     <span key={i}>
                       {part}
                       {i < arr.length - 1 && <span className="text-[#AF7E2D] whitespace-nowrap">VISS International</span>}
@@ -84,8 +86,8 @@ export default function HPContact({ title, description, ctaText }: Props) {
                 )}
               </h2>
               {description && (
-                <p className="text-[16px] md:text-[20px] text-black font-light leading-snug text-center lg:text-left lg:max-w-[600px]">
-                  {description}
+                <p className="text-[16px] md:text-[20px] text-black font-light leading-snug whitespace-pre-line text-center lg:text-left lg:max-w-[600px]">
+                  {normalizeStrapiText(description)}
                 </p>
               )}
             </div>
@@ -157,7 +159,7 @@ export default function HPContact({ title, description, ctaText }: Props) {
               type="submit"
               className="w-full rounded-[8px] bg-[#AF7E2D] py-[16px] px-[40px] text-[16px] font-medium text-white transition-all hover:bg-black active:scale-[0.98] disabled:opacity-50 mt-4"
             >
-              {loading ? t('sending') : ctaText || t('submit')}
+              {loading ? t('sending') : normalizeStrapiText(ctaText) || t('submit')}
             </button>
           </form>
         </div>

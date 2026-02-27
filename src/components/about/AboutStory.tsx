@@ -7,6 +7,11 @@ interface Props {
     commitments?: string[];
 }
 
+function normalizeTextForHtml(text?: string): string {
+    if (!text) return '';
+    return text.replace(/\\n/g, '\n').replace(/\n/g, '<br />');
+}
+
 export default function AboutStory({ subtitle, title, description, commitments = [] }: Props) {
     return (
         <section className="w-full bg-[#FCF8F2] text-[#111111] py-[60px] md:py-[100px]">
@@ -16,14 +21,14 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     {/* Cột trái */}
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-6">
                         {subtitle && (
-                            <p className="text-[18px] md:text-[20px] text-[#111111] font-semibold">
-                                {subtitle}
+                            <p className="text-[18px] md:text-[20px] text-[#111111] font-semibold whitespace-pre-line">
+                                {subtitle.replace(/\\n/g, '\n')}
                             </p>
                         )}
                         {title ? (
                             <h2
-                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] whitespace-pre-line tracking-tight text-[#111111]"
-                                dangerouslySetInnerHTML={{ __html: title }}
+                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight text-[#111111]"
+                                dangerouslySetInnerHTML={{ __html: normalizeTextForHtml(title) }}
                             />
                         ) : (
                             <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] whitespace-pre-line tracking-tight">
@@ -35,9 +40,9 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     {/* Cột phải */}
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-10">
                         {description ? (
-                            <div
-                                className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6] whitespace-pre-line space-y-4"
-                                dangerouslySetInnerHTML={{ __html: description }}
+                            <p
+                                className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]"
+                                dangerouslySetInnerHTML={{ __html: normalizeTextForHtml(description) }}
                             />
                         ) : (
                             <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]">
@@ -54,8 +59,8 @@ export default function AboutStory({ subtitle, title, description, commitments =
                                                 <path d="M1 4.5L5 8.5L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </div>
-                                        <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.4]">
-                                            {item}
+                                        <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.4] whitespace-pre-line">
+                                            {item.replace(/\\n/g, '\n')}
                                         </p>
                                     </div>
                                 ))}
