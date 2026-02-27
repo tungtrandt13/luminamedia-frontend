@@ -559,10 +559,12 @@ export async function getAboutPage(locale: string): Promise<AboutPageData | null
 }
 
 /**
- * Fetch Google Ads page data from Strapi and transform to GoogleAdsPageData format.
+ * Fetch Google Ads / Rent Ads / TikTok Shop Ops page data from Strapi
+ * and transform to the frontend mock data formats.
  */
 import { GoogleAdsPageData } from './mock-data/google-ads-mock';
 import { RentAdsPageData } from './mock-data/rent-ads-mock';
+import { TiktokShopOpsPageData } from './mock-data/tiktok-shop-ops-mock';
 
 export async function getGoogleAdsPage(locale: string): Promise<GoogleAdsPageData | null> {
   try {
@@ -814,3 +816,259 @@ export async function getRentAdsPage(locale: string): Promise<RentAdsPageData | 
   }
 }
 
+import { TiktokAdsPageData } from './mock-data/tiktok-ads-mock';
+
+/**
+ * Fetch Tiktok Ads page data from Strapi and transform to TiktokAdsPageData format.
+ */
+export async function getTiktokAdsPage(locale: string): Promise<TiktokAdsPageData | null> {
+  try {
+    const populateQuery = {
+      locale: locale,
+      populate: {
+        tiktok_hero: {
+          populate: {
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        tiktok_why_us: {
+          populate: {
+            points: { populate: '*' },
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        tiktok_growth: {
+          populate: {
+            cards: {
+              populate: { points: '*' }
+            }
+          }
+        },
+        tiktok_process: {
+          populate: { steps: '*' }
+        },
+        tiktok_testimonials: {
+          populate: {
+            reviews: {
+              populate: {
+                avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        tiktok_contact: { populate: '*' }
+      }
+    };
+
+    const res = await strapiFetch<StrapiResponse<any>>({
+      path: '/api/tiktok-ad',
+      query: populateQuery
+    });
+
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    // Transform Strapi response to TiktokAdsPageData
+    const transformed: TiktokAdsPageData = {
+      tiktok_hero: {
+        title: formatStrapiText(raw.tiktok_hero?.title),
+        description: formatStrapiText(raw.tiktok_hero?.description),
+        cta_text: raw.tiktok_hero?.cta_text || '',
+        image: getStrapiMedia(raw.tiktok_hero?.image) || ''
+      },
+      tiktok_why_us: {
+        title: formatStrapiText(raw.tiktok_why_us?.title),
+        points: (raw.tiktok_why_us?.points || []).map((p: any) => ({
+          id: p.id,
+          title: formatStrapiText(p.title),
+          description: formatStrapiText(p.description)
+        })),
+        image: getStrapiMedia(raw.tiktok_why_us?.image) || ''
+      },
+      tiktok_growth: {
+        title: formatStrapiText(raw.tiktok_growth?.title),
+        cards: (raw.tiktok_growth?.cards || []).map((card: any) => ({
+          id: card.id,
+          title: formatStrapiText(card.title),
+          points: (card.points || []).map((p: any) => formatStrapiText(p.text))
+        }))
+      },
+      tiktok_process: {
+        title: formatStrapiText(raw.tiktok_process?.title),
+        steps: (raw.tiktok_process?.steps || []).map((step: any) => ({
+          id: step.id,
+          step_number: step.step_number || '',
+          title: formatStrapiText(step.title),
+          description: formatStrapiText(step.description)
+        }))
+      },
+      tiktok_testimonials: {
+        title: formatStrapiText(raw.tiktok_testimonials?.title),
+        reviews: (raw.tiktok_testimonials?.reviews || []).map((r: any) => ({
+          id: r.id,
+          quote: formatStrapiText(r.quote),
+          author: formatStrapiText(r.author),
+          role: formatStrapiText(r.role),
+          avatar: getStrapiMedia(r.avatar) || ''
+        }))
+      },
+      tiktok_contact: {
+        title: formatStrapiText(raw.tiktok_contact?.title),
+        description: formatStrapiText(raw.tiktok_contact?.description),
+        cta_text: raw.tiktok_contact?.cta_text || '',
+        fields: {
+          name: raw.tiktok_contact?.name_label || 'Họ và tên',
+          phone: raw.tiktok_contact?.phone_label || 'Số điện thoại',
+          website: raw.tiktok_contact?.website_label || 'Link website',
+          email: raw.tiktok_contact?.email_label || 'Email',
+          service_interest: raw.tiktok_contact?.service_label || 'Dịch vụ quan tâm',
+          message: raw.tiktok_contact?.message_label || 'Bạn cần hỗ trợ điều gì?'
+        }
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching Tiktok Ads page:', error);
+    return null;
+  }
+}
+
+/**
+ * Fetch TikTok Shop Ops page data from Strapi and transform to TiktokShopOpsPageData format.
+ *
+ * Expected Strapi single type: `tiktok-shop-op` with attributes:
+ * - hero: component with fields { title, description, cta_text, image }
+ * - about: component with { title, paragraphs (repeatable { text }), image }
+ * - solution: component with { title, description, steps (repeatable { step_number, title, bullets (repeatable { text }) }) }
+ * - case_studies: component with { title, description, items (repeatable { country_code, title, description, image, metric_primary_label, metric_primary_value, metric_secondary_label, metric_secondary_value }) }
+ * - contact: component with {
+ *     title, description, benefits (repeatable { text }), cta_text,
+ *     name_label, phone_label, tiktok_link_label, email_label, service_label, message_label
+ *   }
+ */
+export async function getTiktokShopOpsPage(locale: string): Promise<TiktokShopOpsPageData | null> {
+  try {
+    const populateQuery = {
+      locale: locale,
+      populate: {
+        hero: {
+          populate: {
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        about: {
+          populate: {
+            paragraphs: { populate: '*' },
+            image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+          }
+        },
+        solution: {
+          populate: {
+            steps: {
+              populate: {
+                bullets: { populate: '*' }
+              }
+            }
+          }
+        },
+        case_studies: {
+          populate: {
+            items: {
+              populate: {
+                image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+              }
+            }
+          }
+        },
+        contact: {
+          populate: {
+            benefits: { populate: '*' }
+          }
+        }
+      }
+    };
+
+    const res = await strapiFetch<StrapiResponse<any>>({
+      path: '/api/tiktok-shop-op',
+      query: populateQuery
+    });
+
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    const transformed: TiktokShopOpsPageData = {
+      hero: {
+        title: formatStrapiText(raw.hero?.title),
+        description: formatStrapiText(raw.hero?.description),
+        cta_text: raw.hero?.cta_text || '',
+        image: getStrapiMedia(raw.hero?.image) || ''
+      },
+      about: {
+        title: formatStrapiText(raw.about?.title),
+        paragraphs: (raw.about?.paragraphs || []).map((p: any) =>
+          formatStrapiText(typeof p === 'string' ? p : p.text)
+        ),
+        image: getStrapiMedia(raw.about?.image) || ''
+      },
+      solution: {
+        title: formatStrapiText(raw.solution?.title),
+        description: formatStrapiText(raw.solution?.description),
+        steps: (raw.solution?.steps || []).map((step: any) => ({
+          id: step.id,
+          step_number: step.step_number || '',
+          title: formatStrapiText(step.title),
+          bullets: (step.bullets || []).map((b: any) =>
+            formatStrapiText(typeof b === 'string' ? b : b.text)
+          )
+        }))
+      },
+      case_studies: {
+        title: formatStrapiText(raw.case_studies?.title),
+        description: formatStrapiText(raw.case_studies?.description),
+        items: (raw.case_studies?.items || []).map((item: any) => ({
+          id: item.id,
+          country_code: item.country_code || '',
+          title: formatStrapiText(item.title),
+          description: formatStrapiText(item.description),
+          image: getStrapiMedia(item.image) || '',
+          metric_primary: {
+            label: formatStrapiText(item.metric_primary_label),
+            value: item.metric_primary_value || ''
+          },
+          metric_secondary: {
+            label: formatStrapiText(item.metric_secondary_label),
+            value: item.metric_secondary_value || ''
+          }
+        }))
+      },
+      contact: {
+        title: formatStrapiText(raw.contact?.title),
+        description: formatStrapiText(raw.contact?.description),
+        benefits: (raw.contact?.benefits || []).map((b: any) =>
+          formatStrapiText(typeof b === 'string' ? b : b.text)
+        ),
+        cta_text: raw.contact?.cta_text || '',
+        fields: {
+          name: raw.contact?.name_label || 'Họ và tên',
+          phone: raw.contact?.phone_label || 'Số điện thoại',
+          tiktok_link: raw.contact?.tiktok_link_label || 'Link kênh Tiktok (nếu có)',
+          email: raw.contact?.email_label || 'Email',
+          service_interest:
+            raw.contact?.service_label || 'Sản phẩm dịch vụ bạn đang muốn quảng cáo là gì?'
+        }
+      }
+    };
+
+    return transformed;
+  } catch (error) {
+    console.error('Error fetching TikTok Shop Ops page:', error);
+    return null;
+  }
+}
