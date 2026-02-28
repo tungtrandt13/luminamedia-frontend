@@ -226,21 +226,21 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
                     quote: "\"VISS has a young, proactive, and highly accountable team. The coordination process is clear, feedback is fast, and they always focus on practical efficiency for the business.\"",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
-                    avatar: "/images/about/review-avatar-1.png"
+                    avatar: ""
                 },
                 {
                     id: 2,
                     quote: "We highly value VISS's operational mindset and ability to adapt to international markets. All items are deployed methodically and transparently.",
                     author: "Ms. Thu Trang",
                     role: "Business Development Manager – Retail Group",
-                    avatar: "/images/about/review-avatar-2.png"
+                    avatar: ""
                 },
                 {
                     id: 3,
                     quote: "VISS not only implements work but also accompanies in consulting, helping the internal team better understand the market and long-term development direction.",
                     author: "Mr. Duc Anh",
                     role: "Founder – Online Brand",
-                    avatar: "/images/about/review-avatar-3.png"
+                    avatar: ""
                 }
             ]
         },
