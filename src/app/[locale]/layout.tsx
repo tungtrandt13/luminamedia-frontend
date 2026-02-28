@@ -27,6 +27,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VISS International",
   description: "Công ty TNHH Thương mại và Dịch vụ Quốc tế VISS - Đối tác chiến lược cho sự tăng trưởng bền vững",
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon.ico' },
+    ],
+    shortcut: '/favicon/favicon.ico',
+    apple: '/favicon/apple-touch-icon.png',
+  },
   alternates: {
     languages: {
       'vi': '/vi',
