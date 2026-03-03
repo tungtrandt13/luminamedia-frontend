@@ -14,14 +14,14 @@ export default function CareersCoreValues({ title, values }: Props) {
         </h2>
 
         <div className="mt-[40px] md:mt-[80px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px]">
-          {values.map((v) => (
+          {values.map((v, index) => (
             <div
               key={v.id}
               className="bg-[#FFF9EF] text-black px-[16px] md:px-[20px] py-[22px] md:py-[28px]"
             >
               <div className="flex flex-col gap-[14px] md:gap-[18px]">
                 <div className="text-[18px] md:text-[20px] font-semibold">
-                  <span className="mr-2">{v.id}.</span>
+                  <span className="mr-2">{index + 1}.</span>
                   {v.title}
                 </div>
                 <p className="text-[14px] md:text-[20px] font-light leading-[1.5] text-black/90">
