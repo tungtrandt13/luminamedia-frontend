@@ -77,7 +77,6 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
                                     className="w-[50px] h-[50px] rounded-full object-cover bg-white"
                                     onError={(e) => {
                                         const target = e.target as HTMLImageElement;
-                                        target.src = 'https://via.placeholder.com/100?text=Avatar';
                                         target.style.display = 'none';
                                     }}
                                 />

@@ -75,8 +75,7 @@ export default function TiktokShopOpsHero({
             className="object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src =
-                'https://via.placeholder.com/525x530/111111/ffffff?text=TikTok+Shop+Image';
+              target.style.display = 'none';
             }}
           />
         </motion.div>

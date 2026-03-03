@@ -23,6 +23,11 @@ const nextConfig: import("next").NextConfig = {
         port: '1888',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'app.mitu.ceo',
+        pathname: '/uploads/**',
+      },
     ],
   },
 };

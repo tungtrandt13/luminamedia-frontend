@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getHomepage } from '@/lib/strapi';
+import { routing } from '@/i18n/routing';
 import HPHero from '@/components/home/HPHero';
 import HPJourney from '@/components/home/HPJourney';
 import HPPartners from '@/components/home/HPPartners';
@@ -14,6 +16,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) notFound();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
 
   return {
@@ -34,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) notFound();
   const homepage = await getHomepage(locale);
 
   if (!homepage) {

@@ -75,9 +75,8 @@ export default function TiktokAdsHero({
                         fill
                         className="object-cover"
                         onError={(e) => {
-                            // Temporary fallback if image doesn't exist
                             const target = e.target as HTMLImageElement;
-                            target.src = 'https://via.placeholder.com/555x530/111111/ffffff?text=TikTok+Ads+Image';
+                            target.style.display = 'none';
                         }}
                     />
                 </motion.div>

@@ -9,6 +9,8 @@ const STRAPI_API_URL =
 
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 
+const VALID_LOCALES = ['vi', 'en'];
+
 export type FetchOptions = {
   path: string;
   query?: any;
@@ -22,6 +24,12 @@ export async function strapiFetch<T = unknown>({
   locale,
   next
 }: FetchOptions): Promise<T> {
+  // Block invalid locales before hitting Strapi (prevents bot scanner noise)
+  const queryLocale = query?.locale || locale;
+  if (queryLocale && !VALID_LOCALES.includes(queryLocale)) {
+    throw new Error(`Invalid locale: ${queryLocale}`);
+  }
+
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
   if (STRAPI_API_TOKEN) {
     headers['Authorization'] = `Bearer ${STRAPI_API_TOKEN}`;
