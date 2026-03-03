@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface RentAdsAdvantagesProps {
     title: string;
@@ -14,26 +15,6 @@ export default function RentAdsAdvantages({
     description,
     points,
 }: RentAdsAdvantagesProps) {
-    // Parse title to highlight Google Ads and VISSECOM in gold
-    const renderTitle = () => {
-        if (!title) return null;
-
-        // Default fallback simple split if it matches the specific string
-        if (title.includes('Google Ads') && title.includes('VISSECOM')) {
-            const p1 = title.split('Google Ads');
-            if (p1.length > 1) {
-                const p2 = p1[1].split('VISSECOM');
-                return (
-                    <>
-                        {p1[0]} <span className="text-[#AF7E2D]">Google Ads</span> {p2[0]} <span className="text-[#AF7E2D]">VISSECOM</span>{p2.length > 1 ? p2[1] : ''}
-                    </>
-                );
-            }
-        }
-
-        return title;
-    };
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -60,9 +41,12 @@ export default function RentAdsAdvantages({
                     transition={{ duration: 0.6 }}
                     className="flex-1 flex flex-col gap-[30px] md:gap-[40px] text-black w-full"
                 >
-                    <h2 className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-tight whitespace-pre-wrap">
-                        {renderTitle()}
-                    </h2>
+                    {title && (
+                        <h2
+                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-tight whitespace-pre-wrap"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                        />
+                    )}
                     {description && (
                         <p className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-relaxed text-black/80">
                             {description}

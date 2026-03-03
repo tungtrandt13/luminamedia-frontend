@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
   title: string;
@@ -8,25 +9,15 @@ interface Props {
 }
 
 export default function CareersHero({ title, description, ctaText, image }: Props) {
-  const highlight = "VISS International";
-  const parts = title.split(highlight);
-
   return (
     <section className="w-full bg-black text-white">
       <div className="mx-auto w-full max-w-[1500px] px-5 py-[60px] md:py-[100px]">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-[40px] lg:gap-[80px]">
           <div className="w-full lg:max-w-[596px] flex flex-col gap-[40px]">
-            <h1 className="text-[34px] sm:text-[44px] lg:text-[56px] font-semibold leading-[1.15] whitespace-pre-wrap">
-              {parts.length === 1 ? (
-                title
-              ) : (
-                <>
-                  {parts[0]}
-                  <span className="text-[#AF7E2D]">{highlight}</span>
-                  {parts.slice(1).join(highlight)}
-                </>
-              )}
-            </h1>
+            <h1
+              className="text-[34px] sm:text-[44px] lg:text-[56px] font-semibold leading-[1.15] whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+            />
             <p className="text-[16px] md:text-[20px] font-light leading-[1.5] text-white/90">
               {description}
             </p>

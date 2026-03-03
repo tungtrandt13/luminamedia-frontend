@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface TiktokAdsContactProps {
     title: string;
@@ -65,45 +66,10 @@ export default function TiktokAdsContact({
         }
     };
 
-    const renderTitle = () => {
-        if (!title) return null;
-        // In the Figma mock, "Trình tăng trưởng doanh thu và Leads với quảng cáo Tiktok tại VISSCOM"
-        // Highlight "tăng trưởng doanh thu và Leads" and "VISSCOM".
-        // Instead of strict string splitting which might fail if Vietnamese accents mismatch,
-        // Let's implement robust highlighting:
-        let result = title;
-        result = result.replace('tăng trưởng doanh thu và Leads', '<span class="text-[#AF7E2D]">tăng trưởng doanh thu và Leads</span>');
-        
-        return <span dangerouslySetInnerHTML={{ __html: result }} />;
-    };
-
-    const renderDescription = () => {
-        // split bullet points and paragraph
-        const introText = "VISSECOM đồng hành cùng doanh nghiệp xây dựng chiến lược TikTok Ads bài bản, tối ưu ngân sách và mở rộng tăng trưởng bền vững theo dữ liệu.";
-        const bulletPoints = [
-            "Tiếp cận đúng khách hàng mục tiêu",
-            "Tối ưu chi phí & hiệu suất quảng cáo",
-            "Đội ngũ chuyên gia TikTok Ads của VISSECOM"
-        ];
-
-        return (
-            <div className="font-light text-[18px] md:text-[20px] text-black">
-                <p className="mb-6 leading-relaxed">
-                    {introText}
-                </p>
-                <ul className="list-disc pl-6 space-y-2">
-                    {bulletPoints.map((point, idx) => (
-                        <li key={idx} className="leading-relaxed">{point}</li>
-                    ))}
-                </ul>
-            </div>
-        );
-    };
-
     return (
         <section id="contact" className="w-full bg-[#FFF8ED] text-black py-[60px] md:py-[100px] px-5 flex justify-center">
             <div className="w-full max-w-[1240px] flex flex-col md:flex-row gap-[60px] md:gap-[122px] items-start">
-                
+
                 {/* Left: Text Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}
@@ -112,10 +78,18 @@ export default function TiktokAdsContact({
                     transition={{ duration: 0.6 }}
                     className="flex-1 flex flex-col gap-[32px] w-full max-w-[505px]"
                 >
-                    <h2 className="text-[32px] md:text-[40px] font-semibold leading-tight whitespace-pre-wrap text-black">
-                        {renderTitle()}
-                    </h2>
-                    {renderDescription()}
+                    {title && (
+                        <h2
+                            className="text-[32px] md:text-[40px] font-semibold leading-tight whitespace-pre-wrap text-black"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                        />
+                    )}
+                    {description && (
+                        <div
+                            className="font-light text-[18px] md:text-[20px] text-black leading-relaxed whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                        />
+                    )}
                 </motion.div>
 
                 {/* Right: Form */}

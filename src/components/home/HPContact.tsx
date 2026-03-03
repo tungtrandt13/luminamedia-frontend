@@ -73,20 +73,16 @@ export default function HPContact({ title, description, ctaText }: Props) {
             <div className="flex flex-col gap-[32px]">
               <h2 className="text-[32px] sm:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-black text-center lg:text-left">
                 {title ? (
-                  normalizeStrapiText(title).split('VISS International').map((part, i, arr) => (
-                    <span key={i}>
-                      {part}
-                      {i < arr.length - 1 && <span className="text-[#AF7E2D] whitespace-nowrap">VISS International</span>}
-                    </span>
-                  ))
+                  <span dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }} />
                 ) : (
                   t('title')
                 )}
               </h2>
               {description && (
-                <p className="text-[16px] md:text-[20px] text-black font-light leading-snug whitespace-pre-line text-center lg:text-left lg:max-w-[600px]">
-                  {normalizeStrapiText(description)}
-                </p>
+                <p
+                  className="text-[16px] md:text-[20px] text-black font-light leading-snug whitespace-pre-line text-center lg:text-left lg:max-w-[600px]"
+                  dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                />
               )}
             </div>
 

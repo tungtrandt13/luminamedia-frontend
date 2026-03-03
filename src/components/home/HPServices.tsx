@@ -21,9 +21,10 @@ export default function HPServices({ title, description, services, ctaText, ctaU
     <section className="w-full bg-white text-black">
       <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
         <div className="mb-10 md:mb-[80px] max-w-[1314px] space-y-4 md:space-y-6">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[56px] font-semibold leading-tight text-black md:whitespace-pre-line">
-            {normalizeStrapiText(title || t('title'))}
-          </h2>
+          <h2
+            className="text-[32px] sm:text-[40px] md:text-[56px] font-semibold leading-tight text-black md:whitespace-pre-line"
+            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || t('title')) }}
+          />
           {description && (
             <div className="max-w-[497px] text-[16px] md:text-[20px] text-black font-light leading-[1.6]">
               {description}
@@ -53,12 +54,14 @@ export default function HPServices({ title, description, services, ctaText, ctaU
 
                 <div className="space-y-6 flex-grow flex flex-col">
                   <div className="space-y-3 md:space-y-4">
-                    <h3 className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line">
-                      {normalizeStrapiText(service.title)}
-                    </h3>
-                    <div className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]">
-                      {normalizeStrapiText(service.description)}
-                    </div>
+                    <h3
+                      className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line"
+                      dangerouslySetInnerHTML={{ __html: normalizeStrapiText(service.title) }}
+                    />
+                    <div
+                      className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]"
+                      dangerouslySetInnerHTML={{ __html: normalizeStrapiText(service.description) }}
+                    />
                   </div>
 
                   {(() => {
@@ -67,9 +70,10 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                     return (
                       <ul className="flex flex-col flex-grow mt-2">
                         {featuresArray.map((feature: any) => (
-                          <li key={feature.id} className="flex flex-col justify-center min-h-[50px] py-3 border-t border-[#DBE0EC] text-[16px] text-black font-light leading-snug whitespace-pre-line">
-                            {normalizeStrapiText(feature.text)}
-                          </li>
+                          <li key={feature.id}
+                            className="flex flex-col justify-center min-h-[50px] py-3 border-t border-[#DBE0EC] text-[16px] text-black font-light leading-snug whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(feature.text) }}
+                          />
                         ))}
                       </ul>
                     );

@@ -66,9 +66,10 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                         </h4>
                       )}
                     </div>
-                    <h3 className="text-black text-[18px] sm:text-[20px] font-light leading-snug line-clamp-3 whitespace-pre-line">
-                      {normalizeStrapiText(project.title)}
-                    </h3>
+                    <h3
+                      className="text-black text-[18px] sm:text-[20px] font-light leading-snug line-clamp-3 whitespace-pre-line"
+                      dangerouslySetInnerHTML={{ __html: normalizeStrapiText(project.title) }}
+                    />
                   </div>
 
                   {/* Divider */}
@@ -93,9 +94,10 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                                 </svg>
                               </div>
                             </div>
-                            <div className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-pre-line">
-                              {normalizeStrapiText(metric.label)}
-                            </div>
+                            <div
+                              className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-pre-line"
+                              dangerouslySetInnerHTML={{ __html: normalizeStrapiText(metric.label) }}
+                            />
                           </div>
                         ))}
                       </div>

@@ -19,12 +19,10 @@ export default function AdsWhyUs({ title, highlightedText, points = [], image }:
                     {/* Left – Text */}
                     <div className="flex flex-col gap-10 lg:gap-[80px] w-full lg:w-[507px] shrink-0">
                         {/* Title */}
-                        <h2 className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold leading-[normal] whitespace-pre-line text-center lg:text-left">
-                            <span className="leading-[normal]">
-                                {normalizeStrapiText(title || 'Tại sao nên\nchọn ')}
-                            </span>
-                            <span className="text-[#AF7E2D] leading-[normal]">{highlightedText || 'VISSCOM'}</span>
-                        </h2>
+                        <h2
+                            className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold leading-[normal] whitespace-pre-line text-center lg:text-left"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Tại sao nên\nchọn ') + `<span class="text-[#AF7E2D]">${highlightedText || 'VISSCOM'}</span>` }}
+                        />
 
                         {/* Checklist */}
                         <div className="flex flex-col gap-[20px]">

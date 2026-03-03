@@ -16,9 +16,10 @@ export default function AdsServicesList({ title, items = [] }: Props) {
                 <div className="flex flex-col gap-10 lg:gap-[80px] items-center">
 
                     {/* Title */}
-                    <h2 className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold text-center leading-tight">
-                        {normalizeStrapiText(title || 'Các dịch vụ của chúng tôi')}
-                    </h2>
+                    <h2
+                        className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold text-center leading-tight"
+                        dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Các dịch vụ của chúng tôi') }}
+                    />
 
                     {/* Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[22px] w-full">
@@ -35,9 +36,10 @@ export default function AdsServicesList({ title, items = [] }: Props) {
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-[20px] font-semibold leading-[normal] whitespace-pre-line text-black">
-                                    {normalizeStrapiText(item.title)}
-                                </h3>
+                                <h3
+                                    className="text-[20px] font-semibold leading-[normal] whitespace-pre-line text-black"
+                                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(item.title) }}
+                                />
 
                                 {/* Features list */}
                                 <div className="flex flex-col w-full">
@@ -46,9 +48,10 @@ export default function AdsServicesList({ title, items = [] }: Props) {
                                             key={idx}
                                             className="border-t border-[#DBE0EC] py-[8px] flex items-start w-full"
                                         >
-                                            <p className="text-[20px] font-light leading-[normal] text-black whitespace-pre-wrap">
-                                                {normalizeStrapiText(feature)}
-                                            </p>
+                                            <p
+                                                className="text-[20px] font-light leading-[normal] text-black whitespace-pre-wrap"
+                                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(feature) }}
+                                            />
                                         </div>
                                     ))}
                                 </div>

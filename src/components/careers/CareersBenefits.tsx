@@ -30,26 +30,15 @@ interface Props {
 import { normalizeStrapiText } from '@/lib/strapi';
 
 export default function CareersBenefits({ title, description, detailsTitle, details }: Props) {
-  const highlight = "VISS International";
-  const normalizedTitle = normalizeStrapiText(title);
-  const parts = normalizedTitle.split(highlight);
-
   return (
     <section className="w-full bg-white text-black">
       <div className="mx-auto w-full max-w-[1500px] px-5 py-[60px] md:py-[100px]">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-[80px]">
           <div className="flex-1 py-[10px] md:py-[19px]">
-            <h2 className="text-[34px] sm:text-[44px] lg:text-[56px] font-semibold leading-[1.1] max-w-[520px] whitespace-pre-wrap">
-              {parts.length === 1 ? (
-                normalizedTitle
-              ) : (
-                <>
-                  {parts[0]}
-                  <span className="text-[#AF7E2D]">{highlight}</span>
-                  {parts.slice(1).join(highlight)}
-                </>
-              )}
-            </h2>
+            <h2
+              className="text-[34px] sm:text-[44px] lg:text-[56px] font-semibold leading-[1.1] max-w-[520px] whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+            />
             <p className="mt-6 text-[16px] md:text-[20px] font-light leading-[1.55] text-black/90 whitespace-pre-line max-w-[520px]">
               {normalizeStrapiText(description)}
             </p>

@@ -18,19 +18,6 @@ export default function RentAdsHero({
     description,
     ctaText,
 }: RentAdsHeroProps) {
-    // Parse headline to highlight "Tài khoản" in gold if it exists
-    const parts = headline.split('Tài khoản');
-    const renderHeadline = () => {
-        if (parts.length > 1) {
-            return (
-                <>
-                    {parts[0]} <span className="text-[#AF7E2D]">Tài khoản</span> {parts[1]}
-                </>
-            );
-        }
-        return headline;
-    };
-
     return (
         <section className="relative w-full bg-[#000000] text-white overflow-hidden py-[60px] md:py-[100px] px-5 flex items-center justify-center min-h-[500px] md:min-h-[600px]">
 
@@ -49,15 +36,17 @@ export default function RentAdsHero({
                     )}
 
                     {headline && (
-                        <h1 className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight whitespace-pre-line">
-                            {renderHeadline()}
-                        </h1>
+                        <h1
+                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline) }}
+                        />
                     )}
 
                     {description && (
-                        <p className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-relaxed text-white/80 max-w-[800px] whitespace-pre-wrap mt-2">
-                            {normalizeStrapiText(description)}
-                        </p>
+                        <p
+                            className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-relaxed text-white/80 max-w-[800px] whitespace-pre-wrap mt-2"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                        />
                     )}
                 </motion.div>
 

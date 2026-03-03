@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface TiktokShopOpsHeroProps {
   title: string;
@@ -18,21 +19,6 @@ export default function TiktokShopOpsHero({
   ctaText,
   imageSrc,
 }: TiktokShopOpsHeroProps) {
-  const renderTitle = () => {
-    if (!title) return null;
-    const parts = title.split('TikTok Shop');
-    if (parts.length > 1) {
-      return (
-        <>
-          {parts[0]}
-          <br className="hidden md:block" />
-          <span className="text-[#AF7E2D]">TikTok Shop</span>
-          {parts[1]}
-        </>
-      );
-    }
-    return title;
-  };
 
   return (
     <section className="relative w-full bg-[#000000] text-white overflow-hidden py-[60px] md:py-[100px] px-5 flex items-center justify-center min-h-[500px] md:min-h-[730px]">
@@ -46,9 +32,10 @@ export default function TiktokShopOpsHero({
         >
           <div className="flex flex-col gap-[20px] w-full">
             {title && (
-              <h1 className="text-[40px] md:text-[56px] font-semibold leading-tight tracking-tight whitespace-pre-wrap text-white">
-                {renderTitle()}
-              </h1>
+              <h1
+                className="text-[40px] md:text-[56px] font-semibold leading-tight tracking-tight whitespace-pre-wrap text-white"
+                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+              />
             )}
 
             {description && (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import type { AdsTestimonial } from '@/lib/mock-data/google-ads-mock';
 import { normalizeStrapiText } from '@/lib/strapi';
 
@@ -11,9 +11,24 @@ interface Props {
 
 export default function AdsTestimonials({ title, reviews = [] }: Props) {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isScrollable, setIsScrollable] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const totalPages = Math.max(1, reviews.length);
+
+    useEffect(() => {
+        const checkScroll = () => {
+            if (scrollRef.current) {
+                // allow a small threshold (e.g. 5px) to avoid rounding issues
+                setIsScrollable(scrollRef.current.scrollWidth > scrollRef.current.clientWidth + 5);
+            }
+        };
+        // initial check
+        checkScroll();
+        // check on resize
+        window.addEventListener('resize', checkScroll);
+        return () => window.removeEventListener('resize', checkScroll);
+    }, [reviews]);
 
     const scrollToIndex = useCallback((idx: number) => {
         if (!scrollRef.current) return;
@@ -41,31 +56,34 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                 <div className="flex flex-col gap-[80px] w-full max-w-[1240px] mx-auto">
                     {/* Header: Title + Nav */}
                     <div className="flex items-center justify-between w-full">
-                        <h2 className="text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] whitespace-pre-line flex-1">
-                            {normalizeStrapiText(title || 'Khách hàng nói gì về\nVISS International')}
-                        </h2>
+                        <h2
+                            className="text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] whitespace-pre-line flex-1"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Khách hàng nói gì về\nVISS International') }}
+                        />
 
                         {/* Navigation Buttons */}
-                        <div className="flex gap-[9px] items-center justify-end flex-1">
-                            <button
-                                onClick={handlePrev}
-                                className="w-[50px] h-[50px] rounded-[50px] bg-[#AF7E2D] p-[10px] flex items-center justify-center hover:bg-[#956b25] transition-colors shrink-0"
-                                aria-label="Previous"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={handleNext}
-                                className="w-[50px] h-[50px] rounded-[50px] bg-[#AF7E2D] p-[10px] flex items-center justify-center hover:bg-[#956b25] transition-colors shrink-0 rotate-180"
-                                aria-label="Next"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
+                        {isScrollable && (
+                            <div className="flex gap-[9px] items-center justify-end flex-1">
+                                <button
+                                    onClick={handlePrev}
+                                    className="w-[50px] h-[50px] rounded-[50px] bg-[#AF7E2D] p-[10px] flex items-center justify-center hover:bg-[#956b25] transition-colors shrink-0"
+                                    aria-label="Previous"
+                                >
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+                                <button
+                                    onClick={handleNext}
+                                    className="w-[50px] h-[50px] rounded-[50px] bg-[#AF7E2D] p-[10px] flex items-center justify-center hover:bg-[#956b25] transition-colors shrink-0 rotate-180"
+                                    aria-label="Next"
+                                >
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        )}
                     </div>
 
                     {/* Cards Content */}
@@ -84,9 +102,10 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                                     <div className="flex flex-col gap-[36px] w-full">
                                         {/* Quote */}
                                         <div className="h-[132px] text-black">
-                                            <p className="text-[18px] lg:text-[20px] font-semibold leading-[normal] whitespace-pre-wrap">
-                                                {normalizeStrapiText(review.quote)}
-                                            </p>
+                                            <p
+                                                className="text-[18px] lg:text-[20px] font-semibold leading-[normal] whitespace-pre-wrap"
+                                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(review.quote) }}
+                                            />
                                         </div>
 
                                         {/* Author */}
@@ -117,26 +136,28 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                         </div>
 
                         {/* Pagination Dots */}
-                        <div className="flex justify-center items-center gap-[20px] w-full">
-                            {Array.from({ length: totalPages }).map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => scrollToIndex(idx)}
-                                    className="relative flex items-center justify-center w-[20px] h-[20px]"
-                                    aria-label={`Page ${idx + 1}`}
-                                >
-                                    {idx === activeIndex ? (
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="10" cy="10" r="10" fill="#AF7E2D" />
-                                        </svg>
-                                    ) : (
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="10" cy="10" r="10" fill="#EAEAEA" />
-                                        </svg>
-                                    )}
-                                </button>
-                            ))}
-                        </div>
+                        {isScrollable && (
+                            <div className="flex justify-center items-center gap-[20px] w-full">
+                                {Array.from({ length: totalPages }).map((_, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => scrollToIndex(idx)}
+                                        className="relative flex items-center justify-center w-[20px] h-[20px]"
+                                        aria-label={`Page ${idx + 1}`}
+                                    >
+                                        {idx === activeIndex ? (
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="10" cy="10" r="10" fill="#AF7E2D" />
+                                            </svg>
+                                        ) : (
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="10" cy="10" r="10" fill="#EAEAEA" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                 </div>

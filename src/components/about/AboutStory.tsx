@@ -18,16 +18,16 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     {/* Cột trái */}
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-6">
                         {subtitle && (
-                            <p className="text-[18px] md:text-[20px] text-[#111111] font-semibold whitespace-pre-line">
-                                {normalizeStrapiText(subtitle)}
-                            </p>
+                            <p
+                                className="text-[18px] md:text-[20px] text-[#111111] font-semibold whitespace-pre-line"
+                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(subtitle) }}
+                            />
                         )}
                         {title ? (
                             <h2
                                 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight text-[#111111] whitespace-pre-line"
-                            >
-                                {normalizeStrapiText(title)}
-                            </h2>
+                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                            />
                         ) : (
                             <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] whitespace-pre-line tracking-tight">
                                 Tiên phong mở rộng thị trường quốc tế với niềm tin phát triển bền vững
@@ -38,11 +38,10 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     {/* Cột phải */}
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-10">
                         {description ? (
-                            <p
+                            <div
                                 className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6] whitespace-pre-line"
-                            >
-                                {normalizeStrapiText(description)}
-                            </p>
+                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                            />
                         ) : (
                             <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]">
                                 Ngay từ những ngày đầu, VISS lựa chọn con đường kinh doanh quốc tế...
@@ -58,9 +57,10 @@ export default function AboutStory({ subtitle, title, description, commitments =
                                                 <path d="M1 4.5L5 8.5L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </div>
-                                        <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.4] whitespace-pre-line">
-                                            {normalizeStrapiText(item)}
-                                        </p>
+                                        <p
+                                            className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.4] whitespace-pre-line"
+                                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(item) }}
+                                        />
                                     </div>
                                 ))}
                             </div>

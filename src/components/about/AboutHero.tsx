@@ -16,16 +16,16 @@ export default function AboutHero({ headline, title, bgImage }: Props) {
             <div className="w-full max-w-[1240px] px-5 flex flex-col items-start justify-start text-left mx-auto">
                 <div className="max-w-[800px] mb-[60px] md:mb-[80px]">
                     {title && (
-                        <p className="text-[16px] md:text-[20px] font-semibold text-white mb-5 whitespace-pre-line">
-                            {normalizeStrapiText(title)}
-                        </p>
+                        <p
+                            className="text-[16px] md:text-[20px] font-semibold text-white mb-5 whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                        />
                     )}
                     {headline ? (
                         <h1
                             className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.3] text-white tracking-tight whitespace-pre-line"
-                        >
-                            {normalizeStrapiText(headline)}
-                        </h1>
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline) }}
+                        />
                     ) : (
                         <h1 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.3] text-white whitespace-pre-line tracking-tight">
                             Hành trình 5 năm

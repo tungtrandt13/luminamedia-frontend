@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 export interface TiktokAdsWhyUsPoint {
     id: number;
@@ -23,45 +24,14 @@ export default function TiktokAdsWhyUs({ title, points, image }: TiktokAdsWhyUsP
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const renderTitle = () => {
-        if (!title) return null;
-        const parts = title.split('VISSCOM');
-        if (parts.length > 1) {
-            return (
-                <>
-                    {parts[0]}<br className="hidden lg:block" /><span className="text-[#AF7E2D]">VISSCOM</span>{parts[1]}
-                </>
-            );
-        }
-        return title;
-    };
-
     const renderDescription = (description?: string) => {
         if (!description) return null;
-
-        // If the description contains bullets/sentences that should be a list
-        // based on the figma design, we split it here.
-        // E.g., "Cấp tài khoản TikTok Ads Agency Hạn mức cao, đa tiền tệ Quản lý & theo dõi minh bạch"
-        // Let's split by uppercase letters if it's the specific concatenated string from mock data
-        // or just render it as a paragraph if it's standard text.
-
-        const isListString = description.includes('Cấp tài khoản') || description.includes('Hạn mức cao') || description.includes('Quản lý & theo dõi');
-
-        if (isListString) {
-            return (
-                <ul className="list-disc pl-6 text-white/80 font-light text-[18px] md:text-[20px] pt-4 pb-2 space-y-2">
-                    <li>Cấp tài khoản TikTok Ads Agency</li>
-                    <li>Hạn mức cao, đa tiền tệ</li>
-                    <li>Quản lý & theo dõi minh bạch</li>
-                </ul>
-            );
-        }
-
         return (
             <div className="pt-4 pb-2">
-                <p className="font-light text-white/80 text-[18px] md:text-[20px] leading-relaxed">
-                    {description}
-                </p>
+                <p
+                    className="font-light text-white/80 text-[18px] md:text-[20px] leading-relaxed whitespace-pre-line"
+                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                />
             </div>
         );
     };
@@ -77,9 +47,10 @@ export default function TiktokAdsWhyUs({ title, points, image }: TiktokAdsWhyUsP
                     transition={{ duration: 0.6 }}
                     className="flex-1 w-full max-w-[507px] flex flex-col gap-[40px] md:gap-[80px]"
                 >
-                    <h2 className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-white leading-tight">
-                        {renderTitle()}
-                    </h2>
+                    <h2
+                        className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-white leading-tight"
+                        dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                    />
 
                     <div className="flex flex-col w-full">
                         {points.map((point, index) => {

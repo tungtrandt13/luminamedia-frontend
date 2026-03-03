@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface RentAdsContactProps {
     title: string;
@@ -68,20 +69,6 @@ export default function RentAdsContact({
         }
     };
 
-    // Optional highlight for VISSECOM
-    const renderTitle = () => {
-        if (!title) return null;
-        const parts = title.split('VISSECOM');
-        if (parts.length > 1) {
-            return (
-                <>
-                    {parts[0]}<span className="text-[#AF7E2D]">VISSECOM</span>{parts[1]}
-                </>
-            );
-        }
-        return title;
-    };
-
     return (
         <section id="contact" className="w-full bg-[#FFF8ED] py-[60px] md:py-[100px] px-5 flex justify-center">
             <div className="w-full max-w-[1240px] flex flex-col lg:flex-row gap-[60px] lg:gap-[115px] items-start">
@@ -95,9 +82,12 @@ export default function RentAdsContact({
                     className="flex-1 flex flex-col gap-[32px] md:gap-[60px] w-full max-w-[500px]"
                 >
                     <div className="flex flex-col gap-[20px] md:gap-[32px]">
-                        <h2 className="text-[32px] md:text-[40px] font-semibold text-black leading-tight whitespace-pre-wrap">
-                            {renderTitle()}
-                        </h2>
+                        {title && (
+                            <h2
+                                className="text-[32px] md:text-[40px] font-semibold text-black leading-tight whitespace-pre-wrap"
+                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                            />
+                        )}
                         <p className="text-[16px] md:text-[20px] font-light text-black leading-relaxed whitespace-pre-wrap">
                             {description}
                         </p>

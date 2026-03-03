@@ -88,9 +88,10 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                                 </h2>
                             )}
                             {description && (
-                                <p className="text-[16px] md:text-[20px] font-light leading-snug whitespace-pre-line text-center lg:text-left">
-                                    {normalizeStrapiText(description)}
-                                </p>
+                                <p
+                                    className="text-[16px] md:text-[20px] font-light leading-snug whitespace-pre-line text-center lg:text-left"
+                                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
+                                />
                             )}
                         </div>
 

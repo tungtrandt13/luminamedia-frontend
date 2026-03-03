@@ -34,9 +34,10 @@ export default function HPJourney({
                     {subtitle}
                   </p>
                 )}
-                <h2 className="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.1] tracking-[-0.02em] text-white text-center lg:text-left whitespace-pre-line">
-                  {normalizeStrapiText(title || 'Hành trình từ năm 2020 vươn ra Thị trường toàn cầu')}
-                </h2>
+                <h2
+                  className="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.1] tracking-[-0.02em] text-white text-center lg:text-left whitespace-pre-line"
+                  dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Hành trình từ năm 2020 vươn ra Thị trường toàn cầu') }}
+                />
               </div>
 
               {/* Quote Section */}
@@ -58,9 +59,8 @@ export default function HPJourney({
                     <p
                       key={item.id}
                       className="text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#737373] text-center lg:text-left whitespace-pre-line"
-                    >
-                      {normalizeStrapiText(item.text)}
-                    </p>
+                      dangerouslySetInnerHTML={{ __html: normalizeStrapiText(item.text) }}
+                    />
                   ))
                 ) : (
                   <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#737373] text-center lg:text-left">

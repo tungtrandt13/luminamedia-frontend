@@ -50,9 +50,10 @@ export default function AdsPackages({ title, packages = [] }: Props) {
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-[24px] md:text-[32px] font-semibold leading-[1.25] whitespace-pre-line">
-                                    {normalizeStrapiText(pkg.title)}
-                                </h3>
+                                <h3
+                                    className="text-[24px] md:text-[32px] font-semibold leading-[1.25] whitespace-pre-line"
+                                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(pkg.title) }}
+                                />
 
                                 {/* Items */}
                                 <div className="flex flex-col gap-2">
@@ -61,9 +62,10 @@ export default function AdsPackages({ title, packages = [] }: Props) {
                                             key={i}
                                             className="border-t border-[#DBE0EC]/30 py-2"
                                         >
-                                            <p className="text-[16px] md:text-[20px] font-semibold leading-snug whitespace-pre-line">
-                                                {normalizeStrapiText(item)}
-                                            </p>
+                                            <p
+                                                className="text-[16px] md:text-[20px] font-semibold leading-snug whitespace-pre-line"
+                                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(item) }}
+                                            />
                                         </div>
                                     ))}
                                 </div>

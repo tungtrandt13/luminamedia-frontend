@@ -42,9 +42,10 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                     transition={{ duration: 0.6 }}
                     className="w-full max-w-[1038px] flex justify-center text-center"
                 >
-                    <h2 className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-white leading-tight whitespace-pre-line">
-                        {normalizeStrapiText(title)}
-                    </h2>
+                    <h2
+                        className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-white leading-tight whitespace-pre-line"
+                        dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                    />
                 </motion.div>
 
                 {/* Cards Grid */}
@@ -62,9 +63,10 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                             className="bg-white border border-[#939292] rounded-[10px] px-[16px] py-[24px] lg:px-[24px] lg:py-[32px] flex flex-col items-start min-h-[300px] transition-transform hover:-translate-y-2 duration-300 gap-8"
                         >
                             {/* Card Title */}
-                            <h3 className="text-[#AF7E2D] font-semibold text-[24px] lg:text-[32px] leading-[1.2] whitespace-pre-line min-h-[76px]">
-                                {normalizeStrapiText(card.title)}
-                            </h3>
+                            <h3
+                                className="text-[#AF7E2D] font-semibold text-[24px] lg:text-[32px] leading-[1.2] whitespace-pre-line min-h-[76px]"
+                                dangerouslySetInnerHTML={{ __html: normalizeStrapiText(card.title) }}
+                            />
 
                             {/* Card Points */}
                             <ul className="flex flex-col w-full h-full justify-between">
@@ -73,9 +75,10 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                                         key={index}
                                         className="border-t border-[#dbe0ec] py-[12px] lg:py-[16px] w-full flex-1"
                                     >
-                                        <p className="text-black font-light text-[16px] lg:text-[20px] leading-snug whitespace-pre-line">
-                                            {normalizeStrapiText(point)}
-                                        </p>
+                                        <p
+                                            className="text-black font-light text-[16px] lg:text-[20px] leading-snug whitespace-pre-line"
+                                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(point) }}
+                                        />
                                     </li>
                                 ))}
                             </ul>

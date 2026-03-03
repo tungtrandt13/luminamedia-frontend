@@ -270,7 +270,12 @@ export interface GlobalSettings {
   training_partners?: any;
 }
 
-export const normalizeStrapiText = (value?: string) => (value ? value.replace(/\\n/g, '\n') : '');
+export const normalizeStrapiText = (value?: string) => {
+  if (!value) return '';
+  return value
+    .replace(/\\n/g, '\n')
+    .replace(/\\u([0-9a-fA-F]{4})/g, (_, code) => String.fromCharCode(parseInt(code, 16)));
+};
 
 // --- API Functions ---
 

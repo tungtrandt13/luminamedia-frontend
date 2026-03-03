@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 export interface RentAdsPricingTier {
     id: number;
@@ -24,25 +25,6 @@ export default function RentAdsPricing({
     benefitsTitle,
     benefits,
 }: RentAdsPricingProps) {
-    // Parse title to highlight "Thuê tài khoản Google Ads" in gold
-    const renderTitle = () => {
-        if (!title) return null;
-
-        // Default fallback simple split if it matches the specific string
-        if (title.includes('Thuê tài khoản Google Ads')) {
-            const parts = title.split('Thuê tài khoản Google Ads');
-            if (parts.length > 1) {
-                return (
-                    <>
-                        {parts[0]} <span className="text-[#AF7E2D]">Thuê tài khoản Google Ads</span> {parts[1]}
-                    </>
-                );
-            }
-        }
-
-        return title;
-    };
-
     const fadeUpVariant = {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
@@ -63,15 +45,16 @@ export default function RentAdsPricing({
             <div className="w-full max-w-[1240px] flex flex-col gap-[40px] md:gap-[80px]">
                 {/* Header Section */}
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-[20px] lg:gap-[110px]">
-                    <motion.h2
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        variants={fadeUpVariant}
-                        className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-black leading-[1.1] max-w-[500px]"
-                    >
-                        {renderTitle()}
-                    </motion.h2>
+                    {title && (
+                        <motion.h2
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={fadeUpVariant}
+                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-black leading-[1.1] max-w-[500px]"
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
+                        />
+                    )}
                     <motion.div
                         initial="hidden"
                         whileInView="visible"

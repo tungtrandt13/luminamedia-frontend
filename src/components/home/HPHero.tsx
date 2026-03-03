@@ -31,9 +31,10 @@ export default function HPHero({ headline, ctaText, ctaUrl, background }: Props)
 
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-5 md:px-10 lg:px-5 py-[100px] md:py-[150px] lg:py-[100px] flex flex-col items-center justify-center text-center">
         <div className="max-w-[800px] xl:max-w-[1000px]">
-          <h1 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.3] text-white whitespace-pre-line tracking-tight">
-            {normalizeStrapiText(headline || '"Khởi nguồn từ đam mê thương mại\nđiện tử – VISS International vươn mình\nchinh phục thị trường toàn cầu"')}
-          </h1>
+          <h1
+            className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.3] text-white whitespace-pre-line tracking-tight"
+            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline || '"Khởi nguồn từ đam mê thương mại\nđiện tử – VISS International vươn mình\nchinh phục thị trường toàn cầu"') }}
+          />
 
           <div className="mt-8 md:mt-12 flex justify-center">
             {ctaText && ctaUrl ? (
