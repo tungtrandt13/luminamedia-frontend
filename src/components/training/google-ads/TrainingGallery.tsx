@@ -77,16 +77,18 @@ export default function TrainingGallery({ title, highlightedText, images }: Prop
                     </div>
                 </div>
 
-                {/* Dots indicator */}
-                <div className="flex gap-3 mt-4">
-                    {images.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => setCurrentIndex(idx)}
-                            className={`w-3 h-3 rounded-full transition-colors ${idx === currentIndex ? 'bg-[#AF7E2D]' : 'bg-white/30'}`}
-                        />
-                    ))}
-                </div>
+                {/* Dots indicator - only show when there are enough images to scroll */}
+                {canSlide && (
+                    <div className="flex gap-3 mt-4">
+                        {images.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentIndex(idx)}
+                                className={`w-3 h-3 rounded-full transition-colors ${idx === currentIndex ? 'bg-[#AF7E2D]' : 'bg-white/30'}`}
+                            />
+                        ))}
+                    </div>
+                )}
 
             </div>
         </section>
