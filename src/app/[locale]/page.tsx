@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
 
   return {
-    title: locale === 'vi' 
-      ? 'VISS International - Giải pháp thương mại quốc tế' 
+    title: locale === 'vi'
+      ? 'VISS International - Giải pháp thương mại quốc tế'
       : 'VISS International - International Trade Solutions',
     description: locale === 'vi'
       ? 'Công ty TNHH Thương mại và Dịch vụ Quốc tế VISS - Đối tác chiến lược cho sự tăng trưởng bền vững'
@@ -47,7 +47,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <div className="flex flex-col w-full overflow-hidden bg-black text-white">
       {/* 1. Hero Section */}
-      <HPHero 
+      <HPHero
         headline={homepage.hp_hero?.headline}
         ctaText={homepage.hp_hero?.cta_text}
         ctaUrl={homepage.hp_hero?.cta_url}
@@ -55,28 +55,23 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* 2. Journey Section */}
-      <HPJourney 
+      <HPJourney
         title={homepage.hp_journey?.title}
         subtitle={homepage.hp_journey?.subtitle}
         quote={homepage.hp_journey?.quote}
         body={homepage.hp_journey?.body}
         ctaText={homepage.hp_journey?.cta_text}
         ctaUrl={homepage.hp_journey?.cta_url}
-        heroQuote={homepage.hp_journey?.hero_quote}
-        heroBackground={homepage.hp_journey?.hero_background}
-        heroCtaText={homepage.hp_journey?.hero_cta_text}
-        heroCtaUrl={homepage.hp_journey?.hero_cta_url}
-        image={homepage.hp_journey?.image}
       />
 
       {/* 3. Partners Section */}
-      <HPPartners 
+      <HPPartners
         title={homepage.hp_partners?.title}
         logos={homepage.hp_partners?.logos}
       />
 
       {/* 4. Featured Projects Section */}
-      <HPFeaturedProjects 
+      <HPFeaturedProjects
         title={homepage.hp_featured_projects?.title}
         description={homepage.hp_featured_projects?.description}
         projects={homepage.hp_featured_projects?.projects}
@@ -85,7 +80,7 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* 5. Services Section */}
-      <HPServices 
+      <HPServices
         title={homepage.hp_services?.title}
         description={homepage.hp_services?.description}
         services={homepage.hp_services?.services}
@@ -94,7 +89,7 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* 6. Why Us / Team Section */}
-      <HPWhyUs 
+      <HPWhyUs
         title={homepage.hp_why_us?.title}
         description={homepage.hp_why_us?.description}
         primaryCtaText={homepage.hp_why_us?.primary_cta_text}
@@ -106,7 +101,7 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* 7. Contact Section */}
-      <HPContact 
+      <HPContact
         title={homepage.hp_contact?.title}
         description={homepage.hp_contact?.description}
         ctaText={homepage.hp_contact?.cta_text}

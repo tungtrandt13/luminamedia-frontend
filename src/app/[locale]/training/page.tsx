@@ -42,12 +42,16 @@ export default async function TrainingPage({ params }: Props) {
         data = trainingMockData[currentLocale] || trainingMockData['vi'];
     }
 
-    // Mock partners data
+    // Mock partners data as fallback
     const partnersMock = [
         { id: 1, name: 'Partner 1', url: '/images/training/partner-1.png' },
         { id: 2, name: 'Partner 2', url: '/images/training/partner-2.png' },
         { id: 3, name: 'Partner 3', url: '/images/training/partner-3.png' }
     ];
+
+    const { getGlobalSettings } = await import('@/lib/strapi');
+    const globalSettings = await getGlobalSettings(currentLocale);
+    const partnersData = globalSettings?.training_partners || partnersMock;
 
     return (
         <div className="flex flex-col w-full overflow-hidden bg-black text-white">
@@ -87,7 +91,7 @@ export default async function TrainingPage({ params }: Props) {
             {/* 5. Partners */}
             <TrainingPartners
                 title={currentLocale === 'vi' ? 'Đối tác chiến lược' : 'Strategic Partners'}
-                logos={partnersMock}
+                logos={partnersData}
             />
         </div>
     );

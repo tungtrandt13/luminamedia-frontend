@@ -20,13 +20,12 @@ export default function HPServices({ title, description, services, ctaText, ctaU
       <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
         <div className="mb-10 md:mb-[80px] max-w-[1314px] space-y-4 md:space-y-6">
           <h2 className="text-[32px] sm:text-[40px] md:text-[56px] font-semibold leading-tight text-black md:whitespace-pre-line">
-            Các dịch vụ của{'\n'}
-            <span className="text-[#AF7E2D]">VISS International</span>
+            {title || t('title')}
           </h2>
           {description && (
-            <p className="max-w-[497px] text-[16px] md:text-[20px] text-black font-light leading-[1.6]">
+            <div className="max-w-[497px] text-[16px] md:text-[20px] text-black font-light leading-[1.6]">
               {description}
-            </p>
+            </div>
           )}
         </div>
 
@@ -55,9 +54,9 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                     <h3 className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line">
                       {service.title}
                     </h3>
-                    <p className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]">
+                    <div className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]">
                       {service.description}
-                    </p>
+                    </div>
                   </div>
 
                   {(() => {

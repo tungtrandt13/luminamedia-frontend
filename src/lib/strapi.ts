@@ -138,11 +138,6 @@ export interface HomepageData {
     body: Array<{ id: number; text: string }>;
     cta_text?: string;
     cta_url?: string;
-    hero_quote?: string;
-    hero_background?: StrapiMedia;
-    hero_cta_text?: string;
-    hero_cta_url?: string;
-    image?: StrapiMedia;
   };
   hp_partners?: {
     title: string;
@@ -272,6 +267,7 @@ export interface MenuItem {
 export interface GlobalSettings {
   logo?: any;
   menu_items?: MenuItem[];
+  training_partners?: any;
 }
 
 // --- API Functions ---
@@ -408,6 +404,9 @@ export async function getGlobalSettings(locale: string): Promise<GlobalSettings 
       query: {
         populate: {
           logo: {
+            fields: ['url', 'alternativeText', 'formats', 'name']
+          },
+          training_partners: {
             fields: ['url', 'alternativeText', 'formats', 'name']
           }
         }

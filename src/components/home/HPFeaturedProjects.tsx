@@ -93,7 +93,7 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                                 </svg>
                               </div>
                             </div>
-                            <div className="text-black text-[12px] sm:text-[14px] font-[family-name:var(--font-geist-mono),monospace] font-normal leading-[16px] tracking-[-0.42px] whitespace-nowrap">
+                            <div className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-nowrap">
                               {metric.label}
                             </div>
                           </div>
@@ -108,6 +108,18 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
             );
           })}
         </div>
+
+        {/* CTA Button */}
+        {ctaText && ctaUrl && (
+          <div className="mt-10 lg:mt-16 flex justify-center">
+            <Link
+              href={ctaUrl}
+              className="inline-flex items-center justify-center rounded-[8px] bg-transparent border border-white/50 px-[40px] py-[20px] text-[16px] md:text-[20px] font-medium text-white transition-all hover:bg-white hover:text-black hover:border-white active:scale-95"
+            >
+              {ctaText}
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

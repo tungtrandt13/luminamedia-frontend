@@ -9,11 +9,6 @@ interface Props {
   body?: Array<{ id: number; text: string }>;
   ctaText?: string;
   ctaUrl?: string;
-  heroQuote?: string;
-  heroBackground?: StrapiMedia;
-  heroCtaText?: string;
-  heroCtaUrl?: string;
-  image?: StrapiMedia;
 }
 
 export default function HPJourney({
@@ -22,16 +17,8 @@ export default function HPJourney({
   quote,
   body,
   ctaText,
-  ctaUrl,
-  heroQuote,
-  heroBackground,
-  heroCtaText,
-  heroCtaUrl,
-  image
+  ctaUrl
 }: Props) {
-  const heroBgUrl = heroBackground ? getStrapiMedia(heroBackground) : null;
-  const imageUrl = image ? getStrapiMedia(image) : null;
-
   return (
     <>
       {/* Main Journey Section */}

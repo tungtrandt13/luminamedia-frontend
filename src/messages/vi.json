@@ -144,5 +144,11 @@
   "seo": {
     "defaultTitle": "VISS International - Giải pháp thương mại quốc tế",
     "defaultDescription": "Công ty TNHH Thương mại và Dịch vụ Quốc tế VISS - Đối tác chiến lược cho sự tăng trưởng bền vững"
+  },
+  "ServiceDetail": {
+    "tagline": "Dịch vụ của VISS",
+    "service_code": "Mã dịch vụ",
+    "contact_description": "Liên hệ đội ngũ VISS để được tư vấn chi tiết về dịch vụ này và cách triển khai phù hợp với doanh nghiệp của bạn.",
+    "cta_button": "Nhận tư vấn từ VISS"
   }
 }

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getStrapiMedia } from "@/lib/strapi";
+import { getTranslations } from "next-intl/server";
+import createDOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
+
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window as any);
 
 type PageParams = {
   locale: string;
@@ -8,12 +14,15 @@ type PageParams = {
 };
 
 interface Props {
-  params: PageParams;
+  params: Promise<PageParams>;
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
-  const { locale, slug } = params;
+  const resolvedParams = await params;
+  const { locale, slug } = resolvedParams;
 
+  const t = await getTranslations({ locale });
+  const tService = await getTranslations({ locale, namespace: 'ServiceDetail' });
   const service = await getServiceBySlug(slug, locale);
 
   if (!service) {
@@ -36,7 +45,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 href={`/${locale}`}
                 className="hover:text-black transition-colors"
               >
-                Trang chủ
+                {t('Navigation.home')}
               </Link>
             </li>
             <li>/</li>
@@ -45,7 +54,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 href={`/${locale}#services`}
                 className="hover:text-black transition-colors"
               >
-                Dịch vụ
+                {t('Navigation.services')}
               </Link>
             </li>
             <li>/</li>
@@ -59,7 +68,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div className="space-y-6">
             <header className="space-y-4">
               <p className="inline-flex items-center rounded-full bg-brand-gold/10 px-4 py-2 text-xs md:text-sm font-medium text-brand-gold uppercase tracking-[0.16em]">
-                Dịch vụ của VISS
+                {tService('tagline', { fallback: 'Dịch vụ của VISS' })}
               </p>
               <h1 className="text-[28px] md:text-[40px] lg:text-[48px] font-semibold leading-tight">
                 {service.name}
@@ -75,7 +84,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <div className="prose prose-invert max-w-none text-[16px] md:text-[18px] leading-[1.7] text-black/80">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: service.full_content,
+                    __html: DOMPurify.sanitize(service.full_content),
                   }}
                 />
               </div>
@@ -99,15 +108,14 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="space-y-3 text-sm md:text-base text-black/70">
               <div className="flex justify-between gap-4 border-b border-[#DBE0EC] pb-3">
                 <span className="font-medium text-black/80">
-                  Mã dịch vụ
+                  {tService('service_code', { fallback: 'Mã dịch vụ' })}
                 </span>
                 <span className="font-semibold text-[#171717]">
                   {service.slug}
                 </span>
               </div>
               <div className="pt-3 text-[13px] md:text-[14px] text-black/60 leading-relaxed">
-                Liên hệ đội ngũ VISS để được tư vấn chi tiết về dịch vụ này và
-                cách triển khai phù hợp với doanh nghiệp của bạn.
+                {tService('contact_description', { fallback: 'Liên hệ đội ngũ VISS để được tư vấn chi tiết về dịch vụ này và cách triển khai phù hợp với doanh nghiệp của bạn.' })}
               </div>
             </div>
 
@@ -116,7 +124,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 href={`/${locale}#contact`}
                 className="inline-flex w-full items-center justify-center rounded-[var(--radius-md)] bg-[#171717] px-6 py-3 text-[14px] md:text-[16px] font-semibold text-white transition-all hover:scale-[1.02]"
               >
-                Nhận tư vấn từ VISS
+                {tService('cta_button', { fallback: 'Nhận tư vấn từ VISS' })}
               </Link>
             </div>
           </aside>
@@ -125,4 +133,3 @@ export default async function ServiceDetailPage({ params }: Props) {
     </main>
   );
 }
-

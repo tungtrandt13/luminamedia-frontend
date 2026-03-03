@@ -144,5 +144,11 @@
   "seo": {
     "defaultTitle": "VISS International - International Trade Solutions",
     "defaultDescription": "VISS International Trading and Services Company - Strategic partner for sustainable growth"
+  },
+  "ServiceDetail": {
+    "tagline": "VISS Services",
+    "service_code": "Service code",
+    "contact_description": "Contact the VISS team for detailed consulting on this service and how to implement it for your business.",
+    "cta_button": "Get consulted by VISS"
   }
 }

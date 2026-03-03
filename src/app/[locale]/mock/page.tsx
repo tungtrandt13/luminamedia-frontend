@@ -33,11 +33,6 @@ export default async function MockHomePage({ params }: Props) {
         body={data.hp_journey?.body}
         ctaText={data.hp_journey?.cta_text}
         ctaUrl={data.hp_journey?.cta_url}
-        heroQuote={data.hp_journey?.hero_quote}
-        heroBackground={data.hp_journey?.hero_background}
-        heroCtaText={data.hp_journey?.hero_cta_text}
-        heroCtaUrl={data.hp_journey?.hero_cta_url}
-        image={data.hp_journey?.image}
       />
 
       <HPPartners title={data.hp_partners?.title} logos={data.hp_partners?.logos} />

@@ -7,7 +7,6 @@ interface Props {
   title?: string;
   description?: string;
   ctaText?: string;
-  ctaUrl?: string;
 }
 
 export default function HPContact({ title, description, ctaText }: Props) {
