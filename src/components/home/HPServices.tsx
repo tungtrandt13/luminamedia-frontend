@@ -17,6 +17,14 @@ export default function HPServices({ title, description, services, ctaText, ctaU
   const t = useTranslations('HomePage.hp_services');
   if (!services || services.length === 0) return null;
 
+  // Fallback URL mapping when service.url is not provided from Strapi
+  const serviceUrlMap: Record<number, string> = {
+    1: '/services/google-ads',
+    2: '/services/rent-ads',
+    3: '/services/tiktok-ads',
+    4: '/services/tiktok-shop-ops',
+  };
+
   return (
     <section className="w-full bg-white text-black">
       <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
@@ -35,11 +43,13 @@ export default function HPServices({ title, description, services, ctaText, ctaU
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => {
             const iconUrl = getStrapiMedia(service.icon);
+            const serviceUrl = service.url || serviceUrlMap[service.id] || '#';
 
             return (
-              <div
+              <Link
                 key={service.id}
-                className="group flex flex-col justify-start p-4 pt-[40px] lg:p-6 lg:pt-[50px] mt-[30px] rounded-[16px] border border-[#939292] bg-white hover:shadow-[0px_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 h-full relative"
+                href={serviceUrl}
+                className="group flex flex-col justify-start p-4 pt-[40px] lg:p-6 lg:pt-[50px] mt-[30px] rounded-[16px] border border-[#939292] bg-white hover:shadow-[0px_4px_24px_rgba(0,0,0,0.08)] hover:border-[#AF7E2D] transition-all duration-300 h-full relative cursor-pointer"
               >
                 {/* Overlapping Icon */}
                 <div className="absolute left-6 -top-[25px]">
@@ -55,7 +65,7 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                 <div className="space-y-6 flex-grow flex flex-col">
                   <div className="space-y-3 md:space-y-4">
                     <h3
-                      className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line"
+                      className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line group-hover:text-[#AF7E2D] transition-colors"
                       dangerouslySetInnerHTML={{ __html: normalizeStrapiText(service.title) }}
                     />
                     <div
@@ -79,7 +89,7 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                     );
                   })()}
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

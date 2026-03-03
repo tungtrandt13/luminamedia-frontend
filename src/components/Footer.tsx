@@ -3,9 +3,7 @@ import { useTranslations } from "next-intl";
 
 import CallEnd from "@/components/icons/CallEnd";
 import Facebook from "@/components/icons/Facebook";
-import LinkedIn from "@/components/icons/LinkedIn";
 import LocationOn from "@/components/icons/LocationOn";
-import YouTube from "@/components/icons/YouTube";
 
 import { normalizeStrapiText } from "@/lib/strapi";
 
@@ -76,17 +74,8 @@ export default function Footer({ locale }: Props) {
 
           {/* Cột 3: Socials */}
           <div className="flex items-center gap-[20px]">
-            <Link href="#" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
+            <Link href="https://www.facebook.com/Viss.ecom" target="_blank" rel="noopener noreferrer" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
               <Facebook className="h-[20px] w-[20px] text-black" />
-            </Link>
-            <Link href="#" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
-              <LinkedIn className="h-[20px] w-[20px] text-black" />
-            </Link>
-            <Link href="#" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
-              <YouTube className="h-[20px] w-[20px] text-black" />
-            </Link>
-            <Link href="#" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
-              {/* Optional 4th placeholder to match the 4 squares in Figma */}
             </Link>
           </div>
         </div>
