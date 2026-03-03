@@ -52,7 +52,7 @@ export default function Footer({ locale }: Props) {
           {/* Cột 2: Links */}
           <div className="grid grid-cols-2 gap-8 text-[18px] font-semibold text-[#AF7E2D] lg:ml-[100px]">
             <div className="flex flex-col gap-[24px]">
-              <Link href={`/${locale}/services`} className="hover:text-white transition-colors w-fit">
+              <Link href={`/${locale}/services/google-ads`} className="hover:text-white transition-colors w-fit">
                 {t('services')}
               </Link>
               <Link href={`/${locale}/training`} className="hover:text-white transition-colors w-fit">
