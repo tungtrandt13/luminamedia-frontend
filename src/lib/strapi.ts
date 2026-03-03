@@ -270,6 +270,8 @@ export interface GlobalSettings {
   training_partners?: any;
 }
 
+export const normalizeStrapiText = (value?: string) => (value ? value.replace(/\\n/g, '\n') : '');
+
 // --- API Functions ---
 
 export async function getServices(locale: string): Promise<Service[]> {

@@ -1,6 +1,7 @@
 'use client';
 
 import type { AdsPackage } from '@/lib/mock-data/google-ads-mock';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
     title?: string;
@@ -50,7 +51,7 @@ export default function AdsPackages({ title, packages = [] }: Props) {
 
                                 {/* Title */}
                                 <h3 className="text-[24px] md:text-[32px] font-semibold leading-[1.25] whitespace-pre-line">
-                                    {pkg.title}
+                                    {normalizeStrapiText(pkg.title)}
                                 </h3>
 
                                 {/* Items */}
@@ -61,7 +62,7 @@ export default function AdsPackages({ title, packages = [] }: Props) {
                                             className="border-t border-[#DBE0EC]/30 py-2"
                                         >
                                             <p className="text-[16px] md:text-[20px] font-semibold leading-snug whitespace-pre-line">
-                                                {item}
+                                                {normalizeStrapiText(item)}
                                             </p>
                                         </div>
                                     ))}

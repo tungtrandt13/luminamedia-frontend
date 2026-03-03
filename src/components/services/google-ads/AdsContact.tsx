@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { AdsContactForm } from '@/lib/mock-data/google-ads-mock';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
     title?: string;
@@ -78,7 +79,7 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                             {title ? (
                                 <h2
                                     className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-center lg:text-left"
-                                    dangerouslySetInnerHTML={{ __html: title }}
+                                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
                                 />
                             ) : (
                                 <h2 className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-center lg:text-left">
@@ -88,7 +89,7 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                             )}
                             {description && (
                                 <p className="text-[16px] md:text-[20px] font-light leading-snug whitespace-pre-line text-center lg:text-left">
-                                    {description}
+                                    {normalizeStrapiText(description)}
                                 </p>
                             )}
                         </div>

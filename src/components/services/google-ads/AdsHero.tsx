@@ -1,5 +1,7 @@
 'use client';
 
+import { normalizeStrapiText } from '@/lib/strapi';
+
 interface Props {
     title?: string;
     description?: string;
@@ -17,11 +19,11 @@ export default function AdsHero({ title, description, ctaText, image }: Props) {
                     <div className="flex flex-col gap-10 lg:gap-[80px] w-full lg:w-[505px] shrink-0">
                         <div className="flex flex-col gap-6 lg:gap-[40px]">
                             <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold leading-tight lg:leading-[1] whitespace-pre-line text-center lg:text-left">
-                                {title || 'Dịch vụ quảng cáo\nGoogle'}
+                                {normalizeStrapiText(title || 'Dịch vụ quảng cáo\nGoogle')}
                             </h1>
                             {description && (
                                 <p className="text-[16px] lg:text-[20px] font-light leading-snug lg:leading-[1.5] text-center lg:text-left">
-                                    {description}
+                                    {normalizeStrapiText(description)}
                                 </p>
                             )}
                         </div>

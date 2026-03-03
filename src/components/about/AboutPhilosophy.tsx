@@ -11,6 +11,8 @@ interface Props {
     images?: string[];
 }
 
+import { normalizeStrapiText } from '@/lib/strapi';
+
 export default function AboutPhilosophy({ title, principles = [], images = [] }: Props) {
     // Fallback data if principles are empty
     const displayPrinciples = principles.length > 0 ? principles : [
@@ -41,7 +43,7 @@ export default function AboutPhilosophy({ title, principles = [], images = [] }:
                 {/* Title */}
                 <h2
                     className="text-[28px] sm:text-[36px] lg:text-[45px] font-semibold leading-[1.3] text-white max-w-[800px] mb-12 md:mb-16 whitespace-pre-line"
-                    dangerouslySetInnerHTML={{ __html: title || 'Thị trường – Doanh nghiệp – Con người\ncùng phát triển bền vững' }}
+                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Thị trường – Doanh nghiệp – Con người\ncùng phát triển bền vững') }}
                 />
 
                 {/* Principles Cards */}

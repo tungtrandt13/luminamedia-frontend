@@ -27,9 +27,12 @@ interface Props {
   details: string[];
 }
 
+import { normalizeStrapiText } from '@/lib/strapi';
+
 export default function CareersBenefits({ title, description, detailsTitle, details }: Props) {
   const highlight = "VISS International";
-  const parts = title.split(highlight);
+  const normalizedTitle = normalizeStrapiText(title);
+  const parts = normalizedTitle.split(highlight);
 
   return (
     <section className="w-full bg-white text-black">
@@ -38,7 +41,7 @@ export default function CareersBenefits({ title, description, detailsTitle, deta
           <div className="flex-1 py-[10px] md:py-[19px]">
             <h2 className="text-[34px] sm:text-[44px] lg:text-[56px] font-semibold leading-[1.1] max-w-[520px] whitespace-pre-wrap">
               {parts.length === 1 ? (
-                title
+                normalizedTitle
               ) : (
                 <>
                   {parts[0]}
@@ -48,7 +51,7 @@ export default function CareersBenefits({ title, description, detailsTitle, deta
               )}
             </h2>
             <p className="mt-6 text-[16px] md:text-[20px] font-light leading-[1.55] text-black/90 whitespace-pre-line max-w-[520px]">
-              {description}
+              {normalizeStrapiText(description)}
             </p>
           </div>
 
@@ -64,8 +67,8 @@ export default function CareersBenefits({ title, description, detailsTitle, deta
                     <div className="grid place-items-center shrink-0 size-[30px] rounded-full bg-[#AF7E2D] text-white">
                       <CheckIcon className="text-white" />
                     </div>
-                    <p className="text-[16px] md:text-[20px] font-semibold leading-[1.35]">
-                      {item}
+                    <p className="text-[16px] md:text-[20px] font-semibold leading-[1.35] whitespace-pre-line">
+                      {normalizeStrapiText(item)}
                     </p>
                   </div>
                   {idx < details.length - 1 && (

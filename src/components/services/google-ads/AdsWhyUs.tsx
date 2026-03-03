@@ -1,6 +1,7 @@
 'use client';
 
 import type { AdsWhyUsPoint } from '@/lib/mock-data/google-ads-mock';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
     title?: string;
@@ -20,7 +21,7 @@ export default function AdsWhyUs({ title, highlightedText, points = [], image }:
                         {/* Title */}
                         <h2 className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold leading-[normal] whitespace-pre-line text-center lg:text-left">
                             <span className="leading-[normal]">
-                                {title || 'Tại sao nên\nchọn '}
+                                {normalizeStrapiText(title || 'Tại sao nên\nchọn ')}
                             </span>
                             <span className="text-[#AF7E2D] leading-[normal]">{highlightedText || 'VISSCOM'}</span>
                         </h2>
@@ -37,8 +38,8 @@ export default function AdsWhyUs({ title, highlightedText, points = [], image }:
                                                     <path d="M1 4.5L5 8.5L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                             </div>
-                                            <p className="text-[20px] font-semibold leading-[normal] text-white">
-                                                {point.text}
+                                            <p className="text-[20px] font-semibold leading-[normal] text-white whitespace-pre-line">
+                                                {normalizeStrapiText(point.text)}
                                             </p>
                                         </div>
                                         {/* Arrow dropdown */}

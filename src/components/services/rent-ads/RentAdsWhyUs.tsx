@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 // Using a slightly different interface than the mock specifically for the component design,
 // mapping will be handled in the parent page
@@ -89,7 +90,7 @@ export default function RentAdsWhyUs({ title, cards }: RentAdsWhyUsProps) {
                         >
                             {/* Card Title */}
                             <h3 className="text-[#AF7E2D] font-semibold text-[24px] lg:text-[32px] leading-[1.2] whitespace-pre-line">
-                                {card.title}
+                                {normalizeStrapiText(card.title)}
                             </h3>
 
                             {/* Card Points */}
@@ -99,8 +100,8 @@ export default function RentAdsWhyUs({ title, cards }: RentAdsWhyUsProps) {
                                         key={index}
                                         className="border-t border-[#dbe0ec] py-3 lg:py-[8px] xl:py-3 w-full"
                                     >
-                                        <p className="text-black font-light text-[16px] lg:text-[18px] xl:text-[20px] leading-[1.4]">
-                                            {point}
+                                        <p className="text-black font-light text-[16px] lg:text-[18px] xl:text-[20px] leading-[1.4] whitespace-pre-line">
+                                            {normalizeStrapiText(point)}
                                         </p>
                                     </div>
                                 ))}

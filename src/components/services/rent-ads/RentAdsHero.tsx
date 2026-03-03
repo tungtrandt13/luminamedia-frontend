@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface RentAdsHeroProps {
     title: string;
@@ -55,7 +56,7 @@ export default function RentAdsHero({
 
                     {description && (
                         <p className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-relaxed text-white/80 max-w-[800px] whitespace-pre-wrap mt-2">
-                            {description}
+                            {normalizeStrapiText(description)}
                         </p>
                     )}
                 </motion.div>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getStrapiMedia } from '@/lib/strapi';
+import { getStrapiMedia, normalizeStrapiText } from '@/lib/strapi';
 import type { HPProjectCard } from '@/lib/strapi';
 import ArrowDropUp from '@/components/icons/ArrowDropUp';
 import { useTranslations } from 'next-intl';
@@ -66,8 +66,8 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                         </h4>
                       )}
                     </div>
-                    <h3 className="text-black text-[18px] sm:text-[20px] font-light leading-snug line-clamp-3">
-                      {project.title}
+                    <h3 className="text-black text-[18px] sm:text-[20px] font-light leading-snug line-clamp-3 whitespace-pre-line">
+                      {normalizeStrapiText(project.title)}
                     </h3>
                   </div>
 
@@ -93,8 +93,8 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                                 </svg>
                               </div>
                             </div>
-                            <div className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-nowrap">
-                              {metric.label}
+                            <div className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-pre-line">
+                              {normalizeStrapiText(metric.label)}
                             </div>
                           </div>
                         ))}

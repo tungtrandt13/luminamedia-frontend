@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getStrapiMedia, StrapiMedia } from '@/lib/strapi';
+import { getStrapiMedia, StrapiMedia, normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
   title?: string;
@@ -35,7 +35,7 @@ export default function HPJourney({
                   </p>
                 )}
                 <h2 className="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.1] tracking-[-0.02em] text-white text-center lg:text-left whitespace-pre-line">
-                  {title || 'Hành trình từ năm 2020 vươn ra Thị trường toàn cầu'}
+                  {normalizeStrapiText(title || 'Hành trình từ năm 2020 vươn ra Thị trường toàn cầu')}
                 </h2>
               </div>
 
@@ -57,9 +57,9 @@ export default function HPJourney({
                   body.map((item) => (
                     <p
                       key={item.id}
-                      className="text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#737373] text-center lg:text-left"
+                      className="text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#737373] text-center lg:text-left whitespace-pre-line"
                     >
-                      {item.text}
+                      {normalizeStrapiText(item.text)}
                     </p>
                   ))
                 ) : (

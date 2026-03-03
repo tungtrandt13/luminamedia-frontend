@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
   title?: string;
@@ -14,8 +15,6 @@ export default function HPContact({ title, description, ctaText }: Props) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const normalizeStrapiText = (value?: string) => (value ? value.replace(/\\n/g, '\n') : '');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

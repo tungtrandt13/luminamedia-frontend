@@ -2,6 +2,8 @@
 
 import type { AdsServiceItem } from '@/lib/mock-data/google-ads-mock';
 
+import { normalizeStrapiText } from '@/lib/strapi';
+
 interface Props {
     title?: string;
     items?: AdsServiceItem[];
@@ -15,7 +17,7 @@ export default function AdsServicesList({ title, items = [] }: Props) {
 
                     {/* Title */}
                     <h2 className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold text-center leading-tight">
-                        {title || 'Các dịch vụ của chúng tôi'}
+                        {normalizeStrapiText(title || 'Các dịch vụ của chúng tôi')}
                     </h2>
 
                     {/* Grid */}
@@ -34,7 +36,7 @@ export default function AdsServicesList({ title, items = [] }: Props) {
 
                                 {/* Title */}
                                 <h3 className="text-[20px] font-semibold leading-[normal] whitespace-pre-line text-black">
-                                    {item.title}
+                                    {normalizeStrapiText(item.title)}
                                 </h3>
 
                                 {/* Features list */}
@@ -45,7 +47,7 @@ export default function AdsServicesList({ title, items = [] }: Props) {
                                             className="border-t border-[#DBE0EC] py-[8px] flex items-start w-full"
                                         >
                                             <p className="text-[20px] font-light leading-[normal] text-black whitespace-pre-wrap">
-                                                {feature}
+                                                {normalizeStrapiText(feature)}
                                             </p>
                                         </div>
                                     ))}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 export interface TiktokAdsGrowthCard {
     id: number;
@@ -42,7 +43,7 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                     className="w-full max-w-[1038px] flex justify-center text-center"
                 >
                     <h2 className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold text-white leading-tight whitespace-pre-line">
-                        {title}
+                        {normalizeStrapiText(title)}
                     </h2>
                 </motion.div>
 
@@ -62,7 +63,7 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                         >
                             {/* Card Title */}
                             <h3 className="text-[#AF7E2D] font-semibold text-[24px] lg:text-[32px] leading-[1.2] whitespace-pre-line min-h-[76px]">
-                                {card.title}
+                                {normalizeStrapiText(card.title)}
                             </h3>
 
                             {/* Card Points */}
@@ -72,8 +73,8 @@ export default function TiktokAdsGrowth({ title, cards }: TiktokAdsGrowthProps) 
                                         key={index}
                                         className="border-t border-[#dbe0ec] py-[12px] lg:py-[16px] w-full flex-1"
                                     >
-                                        <p className="text-black font-light text-[16px] lg:text-[20px] leading-snug">
-                                            {point}
+                                        <p className="text-black font-light text-[16px] lg:text-[20px] leading-snug whitespace-pre-line">
+                                            {normalizeStrapiText(point)}
                                         </p>
                                     </li>
                                 ))}

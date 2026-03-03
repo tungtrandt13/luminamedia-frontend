@@ -7,10 +7,7 @@ interface Props {
     commitments?: string[];
 }
 
-function normalizeTextForHtml(text?: string): string {
-    if (!text) return '';
-    return text.replace(/\\n/g, '\n').replace(/\n/g, '<br />');
-}
+import { normalizeStrapiText } from '@/lib/strapi';
 
 export default function AboutStory({ subtitle, title, description, commitments = [] }: Props) {
     return (
@@ -22,14 +19,15 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-6">
                         {subtitle && (
                             <p className="text-[18px] md:text-[20px] text-[#111111] font-semibold whitespace-pre-line">
-                                {subtitle.replace(/\\n/g, '\n')}
+                                {normalizeStrapiText(subtitle)}
                             </p>
                         )}
                         {title ? (
                             <h2
-                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight text-[#111111]"
-                                dangerouslySetInnerHTML={{ __html: normalizeTextForHtml(title) }}
-                            />
+                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight text-[#111111] whitespace-pre-line"
+                            >
+                                {normalizeStrapiText(title)}
+                            </h2>
                         ) : (
                             <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] whitespace-pre-line tracking-tight">
                                 Tiên phong mở rộng thị trường quốc tế với niềm tin phát triển bền vững
@@ -41,9 +39,10 @@ export default function AboutStory({ subtitle, title, description, commitments =
                     <div className="flex-1 lg:max-w-[610px] flex flex-col gap-10">
                         {description ? (
                             <p
-                                className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]"
-                                dangerouslySetInnerHTML={{ __html: normalizeTextForHtml(description) }}
-                            />
+                                className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6] whitespace-pre-line"
+                            >
+                                {normalizeStrapiText(description)}
+                            </p>
                         ) : (
                             <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]">
                                 Ngay từ những ngày đầu, VISS lựa chọn con đường kinh doanh quốc tế...
@@ -60,7 +59,7 @@ export default function AboutStory({ subtitle, title, description, commitments =
                                             </svg>
                                         </div>
                                         <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.4] whitespace-pre-line">
-                                            {item.replace(/\\n/g, '\n')}
+                                            {normalizeStrapiText(item)}
                                         </p>
                                     </div>
                                 ))}

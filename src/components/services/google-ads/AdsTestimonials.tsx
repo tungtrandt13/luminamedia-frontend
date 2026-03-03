@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import type { AdsTestimonial } from '@/lib/mock-data/google-ads-mock';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
     title?: string;
@@ -41,7 +42,7 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                     {/* Header: Title + Nav */}
                     <div className="flex items-center justify-between w-full">
                         <h2 className="text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] whitespace-pre-line flex-1">
-                            {title || 'Khách hàng nói gì về\nVISS International'}
+                            {normalizeStrapiText(title || 'Khách hàng nói gì về\nVISS International')}
                         </h2>
 
                         {/* Navigation Buttons */}
@@ -84,7 +85,7 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                                         {/* Quote */}
                                         <div className="h-[132px] text-black">
                                             <p className="text-[18px] lg:text-[20px] font-semibold leading-[normal] whitespace-pre-wrap">
-                                                {review.quote}
+                                                {normalizeStrapiText(review.quote)}
                                             </p>
                                         </div>
 

@@ -3,6 +3,8 @@ import { getStrapiMedia } from '@/lib/strapi';
 import type { HPServiceCard as HPServiceCardType } from '@/lib/strapi';
 import { useTranslations } from 'next-intl';
 
+import { normalizeStrapiText } from '@/lib/strapi';
+
 interface Props {
   title?: string;
   description?: string;
@@ -20,7 +22,7 @@ export default function HPServices({ title, description, services, ctaText, ctaU
       <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
         <div className="mb-10 md:mb-[80px] max-w-[1314px] space-y-4 md:space-y-6">
           <h2 className="text-[32px] sm:text-[40px] md:text-[56px] font-semibold leading-tight text-black md:whitespace-pre-line">
-            {title || t('title')}
+            {normalizeStrapiText(title || t('title'))}
           </h2>
           {description && (
             <div className="max-w-[497px] text-[16px] md:text-[20px] text-black font-light leading-[1.6]">
@@ -52,10 +54,10 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                 <div className="space-y-6 flex-grow flex flex-col">
                   <div className="space-y-3 md:space-y-4">
                     <h3 className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line">
-                      {service.title}
+                      {normalizeStrapiText(service.title)}
                     </h3>
                     <div className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]">
-                      {service.description}
+                      {normalizeStrapiText(service.description)}
                     </div>
                   </div>
 
@@ -66,7 +68,7 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                       <ul className="flex flex-col flex-grow mt-2">
                         {featuresArray.map((feature: any) => (
                           <li key={feature.id} className="flex flex-col justify-center min-h-[50px] py-3 border-t border-[#DBE0EC] text-[16px] text-black font-light leading-snug whitespace-pre-line">
-                            {feature.text}
+                            {normalizeStrapiText(feature.text)}
                           </li>
                         ))}
                       </ul>

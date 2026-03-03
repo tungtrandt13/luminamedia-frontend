@@ -7,6 +7,8 @@ import LinkedIn from "@/components/icons/LinkedIn";
 import LocationOn from "@/components/icons/LocationOn";
 import YouTube from "@/components/icons/YouTube";
 
+import { normalizeStrapiText } from "@/lib/strapi";
+
 type Props = {
   locale: string;
 };
@@ -22,7 +24,7 @@ export default function Footer({ locale }: Props) {
         {/* Company Name */}
         <div className="mb-[60px] md:mb-[100px] max-w-[800px]">
           <h2 className="text-[32px] md:text-[48px] font-bold leading-[1.3] uppercase whitespace-pre-line">
-            {tFooter('companyName')}
+            {normalizeStrapiText(tFooter('companyName'))}
           </h2>
         </div>
 
