@@ -23,9 +23,11 @@ interface Props {
     ctaText?: string;
     fields?: TrainingContactFields;
     courseOptions?: CourseOption[];
+    locale?: string;
 }
 
-export default function TrainingContact({ title, description, ctaText, fields, courseOptions }: Props) {
+export default function TrainingContact({ title, description, ctaText, fields, courseOptions, locale = 'vi' }: Props) {
+    const isEN = locale === 'en';
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -51,19 +53,19 @@ export default function TrainingContact({ title, description, ctaText, fields, c
                 body: JSON.stringify(payload),
             });
 
-            if (!res.ok) throw new Error('Gửi thông tin thất bại');
+            if (!res.ok) throw new Error(isEN ? 'Failed to submit' : 'Gửi thông tin thất bại');
             setSuccess(true);
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Đã có lỗi xảy ra');
+            setError(err instanceof Error ? err.message : (isEN ? 'An error occurred' : 'Đã có lỗi xảy ra'));
         } finally {
             setLoading(false);
         }
     };
 
     const defaultCourseOptions: CourseOption[] = courseOptions || [
-        { value: 'basic', label: 'Cơ bản' },
-        { value: 'advanced', label: 'Nâng cao' },
-        { value: 'internal', label: 'Đào tạo nội bộ' },
+        { value: 'basic', label: isEN ? 'Basic' : 'Cơ bản' },
+        { value: 'advanced', label: isEN ? 'Advanced' : 'Nâng cao' },
+        { value: 'internal', label: isEN ? 'Internal Training' : 'Đào tạo nội bộ' },
     ];
 
     return (
@@ -82,7 +84,7 @@ export default function TrainingContact({ title, description, ctaText, fields, c
                                     />
                                 ) : (
                                     <h2 className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-center lg:text-left">
-                                        Đăng ký tư vấn khoá học{' '}
+                                        {isEN ? 'Register for ' : 'Đăng ký tư vấn khoá học '}
                                         <span className="text-[#AF7E2D]">Google Ads</span>
                                     </h2>
                                 )}
@@ -161,12 +163,12 @@ export default function TrainingContact({ title, description, ctaText, fields, c
                                 type="submit"
                                 className="w-full rounded-[8px] bg-[#AF7E2D] py-[16px] px-[40px] text-[16px] font-medium text-white transition-all hover:bg-black active:scale-[0.98] disabled:opacity-50 mt-4"
                             >
-                                {loading ? 'Đang gửi...' : ctaText || 'Gửi'}
+                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText || (isEN ? 'Submit' : 'Gửi')}
                             </button>
                         </form>
                     </div>
                 </div>
-            </section>
+            </section >
             <SuccessModal isOpen={success} onClose={() => setSuccess(false)} />
         </>
     );

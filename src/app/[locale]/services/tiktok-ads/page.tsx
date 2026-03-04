@@ -83,6 +83,7 @@ export default async function TiktokAdsPage({ params }: Props) {
                 description={data.tiktok_contact.description}
                 ctaText={data.tiktok_contact.cta_text}
                 fields={data.tiktok_contact.fields}
+                locale={currentLocale}
             />
         </div>
     );

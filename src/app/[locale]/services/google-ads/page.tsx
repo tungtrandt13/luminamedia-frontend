@@ -86,6 +86,7 @@ export default async function GoogleAdsPage({ params }: Props) {
                 description={data.ads_contact.description}
                 ctaText={data.ads_contact.cta_text}
                 fields={data.ads_contact.fields}
+                locale={currentLocale}
             />
         </div>
     );

@@ -14,9 +14,11 @@ interface Props {
     email: string;
     message: string;
   };
+  locale?: string;
 }
 
-export default function CareersApplyForm({ title, subtitle, ctaText, fields }: Props) {
+export default function CareersApplyForm({ title, subtitle, ctaText, fields, locale = 'vi' }: Props) {
+  const isEN = locale === 'en';
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -47,11 +49,11 @@ export default function CareersApplyForm({ title, subtitle, ctaText, fields }: P
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Gửi thông tin thất bại");
+      if (!res.ok) throw new Error(isEN ? 'Failed to submit' : "Gửi thông tin thất bại");
       setSuccess(true);
       e.currentTarget.reset();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Đã có lỗi xảy ra");
+      setError(err instanceof Error ? err.message : (isEN ? 'An error occurred' : "Đã có lỗi xảy ra"));
     } finally {
       setLoading(false);
     }
@@ -115,7 +117,7 @@ export default function CareersApplyForm({ title, subtitle, ctaText, fields }: P
                 type="submit"
                 className="mt-6 inline-flex w-fit items-center justify-center border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors disabled:opacity-50"
               >
-                {loading ? "Đang gửi..." : ctaText}
+                {loading ? (isEN ? 'Sending...' : "Đang gửi...") : ctaText}
               </button>
             </form>
           </div>

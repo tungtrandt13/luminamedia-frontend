@@ -97,6 +97,7 @@ export default async function RentAdsPage({ params }: Props) {
                 description={data.rent_contact.description}
                 ctaText={data.rent_contact.cta_text}
                 fields={data.rent_contact.fields}
+                locale={currentLocale}
             />
         </div>
     );

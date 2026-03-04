@@ -10,9 +10,11 @@ interface Props {
     description?: string;
     ctaText?: string;
     fields?: AdsContactForm['fields'];
+    locale?: string;
 }
 
-export default function AdsContact({ title, description, ctaText, fields }: Props) {
+export default function AdsContact({ title, description, ctaText, fields, locale = 'vi' }: Props) {
+    const isEN = locale === 'en';
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -39,10 +41,10 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                 body: JSON.stringify(payload),
             });
 
-            if (!res.ok) throw new Error('Gửi thông tin thất bại');
+            if (!res.ok) throw new Error(isEN ? 'Failed to submit' : 'Gửi thông tin thất bại');
             setSuccess(true);
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Đã có lỗi xảy ra');
+            setError(err instanceof Error ? err.message : (isEN ? 'An error occurred' : 'Đã có lỗi xảy ra'));
         } finally {
             setLoading(false);
         }
@@ -126,14 +128,14 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                                     <option value="" disabled hidden>
                                         {fields?.service_interest || 'Dịch vụ quan tâm'}
                                     </option>
-                                    <option value="account-management" className="text-[#171717]">Quản trị tài khoản Google Ads</option>
-                                    <option value="google-ads-full" className="text-[#171717]">Google Ads trọn gói</option>
-                                    <option value="account-rental" className="text-[#171717]">Thuê tài khoản Google Ads</option>
+                                    <option value="account-management" className="text-[#171717]">{isEN ? 'Google Ads Account Management' : 'Quản trị tài khoản Google Ads'}</option>
+                                    <option value="google-ads-full" className="text-[#171717]">{isEN ? 'Google Ads Full Package' : 'Google Ads trọn gói'}</option>
+                                    <option value="account-rental" className="text-[#171717]">{isEN ? 'Rent Google Ads Account' : 'Thuê tài khoản Google Ads'}</option>
                                     <option value="google-search" className="text-[#171717]">Google Search</option>
                                     <option value="gdn" className="text-[#171717]">Google Display Network</option>
-                                    <option value="youtube-ads" className="text-[#171717]">Quảng cáo YouTube</option>
+                                    <option value="youtube-ads" className="text-[#171717]">{isEN ? 'YouTube Advertising' : 'Quảng cáo YouTube'}</option>
                                     <option value="google-shopping" className="text-[#171717]">Google Shopping</option>
-                                    <option value="landing-page" className="text-[#171717]">Tối ưu Landing Page</option>
+                                    <option value="landing-page" className="text-[#171717]">{isEN ? 'Landing Page Optimization' : 'Tối ưu Landing Page'}</option>
                                 </select>
                                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#939292]">
                                     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +156,7 @@ export default function AdsContact({ title, description, ctaText, fields }: Prop
                                 type="submit"
                                 className="w-full rounded-[8px] bg-[#AF7E2D] py-[16px] px-[40px] text-[16px] font-medium text-white transition-all hover:bg-black active:scale-[0.98] disabled:opacity-50 mt-4"
                             >
-                                {loading ? 'Đang gửi...' : ctaText || 'Gửi'}
+                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText || (isEN ? 'Submit' : 'Gửi')}
                             </button>
                         </form>
                     </div>

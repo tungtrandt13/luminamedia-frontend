@@ -96,6 +96,7 @@ export default async function TrainingPage({ params }: Props) {
                 ctaText={data.training_contact.cta_text}
                 fields={data.training_contact.fields}
                 courseOptions={data.training_contact.course_options}
+                locale={currentLocale}
             />
 
             {/* 6. Partners */}

@@ -15,6 +15,7 @@ interface TiktokShopOpsContactProps {
     email: string;
     service_interest: string;
   };
+  locale?: string;
 }
 
 export default function TiktokShopOpsContact({
@@ -23,7 +24,9 @@ export default function TiktokShopOpsContact({
   benefits,
   ctaText,
   fields,
+  locale = 'vi',
 }: TiktokShopOpsContactProps) {
+  const isEN = locale === 'en';
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -88,7 +91,7 @@ export default function TiktokShopOpsContact({
             <p className="font-light whitespace-pre-wrap">{description}</p>
             <div className="font-light">
               <p className="font-semibold">
-                VISSECOM mang đến cho bạn:
+                {isEN ? 'VISSECOM offers you:' : 'VISSECOM mang đến cho bạn:'}
               </p>
               <ul className="list-disc pl-6 space-y-1">
                 {benefits.map((benefit) => (
@@ -163,12 +166,12 @@ export default function TiktokShopOpsContact({
 
             {submitStatus === 'success' && (
               <p className="text-green-600 font-medium text-sm mt-2">
-                Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.
+                {isEN ? 'Request sent successfully! We will contact you soon.' : 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.'}
               </p>
             )}
             {submitStatus === 'error' && (
               <p className="text-red-500 font-medium text-sm mt-2">
-                Có lỗi xảy ra, vui lòng thử lại sau.
+                {isEN ? 'An error occurred, please try again later.' : 'Có lỗi xảy ra, vui lòng thử lại sau.'}
               </p>
             )}
 
@@ -178,7 +181,7 @@ export default function TiktokShopOpsContact({
                 disabled={isSubmitting}
                 className="inline-flex items-center justify-center border border-[#AF7E2D] text-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white px-[40px] py-[20px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
               >
-                {isSubmitting ? 'Đang gửi...' : ctaText}
+                {isSubmitting ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
               </button>
             </div>
           </form>

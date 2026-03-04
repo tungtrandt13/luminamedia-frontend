@@ -16,6 +16,7 @@ interface TiktokAdsContactProps {
         service_interest: string;
         message: string;
     };
+    locale?: string;
 }
 
 export default function TiktokAdsContact({
@@ -23,7 +24,9 @@ export default function TiktokAdsContact({
     description,
     ctaText,
     fields,
+    locale = 'vi',
 }: TiktokAdsContactProps) {
+    const isEN = locale === 'en';
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -156,12 +159,12 @@ export default function TiktokAdsContact({
 
                         {submitStatus === 'success' && (
                             <p className="text-green-600 font-medium text-sm mt-2">
-                                Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.
+                                {isEN ? 'Request sent successfully! We will contact you soon.' : 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.'}
                             </p>
                         )}
                         {submitStatus === 'error' && (
                             <p className="text-red-500 font-medium text-sm mt-2">
-                                Có lỗi xảy ra, vui lòng thử lại sau.
+                                {isEN ? 'An error occurred, please try again later.' : 'Có lỗi xảy ra, vui lòng thử lại sau.'}
                             </p>
                         )}
 
@@ -172,7 +175,7 @@ export default function TiktokAdsContact({
                                 disabled={isSubmitting}
                                 className="inline-flex items-center justify-center bg-transparent border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
                             >
-                                {isSubmitting ? 'Đang gửi...' : ctaText}
+                                {isSubmitting ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
                             </button>
                         </div>
                     </form>

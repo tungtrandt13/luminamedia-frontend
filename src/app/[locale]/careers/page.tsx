@@ -68,6 +68,7 @@ export default async function CareersPage({ params }: Props) {
         subtitle={data.apply.subtitle}
         ctaText={data.apply.cta_text}
         fields={data.apply.fields}
+        locale={currentLocale}
       />
     </div>
   );

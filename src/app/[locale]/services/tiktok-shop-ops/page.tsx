@@ -76,6 +76,7 @@ export default async function TiktokShopOpsPage({ params }: Props) {
         benefits={data.contact.benefits}
         ctaText={data.contact.cta_text}
         fields={data.contact.fields}
+        locale={currentLocale}
       />
     </div>
   );

@@ -16,6 +16,7 @@ interface RentAdsContactProps {
         service_interest: string;
         message: string;
     };
+    locale?: string;
 }
 
 export default function RentAdsContact({
@@ -23,7 +24,9 @@ export default function RentAdsContact({
     description,
     ctaText,
     fields,
+    locale = 'vi',
 }: RentAdsContactProps) {
+    const isEN = locale === 'en';
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -100,7 +103,7 @@ export default function RentAdsContact({
                             disabled={isSubmitting}
                             className="inline-flex items-center justify-center border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
                         >
-                            {isSubmitting ? 'Đang gửi...' : ctaText}
+                            {isSubmitting ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
                         </button>
                     </div>
                 </motion.div>
@@ -166,10 +169,10 @@ export default function RentAdsContact({
                                 required
                                 className="w-full bg-[#D9D9D9] text-[#171717] px-[19px] py-[14px] rounded-[16px] h-[51px] font-medium text-[14px] md:text-[16px] appearance-none focus:outline-none focus:ring-2 focus:ring-[#AF7E2D]/50 transition-all font-['Inter'] disabled:opacity-80"
                             >
-                                <option value="rent-ads-account" className="text-[#171717]">Thuê tài khoản Google Ads</option>
-                                <option value="google-ads" className="text-[#171717]">Quảng cáo Google Ads</option>
-                                <option value="facebook-ads" className="text-[#171717]">Quảng cáo Facebook</option>
-                                <option value="other" className="text-[#171717]">Khác</option>
+                                <option value="rent-ads-account" className="text-[#171717]">{isEN ? 'Rent Google Ads Account' : 'Thuê tài khoản Google Ads'}</option>
+                                <option value="google-ads" className="text-[#171717]">{isEN ? 'Google Advertising' : 'Quảng cáo Google Ads'}</option>
+                                <option value="facebook-ads" className="text-[#171717]">{isEN ? 'Facebook Advertising' : 'Quảng cáo Facebook'}</option>
+                                <option value="other" className="text-[#171717]">{isEN ? 'Other' : 'Khác'}</option>
                             </select>
                             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#939292]">
                                 <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -190,12 +193,12 @@ export default function RentAdsContact({
 
                         {submitStatus === 'success' && (
                             <p className="text-green-600 font-medium text-sm mt-2">
-                                Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.
+                                {isEN ? 'Request sent successfully! We will contact you soon.' : 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.'}
                             </p>
                         )}
                         {submitStatus === 'error' && (
                             <p className="text-red-500 font-medium text-sm mt-2">
-                                Có lỗi xảy ra, vui lòng thử lại sau.
+                                {isEN ? 'An error occurred, please try again later.' : 'Có lỗi xảy ra, vui lòng thử lại sau.'}
                             </p>
                         )}
 
@@ -206,7 +209,7 @@ export default function RentAdsContact({
                                 disabled={isSubmitting}
                                 className="w-full inline-flex items-center justify-center border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
                             >
-                                {isSubmitting ? 'Đang gửi...' : ctaText}
+                                {isSubmitting ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
                             </button>
                         </div>
                     </form>
