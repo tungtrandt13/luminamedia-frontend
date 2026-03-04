@@ -42,7 +42,8 @@ function ChevronButton({
 
 import { normalizeStrapiText } from '@/lib/strapi';
 
-function JobCard({ job }: { job: CareersJob }) {
+function JobCard({ job, locale = 'vi' }: { job: CareersJob; locale?: string }) {
+  const isEN = locale === 'en';
   return (
     <div className="bg-black text-white rounded-[16px] px-[20px] md:px-[30px] py-[22px] md:py-[29px] h-full md:h-[295px] flex flex-col">
       <div className="flex items-start justify-between gap-6">
@@ -59,20 +60,20 @@ function JobCard({ job }: { job: CareersJob }) {
       <div className="mt-[18px] md:mt-[24px] grid grid-cols-1 sm:grid-cols-2 gap-[18px] md:gap-[56px] text-[14px] md:text-[16px] font-medium text-white/95">
         <div className="whitespace-pre-line">
           <p className="mb-2">
-            Lương: {normalizeStrapiText(job.salary)}
-            {"\n"}Kinh nghiệm: {normalizeStrapiText(job.experience)}
+            {isEN ? 'Salary' : 'Lương'}: {normalizeStrapiText(job.salary)}
+            {"\n"}{isEN ? 'Experience' : 'Kinh nghiệm'}: {normalizeStrapiText(job.experience)}
           </p>
-          <p>Hạn nộp hồ sơ: {normalizeStrapiText(job.deadline)}</p>
+          <p>{isEN ? 'Application Deadline' : 'Hạn nộp hồ sơ'}: {normalizeStrapiText(job.deadline)}</p>
         </div>
         <div className="whitespace-pre-line">
-          <p className="mb-2">Địa điểm: {normalizeStrapiText(job.location)}</p>
+          <p className="mb-2">{isEN ? 'Location' : 'Địa điểm'}: {normalizeStrapiText(job.location)}</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default function CareersJobs({ title, jobs }: { title: string; jobs: CareersJob[] }) {
+export default function CareersJobs({ title, jobs, locale = 'vi' }: { title: string; jobs: CareersJob[]; locale?: string }) {
   const [page, setPage] = useState(0);
   const pageSize = 4;
   const totalPages = Math.max(1, Math.ceil(jobs.length / pageSize));
@@ -108,7 +109,7 @@ export default function CareersJobs({ title, jobs }: { title: string; jobs: Care
 
         <div className="mt-[40px] md:mt-[80px] grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
           {visibleJobs.map((job) => (
-            <JobCard key={job.id} job={job} />
+            <JobCard key={job.id} job={job} locale={locale} />
           ))}
         </div>
 

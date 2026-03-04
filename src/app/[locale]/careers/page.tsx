@@ -52,7 +52,7 @@ export default async function CareersPage({ params }: Props) {
         image={data.hero.image}
       />
 
-      <CareersJobs title={data.jobs.title} jobs={data.jobs.jobs} />
+      <CareersJobs title={data.jobs.title} jobs={data.jobs.jobs} locale={currentLocale} />
 
       <CareersBenefits
         title={data.benefits.title}
