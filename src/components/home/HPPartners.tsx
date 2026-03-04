@@ -20,7 +20,7 @@ export default function HPPartners({ title, logos }: Props) {
             </h3>
           )}
 
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 lg:gap-[80px] grayscale opacity-60">
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 lg:gap-[80px]">
             {logoItems.map((logo: any) => {
               const finalUrl = getStrapiMedia(logo);
 
@@ -29,7 +29,7 @@ export default function HPPartners({ title, logos }: Props) {
                   key={logo.id}
                   src={finalUrl}
                   alt={logo.name || logo.attributes?.name || 'Partner Logo'}
-                  className="h-8 md:h-12 w-auto object-contain transition-all hover:grayscale-0 hover:opacity-100"
+                  className="max-h-[60px] md:max-h-[80px] max-w-[180px] md:max-w-[250px] w-auto h-auto object-contain"
                 />
               ) : null;
             })}

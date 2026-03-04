@@ -19,18 +19,18 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
   return (
     <section className="w-full bg-black text-white overflow-hidden">
       <div className="mx-auto w-full max-w-[1500px] px-5 md:px-[20px] py-[100px]">
-        <div className="mb-10 lg:mb-[80px] flex flex-col md:flex-row md:items-center justify-between gap-6 lg:gap-16">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.21] shrink-0">
+        <div className="mb-10 lg:mb-[80px] flex flex-col md:flex-row md:items-center gap-6 lg:gap-[20px]">
+          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-normal shrink-0 lg:w-[404px]">
             {title || t('title')}
           </h2>
           {description && (
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] text-white font-light leading-snug w-full lg:max-w-[400px]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] text-white font-light leading-normal w-full lg:max-w-[505px]">
               {description}
             </p>
           )}
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:gap-[20px] md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => {
             const imageUrl = getStrapiMedia(project.image);
 
@@ -82,20 +82,17 @@ export default function HPFeaturedProjects({ title, description, projects, ctaTe
                     return (
                       <div className="flex items-center justify-between">
                         {metricsArray.map((metric: any) => (
-                          <div key={metric.id} className="flex flex-col min-w-[120px]">
-                            <div className="flex items-center gap-1">
-                              <div className="font-semibold text-[#af7e2d] flex items-baseline leading-none">
-                                <span className="text-[32px] sm:text-[40px] leading-[1]">{metric.value}</span>
-                                <span className="text-[20px] sm:text-[25.8px] leading-[1]">%</span>
-                              </div>
-                              <div className="flex items-center justify-center w-[40px] h-[40px] bg-[#EAF7E9] rounded-full shrink-0 ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                  <path d="M11.6667 23.3333L20.0001 15L28.3334 23.3333H11.6667Z" fill="#11C900" />
-                                </svg>
-                              </div>
+                          <div key={metric.id} className="flex flex-col">
+                            <div className="flex items-baseline">
+                              <p className="font-semibold text-[#af7e2d] leading-[52px] whitespace-nowrap">
+                                <span className="text-[32px] sm:text-[40px]">{metric.value}</span>
+                                <span className="text-[20px] sm:text-[25.8px]">%</span>
+                              </p>
+                              <span className="text-[#11C900] ml-[2px] text-[14px] sm:text-[16px] relative -top-[12px] sm:-top-[16px]">▲</span>
                             </div>
                             <div
                               className="text-black text-[12px] sm:text-[14px] font-normal leading-[16px] tracking-[-0.42px] whitespace-pre-line"
+                              style={{ fontFamily: "'Geist Mono', monospace" }}
                               dangerouslySetInnerHTML={{ __html: normalizeStrapiText(metric.label) }}
                             />
                           </div>

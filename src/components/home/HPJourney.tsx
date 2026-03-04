@@ -28,15 +28,15 @@ export default function HPJourney({
             {/* Left Column: Titles & Quote */}
             <div className="space-y-6 md:space-y-8 lg:space-y-12">
               {/* Title Section */}
-              <div className="space-y-4 md:space-y-6">
+              <div className="flex flex-col gap-[20px]">
                 {subtitle && (
-                  <p className="text-[14px] md:text-[16px] font-bold uppercase tracking-wider text-[#AF7E2D] text-center lg:text-left">
+                  <p className="text-[16px] md:text-[20px] font-semibold text-white text-center lg:text-left leading-normal">
                     {subtitle}
                   </p>
                 )}
                 <h2
-                  className="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.1] tracking-[-0.02em] text-white text-center lg:text-left whitespace-pre-line"
-                  dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Hành trình từ năm 2020 vươn ra Thị trường toàn cầu') }}
+                  className="text-[36px] sm:text-[44px] md:text-[52px] lg:text-[56px] font-semibold leading-normal text-white text-center lg:text-left whitespace-pre-line"
+                  dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Hành trình 5 năm\nvươn ra <span style="color:#AF7E2D">thị trường\nquốc tế</span>') }}
                 />
               </div>
 

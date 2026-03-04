@@ -52,7 +52,7 @@ export default function AdsContact({ title, description, ctaText, fields, locale
 
     return (
         <>
-            <section className="w-full bg-[#FFF8ED] text-black">
+            <section id="contact" className="w-full bg-[#FFF8ED] text-black">
                 <div className="mx-auto w-full max-w-[1500px] px-5 py-[60px] md:py-[100px]">
                     <div className="flex flex-col lg:flex-row gap-12 lg:gap-[115px] items-start justify-center">
 

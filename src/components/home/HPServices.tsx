@@ -49,43 +49,43 @@ export default function HPServices({ title, description, services, ctaText, ctaU
               <Link
                 key={service.id}
                 href={serviceUrl}
-                className="group flex flex-col justify-start p-4 pt-[40px] lg:p-6 lg:pt-[50px] mt-[30px] rounded-[16px] border border-[#939292] bg-white hover:shadow-[0px_4px_24px_rgba(0,0,0,0.08)] hover:border-[#AF7E2D] transition-all duration-300 h-full relative cursor-pointer"
+                className="group flex flex-col justify-start rounded-[16px] border border-[#939292] bg-white hover:shadow-[0px_4px_24px_rgba(0,0,0,0.08)] hover:border-[#AF7E2D] transition-all duration-300 h-full cursor-pointer overflow-hidden"
               >
-                {/* Overlapping Icon */}
-                <div className="absolute left-6 -top-[25px]">
+                <div className="flex flex-col gap-[24px] items-start px-[16px] py-[24px] h-full">
+                  {/* Icon inside card */}
                   {iconUrl ? (
-                    <div className="h-[50px] w-[50px] flex items-center justify-center rounded-full bg-[#AF7E2D] p-3 text-white">
+                    <div className="h-[50px] w-[50px] flex items-center justify-center rounded-full bg-[#AF7E2D] p-3 text-white shrink-0">
                       <img src={iconUrl} alt={service.title} className="h-full w-full object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
                     </div>
                   ) : (
-                    <div className="h-[50px] w-[50px] rounded-full bg-[#AF7E2D]" />
+                    <div className="h-[50px] w-[50px] rounded-full bg-[#AF7E2D] shrink-0" />
                   )}
-                </div>
 
-                <div className="space-y-6 flex-grow flex flex-col">
-                  <div className="space-y-3 md:space-y-4">
+                  {/* Title & Description */}
+                  <div className="flex flex-col gap-[8px] text-[20px] text-black w-full">
                     <h3
-                      className="text-[18px] md:text-[20px] font-semibold leading-tight text-black whitespace-pre-line group-hover:text-[#AF7E2D] transition-colors"
+                      className="font-semibold leading-normal whitespace-pre-line group-hover:text-[#AF7E2D] transition-colors"
                       dangerouslySetInnerHTML={{ __html: normalizeStrapiText(service.title) }}
                     />
                     <div
-                      className="text-[16px] md:text-[18px] text-[#6C6C6C] font-light leading-snug whitespace-pre-line min-h-[48px]"
+                      className="font-light leading-normal whitespace-pre-line"
                       dangerouslySetInnerHTML={{ __html: normalizeStrapiText(service.description) }}
                     />
                   </div>
 
+                  {/* Feature List */}
                   {(() => {
                     const featuresArray = Array.isArray(service.features) ? service.features : (service.features as any)?.data || [];
                     if (featuresArray.length === 0) return null;
                     return (
-                      <ul className="flex flex-col flex-grow mt-2">
+                      <div className="flex flex-col w-full flex-grow">
                         {featuresArray.map((feature: any) => (
-                          <li key={feature.id}
-                            className="flex flex-col justify-center min-h-[50px] py-3 border-t border-[#DBE0EC] text-[16px] text-black font-light leading-snug whitespace-pre-line"
+                          <div key={feature.id}
+                            className="py-[8px] border-t border-[#DBE0EC] text-[20px] text-black font-light leading-normal whitespace-pre-line"
                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(feature.text) }}
                           />
                         ))}
-                      </ul>
+                      </div>
                     );
                   })()}
                 </div>

@@ -32,22 +32,22 @@ export default function HPHero({ headline, ctaText, ctaUrl, background }: Props)
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-5 md:px-10 lg:px-5 py-[100px] md:py-[150px] lg:py-[100px] flex flex-col items-center justify-center text-center">
         <div className="max-w-[800px] xl:max-w-[1000px]">
           <h1
-            className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.3] text-white whitespace-pre-line tracking-tight"
+            className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] text-white whitespace-pre-line tracking-tight"
             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline || '"Khởi nguồn từ đam mê thương mại\nđiện tử – VISS International vươn mình\nchinh phục thị trường toàn cầu"') }}
           />
 
-          <div className="mt-8 md:mt-12 flex justify-center">
+          <div className="mt-10 md:mt-[60px] flex justify-center">
             {ctaText && ctaUrl ? (
               <Link
                 href={ctaUrl}
-                className="inline-flex items-center justify-center rounded-[8px] bg-[#AF7E2D] border border-[#AF7E2D] px-[40px] py-[16px] text-[16px] md:text-[20px] font-semibold text-white transition-all hover:bg-transparent hover:text-[#AF7E2D] hover:scale-105 active:scale-95"
+                className="inline-flex items-center justify-center rounded-[8px] bg-[#AF7E2D] border border-[#AF7E2D] px-[40px] py-[20px] text-[16px] font-medium text-white transition-all hover:bg-transparent hover:text-[#AF7E2D] hover:scale-105 active:scale-95"
               >
                 {ctaText}
               </Link>
             ) : (
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center rounded-[8px] bg-[#AF7E2D] border border-[#AF7E2D] px-[40px] py-[16px] text-[16px] md:text-[20px] font-semibold text-white transition-all hover:bg-transparent hover:text-[#AF7E2D] hover:scale-105 active:scale-95"
+                className="inline-flex items-center justify-center rounded-[8px] bg-[#AF7E2D] border border-[#AF7E2D] px-[40px] py-[20px] text-[16px] font-medium text-white transition-all hover:bg-transparent hover:text-[#AF7E2D] hover:scale-105 active:scale-95"
               >
                 {ctaText || 'Xem thêm'}
               </Link>

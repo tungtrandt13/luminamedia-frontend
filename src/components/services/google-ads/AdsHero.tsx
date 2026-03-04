@@ -31,9 +31,9 @@ export default function AdsHero({ title, description, ctaText, image }: Props) {
                         </div>
 
                         {ctaText && (
-                            <button className="self-center lg:self-start flex items-center justify-center border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors">
+                            <a href="#contact" className="self-center lg:self-start flex items-center justify-center border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors">
                                 {ctaText}
-                            </button>
+                            </a>
                         )}
                     </div>
 

@@ -22,12 +22,12 @@ export default function RentAdsHero({
         <section className="relative w-full bg-[#000000] text-white overflow-hidden py-[60px] md:py-[100px] px-5 flex items-center justify-center min-h-[500px] md:min-h-[600px]">
 
 
-            <div className="relative z-10 w-full max-w-[1240px] mx-auto flex flex-col items-center justify-center text-center gap-8 md:gap-10">
+            <div className="relative z-10 w-full max-w-[1240px] mx-auto flex flex-col items-center justify-center text-center gap-[40px]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
-                    className="flex flex-col items-center gap-5 md:gap-6 w-full"
+                    className="flex flex-col items-center gap-[30px] w-full"
                 >
                     {title && (
                         <h3 className="text-[16px] md:text-[20px] font-semibold text-white/90">
@@ -37,14 +37,14 @@ export default function RentAdsHero({
 
                     {headline && (
                         <h1
-                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight whitespace-pre-line"
+                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-normal whitespace-pre-line"
                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline) }}
                         />
                     )}
 
                     {description && (
                         <p
-                            className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-relaxed text-white/80 max-w-[800px] whitespace-pre-wrap mt-2"
+                            className="text-[16px] md:text-[18px] lg:text-[20px] font-light leading-normal text-white max-w-[800px] whitespace-pre-wrap"
                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(description) }}
                         />
                     )}

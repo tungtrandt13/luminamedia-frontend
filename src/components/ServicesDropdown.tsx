@@ -100,16 +100,6 @@ export default function ServicesDropdown({ locale, services, label }: Props) {
                     {it.name}
                   </Link>
                 ))}
-                <div className="mt-2 pt-2 border-t border-white/10">
-                  <Link
-                    href={`/${locale}/services`}
-                    role="menuitem"
-                    className="block rounded-md px-3 py-2 text-sm text-brand-gold hover:text-brand-gold/80"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t('servicesDropdown.viewAll')} →
-                  </Link>
-                </div>
               </>
             )}
           </div>

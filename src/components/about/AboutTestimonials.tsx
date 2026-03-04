@@ -20,88 +20,129 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
     const displayReviews = reviews.length > 0 ? reviews : [];
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [isScrollable, setIsScrollable] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
+    const [isPaused, setIsPaused] = useState(false);
 
+    // Auto-scroll effect
     useEffect(() => {
-        const checkScroll = () => {
-            if (scrollRef.current) {
-                setIsScrollable(scrollRef.current.scrollWidth > scrollRef.current.clientWidth + 5);
-            }
-        };
-        checkScroll();
-        window.addEventListener('resize', checkScroll);
-        return () => window.removeEventListener('resize', checkScroll);
-    }, [displayReviews]);
+        if (displayReviews.length <= 1) return;
 
-    const scrollToIndex = useCallback((idx: number) => {
+        const startAutoScroll = () => {
+            autoScrollRef.current = setInterval(() => {
+                if (!isPaused) {
+                    setActiveIndex((prev) => {
+                        const next = (prev + 1) % displayReviews.length;
+                        scrollToIndex(next, false);
+                        return next;
+                    });
+                }
+            }, 4000);
+        };
+
+        startAutoScroll();
+
+        return () => {
+            if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+        };
+    }, [displayReviews.length, isPaused]);
+
+    const scrollToIndex = useCallback((idx: number, resetTimer = true) => {
         if (!scrollRef.current) return;
         const container = scrollRef.current;
         const cards = container.querySelectorAll('[data-card]');
         if (cards[idx]) {
-            cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            const card = cards[idx] as HTMLElement;
+            const scrollLeft = card.offsetLeft - container.offsetLeft;
+            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
         }
-        setActiveIndex(idx);
-    }, []);
+        if (resetTimer) {
+            setActiveIndex(idx);
+            // Reset auto-scroll timer when user manually navigates
+            if (autoScrollRef.current) {
+                clearInterval(autoScrollRef.current);
+                autoScrollRef.current = setInterval(() => {
+                    setActiveIndex((prev) => {
+                        const next = (prev + 1) % displayReviews.length;
+                        scrollToIndex(next, false);
+                        return next;
+                    });
+                }, 4000);
+            }
+        }
+    }, [displayReviews.length]);
 
     return (
         <section className="w-full bg-[#000000] text-white py-[60px] md:py-[100px] overflow-hidden">
-            <div className="mx-auto w-full max-w-[1240px] px-5 flex flex-col gap-10 md:gap-[80px]">
+            <div className="mx-auto w-full max-w-[1240px] px-5 flex flex-col gap-[80px] items-center">
 
                 {/* Title */}
-                <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold text-center max-w-[800px] mx-auto leading-tight">
+                <h2 className="text-[32px] sm:text-[40px] font-semibold text-center max-w-[800px] mx-auto leading-[52px]">
                     {title || defaultTitle}
                 </h2>
 
-                {/* Testimonials List */}
-                <div
-                    ref={scrollRef}
-                    className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-[22px] pb-8 lg:pb-0 scrollbar-hide"
-                >
-                    {displayReviews.map((item, idx) => (
-                        <div
-                            key={item.id || idx}
-                            data-card
-                            className="min-w-[320px] lg:min-w-0 snap-start bg-[#AF7E2D] p-5 lg:px-[21px] lg:py-[19px] rounded-[16px] flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300 min-h-[250px]"
-                        >
-                            <div className="mb-6 lg:mb-11">
-                                <p className="text-[18px] md:text-[20px] text-white font-light leading-snug whitespace-pre-wrap">
-                                    {item.quote}
-                                </p>
-                            </div>
+                {/* Cards + Dots */}
+                <div className="flex flex-col gap-[60px] items-center w-full">
+                    {/* Testimonials List */}
+                    <div
+                        ref={scrollRef}
+                        className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-[22px] pb-4 lg:pb-0 scrollbar-hide w-full"
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={() => setIsPaused(true)}
+                        onTouchEnd={() => setIsPaused(false)}
+                    >
+                        {displayReviews.map((item, idx) => (
+                            <div
+                                key={item.id || idx}
+                                data-card
+                                className="min-w-[320px] lg:min-w-0 snap-start bg-[#AF7E2D] px-[21px] py-[19px] rounded-[16px] flex flex-col justify-between h-[250px]"
+                            >
+                                {/* Quote */}
+                                <div>
+                                    <p className="text-[20px] text-white font-semibold leading-normal">
+                                        {item.quote}
+                                    </p>
+                                </div>
 
-                            <div className="flex items-center gap-[15px] mt-auto">
-                                <img
-                                    src={item.avatar || '/images/default-avatar.png'}
-                                    alt={item.author}
-                                    className="w-[50px] h-[50px] rounded-full object-cover bg-white"
-                                    onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'none';
-                                    }}
-                                />
-                                <div className="flex flex-col gap-[3px]">
-                                    <h4 className="text-[16px] font-medium text-white leading-tight">{item.author}</h4>
-                                    <p className="text-[14px] text-white opacity-90 font-mono tracking-tighter leading-tight whitespace-pre-wrap">{item.role}</p>
+                                {/* Author */}
+                                <div className="flex items-center gap-[15px] mt-auto">
+                                    {item.avatar ? (
+                                        <img
+                                            src={item.avatar}
+                                            alt={item.author}
+                                            className="w-[50px] h-[50px] rounded-full object-cover bg-white shrink-0"
+                                            onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.display = 'none';
+                                            }}
+                                        />
+                                    ) : (
+                                        <div className="w-[50px] h-[50px] rounded-full bg-[#D9D9D9] shrink-0" />
+                                    )}
+                                    <div className="flex flex-col gap-[3px]">
+                                        <h4 className="text-[16px] font-medium text-white leading-normal">{item.author}</h4>
+                                        <p className="text-[14px] text-white font-normal font-mono tracking-[-0.42px] leading-[16px] whitespace-pre-wrap">{item.role}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Pagination Dots */}
-                {isScrollable && (
-                    <div className="flex justify-center mt-10 gap-2">
-                        {displayReviews.map((_, idx) => (
-                            <button
-                                key={idx}
-                                onClick={() => scrollToIndex(idx)}
-                                className={`w-[12px] h-[12px] rounded-full transition-all duration-300 ${idx === activeIndex ? 'bg-[#AF7E2D]' : 'bg-[#D9D9D9]'}`}
-                                aria-label={`Go to slide ${idx + 1}`}
-                            />
                         ))}
                     </div>
-                )}
+
+                    {/* Pagination Dots */}
+                    {displayReviews.length > 1 && (
+                        <div className="flex justify-center gap-[10px]">
+                            {displayReviews.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => scrollToIndex(idx)}
+                                    className={`w-[12px] h-[12px] rounded-full transition-all duration-300 ${idx === activeIndex ? 'bg-[#AF7E2D] scale-125' : 'bg-[#D9D9D9]'}`}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
 
             </div>
         </section>

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import { normalizeStrapiText } from '@/lib/strapi';
 import SuccessModal from '@/components/shared/SuccessModal';
 
@@ -13,6 +14,7 @@ interface Props {
 
 export default function HPContact({ title, description, ctaText }: Props) {
   const t = useTranslations('HomePage.hp_contact');
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -71,9 +73,9 @@ export default function HPContact({ title, description, ctaText }: Props) {
                 )}
               </div>
 
-              <button className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
+              <Link href={`/${locale}/about`} className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
                 {t('view_all')}
-              </button>
+              </Link>
             </div>
 
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
