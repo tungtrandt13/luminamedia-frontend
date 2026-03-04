@@ -58,7 +58,7 @@ export default function CareersApplyForm({ title, subtitle, ctaText, fields }: P
 
   if (success) {
     return (
-      <section className="w-full bg-black text-white">
+      <section id="careers-apply" className="w-full bg-black text-white">
         <div className="mx-auto w-full max-w-[1500px] px-5 py-[60px] md:py-[100px] text-center">
           <h2 className="text-[32px] md:text-[40px] font-semibold text-[#AF7E2D] italic">
             Cảm ơn bạn!
@@ -79,7 +79,7 @@ export default function CareersApplyForm({ title, subtitle, ctaText, fields }: P
   }
 
   return (
-    <section className="w-full bg-black text-white">
+    <section id="careers-apply" className="w-full bg-black text-white">
       <div className="mx-auto w-full max-w-[1500px] px-5 py-[60px] md:py-[100px]">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-[120px]">
           <div className="w-full lg:w-[505px]">

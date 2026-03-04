@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import { normalizeStrapiText } from '@/lib/strapi';
 
@@ -23,6 +25,7 @@ export default function CareersHero({ title, description, ctaText, image }: Prop
             </p>
             <button
               type="button"
+              onClick={() => document.getElementById('careers-apply')?.scrollIntoView({ behavior: 'smooth' })}
               className="self-start border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors"
             >
               {ctaText}
