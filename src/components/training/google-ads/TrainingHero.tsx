@@ -24,7 +24,10 @@ export default function TrainingHero({ title, description, ctaText, image }: Pro
                             </p>
                         </div>
 
-                        <button className="border border-white flex items-center justify-center px-[40px] py-[20px] rounded-[8px] font-medium text-[16px] text-white self-center lg:self-start hover:bg-white hover:text-black transition-colors shrink-0">
+                        <button
+                            onClick={() => document.getElementById('training-contact')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="border border-white flex items-center justify-center px-[40px] py-[20px] rounded-[8px] font-medium text-[16px] text-white self-center lg:self-start hover:bg-white hover:text-black transition-colors shrink-0"
+                        >
                             {ctaText}
                         </button>
                     </div>

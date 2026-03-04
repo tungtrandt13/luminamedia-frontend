@@ -37,6 +37,19 @@ export interface TrainingPageData {
         quote: string;
         image: string;
     };
+    training_contact: {
+        title: string;
+        description: string;
+        cta_text: string;
+        fields: {
+            name: string;
+            phone: string;
+            email: string;
+            course_interest: string;
+            message: string;
+        };
+        course_options: { value: string; label: string }[];
+    };
 }
 
 export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
@@ -114,6 +127,23 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
             quote: "“Quảng cáo chỉ thực sự hiệu quả khi nó gắn liền với mục tiêu kinh doanh, được đo lường bằng dữ liệu rõ ràng và được tối ưu liên tục bằng tư duy chiến lược, chứ không phải cảm tính.”",
             image: "/images/about/team-member-1.png",
         },
+        training_contact: {
+            title: 'Đăng ký tư vấn khoá học <span class="text-[#AF7E2D]">Google Ads</span>',
+            description: 'Để lại thông tin để đội ngũ VISS International tư vấn lộ trình học Google Ads phù hợp nhất với bạn.',
+            cta_text: 'Gửi đăng ký',
+            fields: {
+                name: 'Họ và tên',
+                phone: 'Số điện thoại',
+                email: 'Email',
+                course_interest: 'Khoá học quan tâm',
+                message: 'Bạn cần hỗ trợ điều gì?',
+            },
+            course_options: [
+                { value: 'basic', label: 'Cơ bản' },
+                { value: 'advanced', label: 'Nâng cao' },
+                { value: 'internal', label: 'Đào tạo nội bộ' },
+            ],
+        },
     },
     en: {
         training_hero: {
@@ -188,6 +218,23 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
             ],
             quote: "“Advertising is only truly effective when it is associated with business goals, measured by clear data, and continuously optimized with strategic thinking, not feelings.”",
             image: "/images/training/instructor.png",
+        },
+        training_contact: {
+            title: 'Register for <span class="text-[#AF7E2D]">Google Ads</span> course consultation',
+            description: 'Leave your information and the VISS International team will advise you on the best Google Ads learning path.',
+            cta_text: 'Submit registration',
+            fields: {
+                name: 'Full name',
+                phone: 'Phone number',
+                email: 'Email',
+                course_interest: 'Course of interest',
+                message: 'What do you need help with?',
+            },
+            course_options: [
+                { value: 'basic', label: 'Basic' },
+                { value: 'advanced', label: 'Advanced' },
+                { value: 'internal', label: 'Internal Training' },
+            ],
         },
     },
 };

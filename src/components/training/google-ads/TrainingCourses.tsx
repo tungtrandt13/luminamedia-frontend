@@ -66,7 +66,10 @@ export default function TrainingCourses({ title, highlightedText, items, ctaText
                     </div>
 
                     {/* CTA Button */}
-                    <button className="mt-4 flex items-center justify-center border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
+                    <button
+                        onClick={() => document.getElementById('training-contact')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="mt-4 flex items-center justify-center border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors"
+                    >
                         {ctaText}
                     </button>
 

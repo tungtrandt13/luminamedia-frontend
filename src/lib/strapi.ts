@@ -1118,6 +1118,11 @@ export async function getTrainingPage(locale: string): Promise<TrainingPageData 
           details: { populate: '*' },
           image: { fields: ['url', 'alternativeText', 'formats', 'name'] }
         }
+      },
+      training_contact: {
+        populate: {
+          course_options: { populate: '*' }
+        }
       }
     });
 
@@ -1175,6 +1180,22 @@ export async function getTrainingPage(locale: string): Promise<TrainingPageData 
         details: (raw.training_instructor?.details || []).map((d: any) => formatStrapiText(typeof d === 'string' ? d : d.text)),
         quote: formatStrapiText(raw.training_instructor?.quote),
         image: getStrapiMedia(raw.training_instructor?.image) || ''
+      },
+      training_contact: {
+        title: formatStrapiText(raw.training_contact?.title) || '',
+        description: formatStrapiText(raw.training_contact?.description) || '',
+        cta_text: raw.training_contact?.cta_text || '',
+        fields: {
+          name: raw.training_contact?.name_label || 'Họ và tên',
+          phone: raw.training_contact?.phone_label || 'Số điện thoại',
+          email: raw.training_contact?.email_label || 'Email',
+          course_interest: raw.training_contact?.course_label || 'Khoá học quan tâm',
+          message: raw.training_contact?.message_label || 'Bạn cần hỗ trợ điều gì?',
+        },
+        course_options: (raw.training_contact?.course_options || []).map((opt: any) => ({
+          value: opt.value || '',
+          label: opt.label || '',
+        })),
       }
     };
 

@@ -3,6 +3,7 @@ import TrainingHero from '@/components/training/google-ads/TrainingHero';
 import TrainingCourses from '@/components/training/google-ads/TrainingCourses';
 import TrainingGallery from '@/components/training/google-ads/TrainingGallery';
 import TrainingInstructor from '@/components/training/google-ads/TrainingInstructor';
+import TrainingContact from '@/components/training/google-ads/TrainingContact';
 import TrainingPartners from '@/components/training/google-ads/TrainingPartners';
 import { trainingMockData } from '@/lib/mock-data/training-mock';
 import { getTrainingPage } from '@/lib/strapi';
@@ -88,7 +89,16 @@ export default async function TrainingPage({ params }: Props) {
                 image={data.training_instructor.image}
             />
 
-            {/* 5. Partners */}
+            {/* 5. Contact Form */}
+            <TrainingContact
+                title={data.training_contact.title}
+                description={data.training_contact.description}
+                ctaText={data.training_contact.cta_text}
+                fields={data.training_contact.fields}
+                courseOptions={data.training_contact.course_options}
+            />
+
+            {/* 6. Partners */}
             <TrainingPartners
                 title={currentLocale === 'vi' ? 'Đối tác chiến lược' : 'Strategic Partners'}
                 logos={partnersData}
