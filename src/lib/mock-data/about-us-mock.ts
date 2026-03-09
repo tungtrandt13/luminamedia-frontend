@@ -77,21 +77,21 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
                 },
                 {
                     id: 2,
-                    name: "Nguyễn Văn A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Đào Công Được",
+                    role: "Leader CVC2",
+                    avatar: "/images/about/team-member-2.png"
                 },
                 {
                     id: 3,
-                    name: "Nguyễn Văn A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Nguyễn Duy Long",
+                    role: "Leader VML02",
+                    avatar: "/images/about/team-member-3.png"
                 },
                 {
                     id: 4,
-                    name: "Nguyễn Văn A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Nguyễn Khắc Duy",
+                    role: "Leader VSE03",
+                    avatar: "/images/about/team-member-4.png"
                 }
             ]
         },
@@ -200,21 +200,21 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
                 },
                 {
                     id: 2,
-                    name: "Nguyen Van A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Dao Cong Duoc",
+                    role: "Leader CVC2",
+                    avatar: "/images/about/team-member-2.png"
                 },
                 {
                     id: 3,
-                    name: "Nguyen Van A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Nguyen Duy Long",
+                    role: "Leader VML02",
+                    avatar: "/images/about/team-member-3.png"
                 },
                 {
                     id: 4,
-                    name: "Nguyen Van A",
-                    role: "Founder & Growth Strategist",
-                    avatar: ""
+                    name: "Nguyen Khac Duy",
+                    role: "Leader VSE03",
+                    avatar: "/images/about/team-member-4.png"
                 }
             ]
         },
