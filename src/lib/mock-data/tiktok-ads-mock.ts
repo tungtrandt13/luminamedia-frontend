@@ -178,7 +178,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_testimonials: {
-            title: "Khách hàng nói gì về VISS International",
+            title: "Khách hàng nói gì về\nVISS International",
             reviews: [
                 {
                     id: 1,
@@ -318,7 +318,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_testimonials: {
-            title: "What customers say about VISS International",
+            title: "What customers say about\nVISS International",
             reviews: [
                 {
                     id: 1,

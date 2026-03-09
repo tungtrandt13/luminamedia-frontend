@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+
+import { useTranslations } from 'next-intl';
 import { normalizeStrapiText } from '@/lib/strapi';
 import SuccessModal from '@/components/shared/SuccessModal';
 
@@ -14,7 +14,7 @@ interface Props {
 
 export default function HPContact({ title, description, ctaText }: Props) {
   const t = useTranslations('HomePage.hp_contact');
-  const locale = useLocale();
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -73,12 +73,17 @@ export default function HPContact({ title, description, ctaText }: Props) {
                 )}
               </div>
 
-              <Link href={`/${locale}/about`} className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors">
-                {t('view_all')}
-              </Link>
+              <button
+                disabled={loading}
+                type="submit"
+                form="hp-contact-form"
+                className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] bg-[#AF7E2D] text-white font-medium text-[16px] hover:bg-black hover:border-black transition-colors disabled:opacity-50 active:scale-[0.98]"
+              >
+                {loading ? t('sending') : normalizeStrapiText(ctaText) || t('submit')}
+              </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
+            <form id="hp-contact-form" onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
               <div className="flex flex-col sm:flex-row gap-[10px]">
                 <input
                   required
@@ -135,13 +140,7 @@ export default function HPContact({ title, description, ctaText }: Props) {
 
               {error && <p className="text-red-500 text-sm text-center lg:text-left">{error}</p>}
 
-              <button
-                disabled={loading}
-                type="submit"
-                className="w-full rounded-[8px] bg-[#AF7E2D] py-[16px] px-[40px] text-[16px] font-medium text-white transition-all hover:bg-black active:scale-[0.98] disabled:opacity-50 mt-4"
-              >
-                {loading ? t('sending') : normalizeStrapiText(ctaText) || t('submit')}
-              </button>
+
             </form>
           </div>
         </div>

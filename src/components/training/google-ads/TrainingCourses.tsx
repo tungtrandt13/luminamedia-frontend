@@ -32,8 +32,8 @@ export default function TrainingCourses({ title, highlightedText, items, ctaText
 
                     {/* Header */}
                     <div className="flex flex-col items-center gap-[10px] text-center max-w-[800px]">
-                        <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-tight flex flex-col sm:flex-row gap-2 justify-center">
-                            <span>{title}</span>
+                        <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-tight whitespace-nowrap">
+                            <span>{title} </span>
                             <span className="text-[#AF7E2D]">{highlightedText}</span>
                         </h2>
                     </div>

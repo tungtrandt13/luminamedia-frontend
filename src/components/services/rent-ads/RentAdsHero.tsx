@@ -37,7 +37,7 @@ export default function RentAdsHero({
 
                     {headline && (
                         <h1
-                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-normal whitespace-pre-line"
+                            className="text-[32px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.15] whitespace-pre-line"
                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline) }}
                         />
                     )}

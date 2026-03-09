@@ -96,7 +96,7 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_testimonials: {
-            title: "Khách hàng nói gì về VISS International",
+            title: "Khách hàng nói gì về\nVISS International",
             reviews: [
                 {
                     id: 1,
@@ -219,7 +219,7 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_testimonials: {
-            title: "What Clients Say About VISS International",
+            title: "What Clients Say About\nVISS International",
             reviews: [
                 {
                     id: 1,

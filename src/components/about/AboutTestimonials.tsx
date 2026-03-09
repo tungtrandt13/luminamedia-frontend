@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface ReviewInfo {
     id: number;
@@ -16,7 +17,7 @@ interface Props {
 }
 
 export default function AboutTestimonials({ title, reviews = [] }: Props) {
-    const defaultTitle = 'Khách hàng nói gì về VISS International';
+    const defaultTitle = 'Khách hàng nói gì về\nVISS International';
     const displayReviews = reviews.length > 0 ? reviews : [];
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -77,9 +78,10 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
             <div className="mx-auto w-full max-w-[1240px] px-5 flex flex-col gap-[80px] items-center">
 
                 {/* Title */}
-                <h2 className="text-[32px] sm:text-[40px] font-semibold text-center max-w-[800px] mx-auto leading-[52px]">
-                    {title || defaultTitle}
-                </h2>
+                <h2
+                    className="text-[32px] sm:text-[40px] font-semibold text-center max-w-[800px] mx-auto leading-[52px] whitespace-pre-line"
+                    dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || defaultTitle) }}
+                />
 
                 {/* Cards + Dots */}
                 <div className="flex flex-col gap-[60px] items-center w-full">

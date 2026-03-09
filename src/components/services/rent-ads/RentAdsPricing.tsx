@@ -89,7 +89,7 @@ export default function RentAdsPricing({
                                     className={`flex justify-between items-center px-[15px] md:px-[30px] py-[25px] ${index !== tiers.length - 1 ? 'border-b border-[#333333]' : ''}`}
                                 >
                                     <span className="text-white font-semibold text-[24px] md:text-[32px] w-[104px]">{tier.fee_percentage}</span>
-                                    <span className="text-white font-semibold text-[20px] md:text-[32px] text-right sm:text-left flex-1 sm:ml-[195px]">{tier.budget_range}</span>
+                                    <span className="text-white font-semibold text-[20px] md:text-[32px] text-right sm:text-left flex-1 sm:ml-[195px] whitespace-nowrap">{tier.budget_range}</span>
                                 </div>
                             ))}
                         </div>

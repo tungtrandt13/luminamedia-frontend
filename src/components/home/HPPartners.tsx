@@ -29,7 +29,7 @@ export default function HPPartners({ title, logos }: Props) {
                   key={logo.id}
                   src={finalUrl}
                   alt={logo.name || logo.attributes?.name || 'Partner Logo'}
-                  className="max-h-[60px] md:max-h-[80px] max-w-[180px] md:max-w-[250px] w-auto h-auto object-contain"
+                  className="max-h-[50px] md:max-h-[70px] max-w-[200px] md:max-w-[287px] w-auto h-auto object-contain"
                 />
               ) : null;
             })}

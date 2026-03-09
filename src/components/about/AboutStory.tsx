@@ -25,11 +25,11 @@ export default function AboutStory({ subtitle, title, description, commitments =
                         )}
                         {title ? (
                             <h2
-                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] tracking-tight text-[#111111] whitespace-pre-line"
+                                className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[67.8px] tracking-tight text-[#111111] whitespace-pre-line"
                                 dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title) }}
                             />
                         ) : (
-                            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[1.2] whitespace-pre-line tracking-tight">
+                            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-[67.8px] whitespace-pre-line tracking-tight">
                                 Tiên phong mở rộng thị trường quốc tế với niềm tin phát triển bền vững
                             </h2>
                         )}

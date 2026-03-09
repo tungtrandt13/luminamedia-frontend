@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { normalizeStrapiText } from '@/lib/strapi';
 
 interface Props {
     title: string;
@@ -29,10 +30,16 @@ export default function TrainingGallery({ title, highlightedText, images }: Prop
 
                 {/* Header */}
                 <div className="flex flex-col md:flex-row w-full justify-between items-center gap-[40px]">
-                    <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-tight flex flex-col sm:flex-row gap-2">
-                        <span>{title}</span>
-                        <span className="text-[#AF7E2D]">{highlightedText}</span>
-                    </h2>
+                    <h2
+                        className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold leading-tight whitespace-pre-line"
+                        dangerouslySetInnerHTML={{
+                            __html: normalizeStrapiText(
+                                highlightedText
+                                    ? `${title}\n<span class="text-[#AF7E2D]">${highlightedText}</span>`
+                                    : title
+                            )
+                        }}
+                    />
 
                     {/* Desktop Navigation Arrows */}
                     {canSlide && (
