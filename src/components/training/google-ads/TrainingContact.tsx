@@ -97,15 +97,17 @@ export default function TrainingContact({ title, description, ctaText, fields, c
                             </div>
 
                             <button
-                                type="button"
-                                className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors"
+                                type="submit"
+                                form="training-contact-form"
+                                disabled={loading}
+                                className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors disabled:opacity-50"
                             >
-                                {ctaText || 'Gửi'}
+                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : (ctaText || (isEN ? 'Submit Information' : 'Gửi thông tin'))}
                             </button>
                         </div>
 
                         {/* Right – Form */}
-                        <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
+                        <form id="training-contact-form" onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
                             <div className="flex flex-col sm:flex-row gap-[10px]">
                                 <input
                                     required
@@ -158,13 +160,7 @@ export default function TrainingContact({ title, description, ctaText, fields, c
 
                             {error && <p className="text-red-500 text-sm text-center lg:text-left">{error}</p>}
 
-                            <button
-                                disabled={loading}
-                                type="submit"
-                                className="w-full rounded-[8px] bg-[#AF7E2D] py-[16px] px-[40px] text-[16px] font-medium text-white transition-all hover:bg-black active:scale-[0.98] disabled:opacity-50 mt-4"
-                            >
-                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText || (isEN ? 'Submit' : 'Gửi')}
-                            </button>
+
                         </form>
                     </div>
                 </div>
