@@ -127,7 +127,9 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 "Xác minh đầy đủ",
                 "Minh bạch chi phí",
                 "Chủ động ngân sách",
-                "Hỗ trợ nhanh"
+                "Hỗ trợ nhanh",
+                "Ưu điểm 6",
+                "Ưu điểm 7"
             ]
         },
         rent_process: {
@@ -252,7 +254,9 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 "Full verification",
                 "Transparent costs",
                 "Proactive budget",
-                "Fast support"
+                "Fast support",
+                "Advantage 6",
+                "Advantage 7"
             ]
         },
         rent_process: {

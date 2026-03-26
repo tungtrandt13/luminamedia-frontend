@@ -25,7 +25,7 @@ const nextConfig: import("next").NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'app.mitu.ceo',
+        hostname: 'admin.vissecom.com',
         pathname: '/uploads/**',
       },
     ],

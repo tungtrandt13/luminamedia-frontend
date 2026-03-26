@@ -83,9 +83,9 @@ export default function RentAdsAdvantages({
                                 <span className="text-white font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[2]}</span>
                             </motion.div>
                         )}
-                        {points.length > 0 && (
+                        {points.length > 5 && (
                             <motion.div variants={pillVariants} className="border border-[#AF7E2D] rounded-[50px] px-[30px] md:px-[60px] py-[15px] md:py-[20px] flex items-center justify-center shrink-0">
-                                <span className="text-[#AF7E2D] font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[0]}</span>
+                                <span className="text-[#AF7E2D] font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[5]}</span>
                             </motion.div>
                         )}
                     </div>
@@ -104,9 +104,9 @@ export default function RentAdsAdvantages({
                                 <span className="text-[#AF7E2D] font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[4]}</span>
                             </motion.div>
                         )}
-                        {points.length > 1 && (
+                        {points.length > 6 && (
                             <motion.div variants={pillVariants} className="bg-[#AF7E2D] rounded-[50px] px-[30px] md:px-[60px] py-[15px] md:py-[20px] flex items-center justify-center shrink-0">
-                                <span className="text-white font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[1]}</span>
+                                <span className="text-white font-semibold text-[16px] md:text-[20px] whitespace-nowrap leading-normal">{points[6]}</span>
                             </motion.div>
                         )}
                     </div>

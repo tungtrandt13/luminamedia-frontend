@@ -111,7 +111,7 @@ export default function RentAdsTestimonials({
                                     className="flex-none snap-start w-[300px] lg:w-[380px] bg-white rounded-[16px] p-[20px] md:p-[36px_21px_36px_21px] flex flex-col justify-between min-h-[250px]"
                                 >
                                     <div className="mb-6">
-                                        <p className="font-semibold text-[16px] md:text-[20px] leading-snug text-black whitespace-pre-wrap">
+                                        <p className="font-semibold text-[16px] md:text-[20px] leading-[24px] text-black whitespace-pre-wrap">
                                             {review.quote}
                                         </p>
                                     </div>
@@ -123,9 +123,9 @@ export default function RentAdsTestimonials({
                                                 <span className="text-black/30 font-bold text-xl">{review.author.charAt(0)}</span>
                                             )}
                                         </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-black font-medium text-[16px]">{review.author}</span>
-                                            <span className="text-black/60 font-mono text-[12px] md:text-[14px] tracking-tight">{review.role}</span>
+                                        <div className="flex flex-col gap-[3px]">
+                                            <span className="text-[#000000] font-medium text-[16px] leading-[19px]">{review.author}</span>
+                                            <span className="text-[#000000] font-mono font-normal text-[14px] leading-[16px] tracking-[-0.03em]">{review.role}</span>
                                         </div>
                                     </div>
                                 </div>

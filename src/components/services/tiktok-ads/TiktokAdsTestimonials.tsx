@@ -110,7 +110,7 @@ export default function TiktokAdsTestimonials({
                                 >
                                     <div className="mb-6 h-[133px] overflow-hidden">
                                         <p
-                                            className="font-semibold text-[16px] md:text-[20px] leading-snug text-black whitespace-pre-wrap"
+                                            className="font-semibold text-[16px] md:text-[20px] leading-[24px] text-black whitespace-pre-wrap"
                                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(review.quote) }}
                                         />
                                     </div>
@@ -122,9 +122,9 @@ export default function TiktokAdsTestimonials({
                                                 <span className="text-black/30 font-bold text-xl">{review.author.charAt(0)}</span>
                                             )}
                                         </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-black font-medium text-[16px] leading-[normal]">{review.author}</span>
-                                            <span className="text-black font-mono text-[14px] leading-[16px] tracking-[-0.42px]">{review.role}</span>
+                                        <div className="flex flex-col gap-[3px]">
+                                            <span className="text-[#000000] font-medium text-[16px] leading-[19px]">{review.author}</span>
+                                            <span className="text-[#000000] font-mono font-normal text-[14px] leading-[16px] tracking-[-0.03em]">{review.role}</span>
                                         </div>
                                     </div>
                                 </div>

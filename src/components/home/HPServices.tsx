@@ -81,7 +81,7 @@ export default function HPServices({ title, description, services, ctaText, ctaU
                       <div className="flex flex-col w-full flex-grow">
                         {featuresArray.map((feature: any) => (
                           <div key={feature.id}
-                            className="py-[8px] border-t border-[#DBE0EC] text-[20px] text-black font-light leading-normal whitespace-pre-line"
+                            className="py-[8px] border-t border-[#DBE0EC] text-[20px] text-black font-light leading-normal"
                             dangerouslySetInnerHTML={{ __html: normalizeStrapiText(feature.text) }}
                           />
                         ))}

@@ -102,7 +102,7 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
                             >
                                 {/* Quote */}
                                 <div>
-                                    <p className="text-[20px] text-white font-semibold leading-normal">
+                                    <p className="text-[20px] text-white font-semibold leading-[24px]">
                                         {item.quote}
                                     </p>
                                 </div>
@@ -123,8 +123,8 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
                                         <div className="w-[50px] h-[50px] rounded-full bg-[#D9D9D9] shrink-0" />
                                     )}
                                     <div className="flex flex-col gap-[3px]">
-                                        <h4 className="text-[16px] font-medium text-white leading-normal">{item.author}</h4>
-                                        <p className="text-[14px] text-white font-normal font-mono tracking-[-0.42px] leading-[16px] whitespace-pre-wrap">{item.role}</p>
+                                        <h4 className="text-[16px] font-medium text-white leading-[19px]">{item.author}</h4>
+                                        <p className="text-[14px] text-white font-normal font-mono tracking-[-0.03em] leading-[16px] whitespace-pre-wrap">{item.role}</p>
                                     </div>
                                 </div>
                             </div>

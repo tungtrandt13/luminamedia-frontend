@@ -103,7 +103,7 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                                         {/* Quote */}
                                         <div className="h-[132px] text-black">
                                             <p
-                                                className="text-[18px] lg:text-[20px] font-semibold leading-[normal] whitespace-pre-wrap"
+                                                className="text-[18px] lg:text-[20px] font-semibold leading-[24px] whitespace-pre-wrap"
                                                 dangerouslySetInnerHTML={{ __html: normalizeStrapiText(review.quote) }}
                                             />
                                         </div>
@@ -121,11 +121,11 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                                                     }}
                                                 />
                                             </div>
-                                            <div className="flex flex-col gap-[3px] text-black w-full overflow-hidden">
-                                                <h4 className="text-[16px] font-medium leading-[normal] truncate">
+                                            <div className="flex flex-col gap-[3px] text-[#000000] w-full overflow-hidden">
+                                                <h4 className="text-[16px] font-medium leading-[19px] truncate">
                                                     {review.author}
                                                 </h4>
-                                                <p className="text-[14px] font-mono tracking-[-0.42px] leading-[16px] text-black/70 truncate">
+                                                <p className="text-[14px] font-mono font-normal tracking-[-0.03em] leading-[16px] text-[#000000] truncate">
                                                     {review.role}
                                                 </p>
                                             </div>
