@@ -1221,7 +1221,13 @@ export async function getCareerPage(locale: string): Promise<CareersPageData | n
       },
       jobs_section: {
         populate: {
-          jobs: { populate: '*' }
+          jobs: {
+            populate: {
+              responsibilities: { populate: '*' },
+              requirements: { populate: '*' },
+              benefits: { populate: '*' }
+            }
+          }
         }
       },
       benefits_section: {
@@ -1270,15 +1276,35 @@ export async function getCareerPage(locale: string): Promise<CareersPageData | n
       },
       jobs: {
         title: formatStrapiText(raw.jobs_section?.title),
-        jobs: (raw.jobs_section?.jobs || []).map((job: any) => ({
-          id: job.id,
-          title: formatStrapiText(job.title),
-          company: formatStrapiText(job.company),
-          salary: formatStrapiText(job.salary),
-          experience: formatStrapiText(job.experience),
-          location: formatStrapiText(job.location),
-          deadline: job.deadline || ''
-        }))
+        jobs: (raw.jobs_section?.jobs || [])
+          .filter((job: any) => {
+            const slug = typeof job?.slug === 'string' ? job.slug.trim() : '';
+            if (!slug) {
+              console.warn('Career job missing slug:', job?.title);
+            }
+            return Boolean(slug);
+          })
+          .map((job: any) => ({
+            id: job.id,
+            slug: job.slug.trim(),
+            title: formatStrapiText(job.title),
+            company: formatStrapiText(job.company),
+            salary: formatStrapiText(job.salary),
+            experience: formatStrapiText(job.experience),
+            location: formatStrapiText(job.location),
+            deadline: job.deadline || '',
+            type: formatStrapiText(job.type),
+            description: formatStrapiText(job.description),
+            responsibilities: (job.responsibilities || []).map((item: any) =>
+              formatStrapiText(typeof item === 'string' ? item : item.text)
+            ),
+            requirements: (job.requirements || []).map((item: any) =>
+              formatStrapiText(typeof item === 'string' ? item : item.text)
+            ),
+            benefits: (job.benefits || []).map((item: any) =>
+              formatStrapiText(typeof item === 'string' ? item : item.text)
+            )
+          }))
       },
       benefits: {
         title: formatStrapiText(raw.benefits_section?.title),

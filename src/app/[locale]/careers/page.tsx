@@ -39,7 +39,7 @@ export default async function CareersPage({ params }: Props) {
 
   // Fetch data from Strapi, fallback to mock data
   let data = await getCareerPage(currentLocale);
-  if (!data) {
+  if (!data || !data.jobs?.jobs?.length) {
     data = careersMockData[currentLocale] || careersMockData.vi;
   }
 
@@ -73,4 +73,3 @@ export default async function CareersPage({ params }: Props) {
     </div>
   );
 }
-
