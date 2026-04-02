@@ -8,7 +8,7 @@ export interface TiktokShopOpsHero {
 export interface TiktokShopOpsAbout {
   title: string;
   paragraphs: string[];
-  image: string;
+  images: string[];
 }
 
 export interface TiktokShopOpsSolutionStep {
@@ -82,7 +82,11 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
         "VISSECOM là đối tác đồng hành của TikTok tại Việt Nam, chuyên tư vấn và triển khai các giải pháp quảng cáo & bán hàng trên hệ sinh thái TikTok.",
         "Với sự am hiểu sâu về TikTok Ads, TikTok Shop và các chính sách nền tảng, VISSECOM hỗ trợ doanh nghiệp xây dựng gian hàng chính thống, vận hành chiến dịch hiệu quả và mở rộng doanh thu bền vững trên TikTok.",
       ],
-      image: "/images/services/tiktok-shop-ops-about.png",
+      images: [
+        "/images/services/tiktok-shop-ops-about.png",
+        "/images/services/tiktok-shop-ops-about.png",
+        "/images/services/tiktok-shop-ops-about.png",
+      ],
     },
     solution: {
       title: "Giải pháp thương mại vận hành Tiktok shop toàn diện cùng Visscom",
@@ -237,7 +241,11 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
         "VISSECOM is a TikTok partner in Vietnam, specializing in consulting and implementing advertising and sales solutions on the TikTok ecosystem.",
         "With deep expertise in TikTok Ads, TikTok Shop and platform policies, VISSECOM supports businesses in building official stores, running effective campaigns and sustainably scaling revenue on TikTok.",
       ],
-      image: "/images/services/tiktok-shop-ops-about.png",
+      images: [
+        "/images/services/tiktok-shop-ops-about.png",
+        "/images/services/tiktok-shop-ops-about.png",
+        "/images/services/tiktok-shop-ops-about.png",
+      ],
     },
     solution: {
       title: "End-to-end TikTok Shop commerce operations with Visscom",
@@ -379,4 +387,3 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
     },
   },
 };
-

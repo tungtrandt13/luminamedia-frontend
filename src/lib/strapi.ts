@@ -1029,7 +1029,9 @@ export async function getTiktokShopOpsPage(locale: string): Promise<TiktokShopOp
         paragraphs: (raw.about?.paragraphs || []).map((p: any) =>
           formatStrapiText(typeof p === 'string' ? p : p.text)
         ),
-        image: getStrapiMedia(raw.about?.image) || ''
+        images: Array.isArray(raw.about?.image)
+          ? (raw.about.image.map((img: any) => getStrapiMedia(img)).filter(Boolean) as string[])
+          : ([getStrapiMedia(raw.about?.image)].filter(Boolean) as string[])
       },
       solution: {
         title: formatStrapiText(raw.solution?.title),

@@ -25,29 +25,6 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
     const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
     const [isPaused, setIsPaused] = useState(false);
 
-    // Auto-scroll effect
-    useEffect(() => {
-        if (displayReviews.length <= 1) return;
-
-        const startAutoScroll = () => {
-            autoScrollRef.current = setInterval(() => {
-                if (!isPaused) {
-                    setActiveIndex((prev) => {
-                        const next = (prev + 1) % displayReviews.length;
-                        scrollToIndex(next, false);
-                        return next;
-                    });
-                }
-            }, 4000);
-        };
-
-        startAutoScroll();
-
-        return () => {
-            if (autoScrollRef.current) clearInterval(autoScrollRef.current);
-        };
-    }, [displayReviews.length, isPaused]);
-
     const scrollToIndex = useCallback((idx: number, resetTimer = true) => {
         if (!scrollRef.current) return;
         const container = scrollRef.current;
@@ -72,6 +49,29 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
             }
         }
     }, [displayReviews.length]);
+
+    // Auto-scroll effect
+    useEffect(() => {
+        if (displayReviews.length <= 1) return;
+
+        const startAutoScroll = () => {
+            autoScrollRef.current = setInterval(() => {
+                if (!isPaused) {
+                    setActiveIndex((prev) => {
+                        const next = (prev + 1) % displayReviews.length;
+                        scrollToIndex(next, false);
+                        return next;
+                    });
+                }
+            }, 4000);
+        };
+
+        startAutoScroll();
+
+        return () => {
+            if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+        };
+    }, [displayReviews.length, isPaused, scrollToIndex]);
 
     return (
         <section className="w-full bg-[#000000] text-white py-[60px] md:py-[100px] overflow-hidden">

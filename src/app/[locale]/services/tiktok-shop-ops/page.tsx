@@ -55,7 +55,7 @@ export default async function TiktokShopOpsPage({ params }: Props) {
       <TiktokShopOpsAbout
         title={data.about.title}
         paragraphs={data.about.paragraphs}
-        image={data.about.image}
+        images={data.about.images}
       />
 
       <TiktokShopOpsSolution
@@ -81,4 +81,3 @@ export default async function TiktokShopOpsPage({ params }: Props) {
     </div>
   );
 }
-

@@ -1,20 +1,53 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface TiktokShopOpsAboutProps {
   title: string;
   paragraphs: string[];
-  image: string;
+  images: string[];
 }
 
 export default function TiktokShopOpsAbout({
   title,
   paragraphs,
-  image,
+  images,
 }: TiktokShopOpsAboutProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    if (images.length <= 1) {
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+  }, [images.length]);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+    startAutoPlay();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [startAutoPlay]);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    startAutoPlay();
+  };
+
   return (
     <section className="w-full bg-[#000000] text-white py-[60px] md:py-[100px] px-5 flex justify-center">
       <div className="w-full max-w-[1240px] flex flex-col gap-[40px] md:gap-[60px]">
@@ -43,17 +76,45 @@ export default function TiktokShopOpsAbout({
             </div>
           </div>
 
-          {/* Bottom row: full-width image */}
-          {image && (
-            <div className="relative w-full aspect-[1240/558] rounded-[16px] overflow-hidden bg-black">
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="object-fill"
-                sizes="(min-width: 1240px) 1240px, 100vw"
-                priority
-              />
+          {/* Bottom row: full-width slideshow */}
+          {images.length > 0 && (
+            <div className="flex flex-col items-center gap-[16px]">
+              {/* Slideshow image */}
+              <div className="relative w-full aspect-[1240/558] rounded-[16px] overflow-hidden bg-black">
+                {images.map((img, index) => (
+                  <div
+                    key={`${img}-${index}`}
+                    className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                    style={{ opacity: index === currentIndex ? 1 : 0 }}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${title} ${index + 1}`}
+                      fill
+                      className="object-fill"
+                      sizes="(min-width: 1240px) 1240px, 100vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Dot indicators – below image */}
+              {images.length > 1 && (
+                <div className="flex gap-[10px]">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => goToSlide(index)}
+                      className={`h-[12px] w-[12px] rounded-full transition-colors duration-300 ${
+                        index === currentIndex ? 'bg-[#AF7E2D]' : 'bg-white/30'
+                      }`}
+                      aria-label={`Slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </motion.div>
@@ -61,4 +122,3 @@ export default function TiktokShopOpsAbout({
     </section>
   );
 }
-
