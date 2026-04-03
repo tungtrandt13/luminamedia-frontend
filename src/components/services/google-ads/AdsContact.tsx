@@ -78,14 +78,6 @@ export default function AdsContact({ title, description, ctaText, fields, locale
                                 )}
                             </div>
 
-                            <button
-                                type="submit"
-                                form="ads-contact-form"
-                                disabled={loading}
-                                className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] text-[#AF7E2D] font-medium text-[16px] hover:bg-[#AF7E2D] hover:text-white transition-colors disabled:opacity-50"
-                            >
-                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : (ctaText || (isEN ? 'Submit' : 'Gửi'))}
-                            </button>
                         </div>
 
                         {/* Right – Form */}
