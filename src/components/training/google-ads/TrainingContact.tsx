@@ -44,6 +44,7 @@ export default function TrainingContact({ title, description, ctaText, fields, c
             email: formData.get('email'),
             service: formData.get('course'), // map to same API field
             message: formData.get('message'),
+            source: 'training-contact',
         };
 
         try {

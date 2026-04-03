@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendCareerNotification } from "@/lib/notification-service";
 
 const STRAPI_API_URL =
   process.env.STRAPI_API_URL ||
@@ -19,6 +20,18 @@ function hasAllowedExtension(fileName: string) {
   return ALLOWED_CV_EXTENSIONS.some((extension) => lowerCaseFileName.endsWith(extension));
 }
 
+function toAbsoluteUrl(url?: string | null) {
+  if (!url) {
+    return undefined;
+  }
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  return new URL(url, STRAPI_API_URL).toString();
+}
+
 export async function POST(request: Request) {
   try {
     if (!STRAPI_API_TOKEN) {
@@ -36,7 +49,11 @@ export async function POST(request: Request) {
     const locale = String(formData.get("locale") || "").trim();
     const linkedin = String(formData.get("linkedin") || "").trim();
     const portfolio = String(formData.get("portfolio") || "").trim();
+    const source = String(formData.get("source") || "career-apply-modal").trim();
     const cvFile = formData.get("cv");
+    const submittedAt = new Date().toISOString();
+    let cvFileName: string | undefined;
+    let cvUrl: string | undefined;
 
     if (!name || !email || !phone) {
       return NextResponse.json(
@@ -80,6 +97,8 @@ export async function POST(request: Request) {
 
       const uploadData = await uploadRes.json();
       cvFileId = uploadData[0]?.id ?? null;
+      cvFileName = uploadData[0]?.name || cvFile.name;
+      cvUrl = toAbsoluteUrl(uploadData[0]?.url);
     }
 
     const payload: {
@@ -105,7 +124,7 @@ export async function POST(request: Request) {
         locale,
         linkedin,
         portfolio,
-        submitted_at: new Date().toISOString(),
+        submitted_at: submittedAt,
       },
     };
 
@@ -129,6 +148,31 @@ export async function POST(request: Request) {
     }
 
     const data = await entryRes.json();
+
+    try {
+      await sendCareerNotification({
+        cvFileName,
+        cvUrl,
+        email,
+        jobSlug,
+        jobTitle,
+        linkedin,
+        locale,
+        name,
+        phone,
+        portfolio,
+        source,
+        submittedAt,
+      });
+    } catch (error) {
+      console.error("Career notification failed", {
+        error: error instanceof Error ? error.message : String(error),
+        recipientType: "career",
+        source,
+        submitterEmail: email,
+      });
+    }
+
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Career Apply API Error:", error);

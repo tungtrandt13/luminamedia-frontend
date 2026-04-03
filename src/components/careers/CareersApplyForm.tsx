@@ -40,6 +40,7 @@ export default function CareersApplyForm({ title, subtitle, ctaText, fields, loc
       phone,
       email,
       message: `Careers apply\nCV: ${cvLink || "(none)"}\n\n${message}`,
+      source: "careers-link-contact",
     };
 
     try {

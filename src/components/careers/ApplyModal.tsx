@@ -33,6 +33,7 @@ export function ApplyModal({
     formData.append("job_title", jobTitle);
     formData.append("job_slug", jobSlug);
     formData.append("locale", locale);
+    formData.append("source", "career-apply-modal");
 
     try {
       const res = await fetch("/api/career-apply", {

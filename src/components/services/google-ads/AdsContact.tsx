@@ -32,6 +32,7 @@ export default function AdsContact({ title, description, ctaText, fields, locale
             website: formData.get('website'),
             service: formData.get('service'),
             message: formData.get('message'),
+            source: 'google-ads-contact',
         };
 
         try {
