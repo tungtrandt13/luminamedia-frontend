@@ -90,17 +90,6 @@ export default function RentAdsContact({
                                 {description}
                             </p>
                         </div>
-
-                        <div className="hidden lg:block">
-                            <button
-                                type="submit"
-                                form="rent-ads-form"
-                                disabled={loading}
-                                className="inline-flex items-center justify-center border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
-                            >
-                                {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
-                            </button>
-                        </div>
                     </motion.div>
 
                     {/* Right: Form */}
@@ -175,12 +164,12 @@ export default function RentAdsContact({
 
                             {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                            {/* Mobile Submit Button */}
-                            <div className="lg:hidden mt-4 w-full">
+                            {/* Submit Button */}
+                            <div className="mt-4">
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="w-full inline-flex items-center justify-center border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
+                                    className="inline-flex items-center justify-center border border-[#AF7E2D] hover:bg-[#AF7E2D] hover:text-white text-[#AF7E2D] px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300 disabled:opacity-50"
                                 >
                                     {loading ? (isEN ? 'Sending...' : 'Đang gửi...') : ctaText}
                                 </button>
