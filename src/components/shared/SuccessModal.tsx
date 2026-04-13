@@ -9,6 +9,8 @@ interface Props {
     title?: string;
     /** Override the highlighted word. Default: "thành công" */
     highlightText?: string;
+    /** Optional subtitle displayed below the main message */
+    subtitle?: string;
     /** Override button label. Default: "Đóng" */
     buttonText?: string;
 }
@@ -18,6 +20,7 @@ export default function SuccessModal({
     onClose,
     title = 'Bạn đã gửi',
     highlightText = 'thành công',
+    subtitle,
     buttonText = 'Đóng',
 }: Props) {
     // Close on Escape key
@@ -51,14 +54,21 @@ export default function SuccessModal({
 
             {/* Modal Card */}
             <div
-                className="relative bg-white rounded-[16px] px-[96px] py-[47px] flex flex-col items-center gap-[40px] animate-[modalIn_0.25s_ease-out] max-w-[90vw]"
+                className="relative bg-white rounded-[16px] px-8 sm:px-[96px] py-[40px] sm:py-[47px] flex flex-col items-center gap-[24px] sm:gap-[40px] animate-[modalIn_0.25s_ease-out] max-w-[90vw]"
                 onClick={(e) => e.stopPropagation()}
             >
-                <p className="font-semibold text-[28px] sm:text-[40px] text-black text-center leading-[1.3]">
-                    {title}
-                    <br />
-                    <span className="text-[#AF7E2D] italic">{highlightText}</span>
-                </p>
+                <div className="flex flex-col items-center gap-3">
+                    <p className="font-semibold text-[24px] sm:text-[40px] text-black text-center leading-[1.3]">
+                        {title}
+                        <br />
+                        <span className="text-[#AF7E2D] italic">{highlightText}</span>
+                    </p>
+                    {subtitle && (
+                        <p className="text-[14px] sm:text-[16px] text-gray-500 text-center leading-relaxed">
+                            {subtitle}
+                        </p>
+                    )}
+                </div>
 
                 <button
                     onClick={onClose}

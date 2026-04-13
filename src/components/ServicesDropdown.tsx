@@ -32,14 +32,14 @@ export default function ServicesDropdown({ locale, services, label }: Props) {
 
   // Fallback services matching Figma pages, in correct order
   const fallbackServices = useMemo(() => [
-    { name: t('servicesDropdown.googleAds'), href: `/${locale}/services/google-ads` },
     { name: t('servicesDropdown.rentAds'), href: `/${locale}/services/rent-ads` },
+    { name: t('servicesDropdown.googleAds'), href: `/${locale}/services/google-ads` },
     { name: t('servicesDropdown.tiktokAds'), href: `/${locale}/services/tiktok-ads` },
     { name: t('servicesDropdown.tiktokShopOps'), href: `/${locale}/services/tiktok-shop-ops` },
   ], [locale, t]);
 
   const items = useMemo(() => {
-    const serviceOrder = ['google-ads', 'rent-ads', 'tiktok-ads', 'tiktok-shop-ops'];
+    const serviceOrder = ['rent-ads', 'google-ads', 'tiktok-ads', 'tiktok-shop-ops'];
     const strapiItems = (services || [])
       .filter((s) => serviceOrder.includes(s.slug))
       .slice()

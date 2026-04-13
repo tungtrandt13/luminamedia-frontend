@@ -37,7 +37,8 @@ export default function TiktokShopOpsContact({
     setLoading(true);
     setError(null);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const payload = {
       name: formData.get('name'),
       phone: formData.get('phone'),
@@ -57,7 +58,7 @@ export default function TiktokShopOpsContact({
 
       if (!res.ok) throw new Error(isEN ? 'Failed to submit' : 'Gửi thông tin thất bại');
       setSuccess(true);
-      e.currentTarget.reset();
+      form.reset();
     } catch (err) {
       setError(err instanceof Error ? err.message : (isEN ? 'An error occurred' : 'Đã có lỗi xảy ra'));
     } finally {

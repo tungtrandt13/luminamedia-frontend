@@ -53,8 +53,8 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
 
   // Fallback services matching Figma pages when Strapi returns empty
   const fallbackServiceItems: Service[] = [
-    { id: 1, documentId: 'google-ads', name: locale === 'vi' ? 'Dịch vụ quảng cáo Google' : 'Google Advertising', slug: 'google-ads', locale },
-    { id: 2, documentId: 'rent-ads', name: locale === 'vi' ? 'Thuê tài khoản quảng cáo' : 'Rent Ads Account', slug: 'rent-ads', locale },
+    { id: 1, documentId: 'rent-ads', name: locale === 'vi' ? 'Thuê tài khoản quảng cáo' : 'Rent Ads Account', slug: 'rent-ads', locale },
+    { id: 2, documentId: 'google-ads', name: locale === 'vi' ? 'Dịch vụ quảng cáo Google' : 'Google Advertising', slug: 'google-ads', locale },
     { id: 3, documentId: 'tiktok-ads', name: locale === 'vi' ? 'Dịch vụ quảng cáo TikTok' : 'TikTok Advertising', slug: 'tiktok-ads', locale },
     { id: 4, documentId: 'tiktok-shop-ops', name: locale === 'vi' ? 'Vận hành gian hàng TikTok Shop' : 'TikTok Shop Operations', slug: 'tiktok-shop-ops', locale },
   ];

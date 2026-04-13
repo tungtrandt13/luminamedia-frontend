@@ -73,15 +73,6 @@ export default function HPContact({ title, description, ctaText }: Props) {
                   />
                 )}
               </div>
-
-              <button
-                disabled={loading}
-                type="submit"
-                form="hp-contact-form"
-                className="self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] bg-[#AF7E2D] text-white font-medium text-[16px] hover:bg-black hover:border-black transition-colors disabled:opacity-50 active:scale-[0.98]"
-              >
-                {loading ? t('sending') : normalizeStrapiText(ctaText) || t('submit')}
-              </button>
             </div>
 
             <form id="hp-contact-form" onSubmit={handleSubmit} className="flex-1 flex flex-col gap-[10px] w-full max-w-[600px] lg:max-w-none mx-auto lg:mx-0">
@@ -141,7 +132,13 @@ export default function HPContact({ title, description, ctaText }: Props) {
 
               {error && <p className="text-red-500 text-sm text-center lg:text-left">{error}</p>}
 
-
+              <button
+                disabled={loading}
+                type="submit"
+                className="mt-2 self-center lg:self-start border border-[#AF7E2D] px-[40px] py-[20px] rounded-[8px] bg-[#AF7E2D] text-white font-medium text-[16px] hover:bg-black hover:border-black transition-colors disabled:opacity-50 active:scale-[0.98]"
+              >
+                {loading ? t('sending') : normalizeStrapiText(ctaText) || t('submit')}
+              </button>
             </form>
           </div>
         </div>
