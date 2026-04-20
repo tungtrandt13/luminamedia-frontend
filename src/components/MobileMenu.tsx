@@ -44,9 +44,10 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
   // Fallback menu items if not provided - use translations
   const fallbackMenuItems: MenuItem[] = [
     { label: t('about'), url: `/${locale}/about`, order: 1, isExternal: false },
-    { label: t('training'), url: `/${locale}/training`, order: 3, isExternal: false },
-    { label: t('recruitment'), url: `/${locale}/careers`, order: 4, isExternal: false },
-    { label: t('contact'), url: `/${locale}/contact`, order: 5, isExternal: false },
+    { label: t('blog'), url: `/${locale}/blog`, order: 2, isExternal: false },
+    { label: t('training'), url: `/${locale}/training`, order: 4, isExternal: false },
+    { label: t('recruitment'), url: `/${locale}/careers`, order: 5, isExternal: false },
+    { label: t('contact'), url: `/${locale}/contact`, order: 6, isExternal: false },
   ];
 
   const navLinks = menuItems.length > 0 ? menuItems : fallbackMenuItems;
@@ -61,9 +62,9 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
 
   const displayServices = services.length > 0 ? services : fallbackServiceItems;
 
-  // Split menu items: before services (order < 2) and after services (order >= 2)
-  const navLinksBefore = navLinks.filter(link => link.order < 2);
-  const navLinksAfter = navLinks.filter(link => link.order >= 2 && !link.url.includes('/services'));
+  // Split menu items: before services (order < 3) and after services (order >= 3)
+  const navLinksBefore = navLinks.filter(link => link.order < 3);
+  const navLinksAfter = navLinks.filter(link => link.order >= 3 && !link.url.includes('/services'));
 
   return (
     <>

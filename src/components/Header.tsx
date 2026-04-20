@@ -58,6 +58,7 @@ export default function Header({ locale, services, globalSettings }: Props) {
 
     // Map URL patterns to translation keys
     if (urlWithoutLocale === '/about' || urlWithoutLocale.includes('/about')) return t('about');
+    if (urlWithoutLocale === '/blog' || urlWithoutLocale.includes('/blog')) return t('blog');
     if (urlWithoutLocale === '/training' || urlWithoutLocale.includes('/training')) return t('training');
     if (urlWithoutLocale === '/careers' || urlWithoutLocale.includes('/careers') ||
       urlWithoutLocale === '/recruitment' || urlWithoutLocale.includes('/recruitment')) {
@@ -126,19 +127,21 @@ export default function Header({ locale, services, globalSettings }: Props) {
   };
 
   // Figma menu order: Giới thiệu (1) → Dịch vụ dropdown (2) → Đào tạo (3) → Tuyển dụng (4) → Liên hệ (5)
+  // Figma nav order: Giới thiệu (1) → Blog (2) → Dịch vụ dropdown (3) → Đào tạo (4) → Tuyển dụng (5) → Liên hệ (6)
   const fallbackMenuItems = [
     { label: t('about'), url: `/${locale}/about`, order: 1 },
-    { label: t('training'), url: `/${locale}/training`, order: 3 },
-    { label: t('recruitment'), url: `/${locale}/careers`, order: 4 },
-    { label: t('contact'), url: `/${locale}/contact`, order: 5 },
+    { label: t('blog'), url: `/${locale}/blog`, order: 2 },
+    { label: t('training'), url: `/${locale}/training`, order: 4 },
+    { label: t('recruitment'), url: `/${locale}/careers`, order: 5 },
+    { label: t('contact'), url: `/${locale}/contact`, order: 6 },
   ];
 
   const displayMenuItems = menuItems.length > 0 ? menuItems : fallbackMenuItems;
 
-  // Split menu items around the Services dropdown position (order=2)
-  // Items before dropdown (order < 2) and after dropdown (order > 2)
-  const menuItemsBefore = displayMenuItems.filter(item => item.order < 2);
-  const menuItemsAfter = displayMenuItems.filter(item => item.order >= 2 && !item.url.includes('/services'));
+  // Split menu items around the Services dropdown position (order=3)
+  // Items before dropdown (order < 3) and after dropdown (order >= 3, not services)
+  const menuItemsBefore = displayMenuItems.filter(item => item.order < 3);
+  const menuItemsAfter = displayMenuItems.filter(item => item.order >= 3 && !item.url.includes('/services'));
 
   return (
     <header className="w-full bg-black sticky top-0 z-50 border-b border-white/5">

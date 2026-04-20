@@ -9,6 +9,7 @@
     "careers": "Careers",
     "caseStudies": "Case Studies",
     "news": "News",
+    "blog": "Blog",
     "search": "Search"
   },
   "header": {
@@ -140,6 +141,20 @@
   "form": {
     "required": "This field is required",
     "invalidEmail": "Invalid email address"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Marketing Knowledge & Strategy",
+    "heroTitle": "Stay updated with the latest news",
+    "readMore": "Read more",
+    "latestTitle": "Latest Post",
+    "relatedTitle": "Related",
+    "caseStudyTag": "WITH CASE STUDY",
+    "minuteRead": "min read",
+    "backToBlog": "Back to Blog",
+    "publishedBy": "Published by",
+    "tableOfContents": "Table of Contents",
+    "shareOn": "Share on"
   },
   "seo": {
     "defaultTitle": "VISS International - International Trade Solutions",

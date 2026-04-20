@@ -53,14 +53,12 @@ export async function strapiFetch<T = unknown>({
 
     if (!res.ok) {
       const errorData = await res.json().catch(() => ({}));
-      console.error('Strapi Request URL:', url);
-      console.error('Strapi error details:', JSON.stringify(errorData, null, 2));
       throw new Error(`Strapi request failed: ${res.status} - ${errorData.error?.message || 'Unknown error'}`);
     }
 
     return (await res.json()) as T;
-  } catch (error) {
-    console.error('Error fetching from Strapi:', error);
+  } catch (error: any) {
+    // Silent: callers handle fallbacks (mock data) gracefully
     throw error;
   }
 }
@@ -306,8 +304,6 @@ export async function getServices(locale: string): Promise<Service[]> {
       : [];
     return data;
   } catch (error) {
-    // Return empty array if services endpoint doesn't exist
-    console.log('Returning empty services array due to error');
     return [];
   }
 }
@@ -383,7 +379,6 @@ export async function getHomepage(locale: string): Promise<HomepageData | null> 
 
     return data || null;
   } catch (error) {
-    console.error('Error fetching Homepage:', error);
     return null;
   }
 }
@@ -436,7 +431,6 @@ export async function getGlobalSettings(locale: string): Promise<GlobalSettings 
 
     return data || null;
   } catch (error) {
-    console.error('Error fetching Global Settings:', error);
     return null;
   }
 }
@@ -567,7 +561,6 @@ export async function getAboutPage(locale: string): Promise<AboutPageData | null
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching About page:', error);
     return null;
   }
 }
@@ -691,7 +684,6 @@ export async function getGoogleAdsPage(locale: string): Promise<GoogleAdsPageDat
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching Google Ads page:', error);
     return null;
   }
 }
@@ -825,7 +817,6 @@ export async function getRentAdsPage(locale: string): Promise<RentAdsPageData | 
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching Rent Ads page:', error);
     return null;
   }
 }
@@ -946,7 +937,6 @@ export async function getTiktokAdsPage(locale: string): Promise<TiktokAdsPageDat
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching Tiktok Ads page:', error);
     return null;
   }
 }
@@ -1084,7 +1074,6 @@ export async function getTiktokShopOpsPage(locale: string): Promise<TiktokShopOp
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching TikTok Shop Ops page:', error);
     return null;
   }
 }
@@ -1203,7 +1192,148 @@ export async function getTrainingPage(locale: string): Promise<TrainingPageData 
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching Training page:', error);
+    return null;
+  }
+}
+
+import { BlogPost, BlogPageData } from './mock-data/blog-mock';
+
+/**
+ * Fetch all blog posts from Strapi and transform to BlogPost[] format.
+ * Falls back to mock data if API is unavailable.
+ *
+ * Expected Strapi collection: `blog-post` with fields:
+ * - title, slug, subtitle, excerpt, category, hasCaseStudy, publishedAt, readingTime
+ * - coverImage: media
+ * - author: component { name, avatar: media, role }
+ * - toc: JSON field [{ id, label, level }]
+ * - relatedPosts: relation to blog-post
+ * - content:richtext
+ */
+export async function getBlogPosts(locale: string): Promise<BlogPost[]> {
+  try {
+    const res = await strapiFetch<StrapiResponse<any[]>>({
+      path: '/api/blog-posts',
+      query: {
+        filters: { locale: { $eq: locale } },
+        populate: {
+          coverImage: { fields: ['url', 'alternativeText', 'formats', 'name'] },
+          author: {
+            populate: {
+              avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+            }
+          },
+          relatedPosts: {
+            filters: { locale: { $eq: locale } },
+            fields: ['id', 'slug', 'title', 'excerpt', 'category', 'categoryColor', 'publishedAt', 'readingTime'],
+            populate: {
+              coverImage: { fields: ['url', 'alternativeText', 'formats', 'name'] },
+              author: {
+                populate: {
+                  avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+                }
+              }
+            }
+          },
+        },
+        sort: [{ publishedAt: 'desc' }]
+      }
+    });
+
+    const posts = (res.data || []).map((raw: any): BlogPost => ({
+      id: raw.id,
+      slug: raw.slug || '',
+      title: raw.title || '',
+      subtitle: raw.subtitle || '',
+      excerpt: raw.excerpt || '',
+      coverImage: getStrapiMedia(raw.coverImage) || '',
+      category: raw.category || 'Article',
+      categoryColor: raw.categoryColor || '#AF7E2D',
+      hasCaseStudy: raw.hasCaseStudy || false,
+      publishedAt: raw.publishedAt || '',
+      readingTime: raw.readingTime || 5,
+      content: raw.content || '',
+      toc: raw.toc || [],
+      author: {
+        id: raw.author?.id || 1,
+        name: raw.author?.name || 'Author',
+        avatar: getStrapiMedia(raw.author?.avatar) || '',
+        role: raw.author?.role || '',
+      },
+      relatedIds: (raw.relatedPosts || []).map((r: any) => r.id),
+    }));
+
+    return posts;
+  } catch (error) {
+    return [];
+  }
+}
+
+/**
+ * Fetch a single blog post by slug from Strapi.
+ */
+export async function getBlogPostBySlug(slug: string, locale: string): Promise<BlogPost | null> {
+  try {
+    const res = await strapiFetch<StrapiResponse<any[]>>({
+      path: '/api/blog-posts',
+      query: {
+        filters: {
+          slug: { $eq: slug },
+          locale: { $eq: locale }
+        },
+        populate: {
+          coverImage: { fields: ['url', 'alternativeText', 'formats', 'name'] },
+          author: {
+            populate: {
+              avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+            }
+          },
+          toc: { populate: '*' },
+          relatedPosts: {
+            filters: { locale: { $eq: locale } },
+            fields: ['id', 'slug', 'title', 'excerpt', 'category', 'categoryColor', 'publishedAt', 'readingTime'],
+            populate: {
+              coverImage: { fields: ['url', 'alternativeText', 'formats', 'name'] },
+              author: {
+                populate: {
+                  avatar: { fields: ['url', 'alternativeText', 'formats', 'name'] }
+                }
+              }
+            }
+          },
+        }
+      }
+    });
+
+    const raw = Array.isArray(res.data)
+      ? res.data.find((item: any) => item.locale === locale)
+      : res.data;
+
+    if (!raw) return null;
+
+    return {
+      id: raw.id,
+      slug: raw.slug || '',
+      title: raw.title || '',
+      subtitle: raw.subtitle || '',
+      excerpt: raw.excerpt || '',
+      coverImage: getStrapiMedia(raw.coverImage) || '',
+      category: raw.category || 'Article',
+      categoryColor: raw.categoryColor || '#AF7E2D',
+      hasCaseStudy: raw.hasCaseStudy || false,
+      publishedAt: raw.publishedAt || '',
+      readingTime: raw.readingTime || 5,
+      content: raw.content || '',
+      toc: raw.toc || [],
+      author: {
+        id: raw.author?.id || 1,
+        name: raw.author?.name || 'Author',
+        avatar: getStrapiMedia(raw.author?.avatar) || '',
+        role: raw.author?.role || '',
+      },
+      relatedIds: (raw.relatedPosts || []).map((r: any) => r.id),
+    };
+  } catch (error) {
     return null;
   }
 }
@@ -1340,7 +1470,6 @@ export async function getCareerPage(locale: string): Promise<CareersPageData | n
 
     return transformed;
   } catch (error) {
-    console.error('Error fetching Career page:', error);
     return null;
   }
 }

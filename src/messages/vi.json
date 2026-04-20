@@ -9,6 +9,7 @@
     "careers": "Tuyển dụng",
     "caseStudies": "Case Studies",
     "news": "Tin tức",
+    "blog": "Blog",
     "search": "Tìm kiếm"
   },
   "header": {
@@ -140,6 +141,20 @@
   "form": {
     "required": "Trường này là bắt buộc",
     "invalidEmail": "Email không hợp lệ"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Kiến thức & Chiến lược Marketing",
+    "heroTitle": "Cập nhật những tin tức mới nhất",
+    "readMore": "Đọc thêm",
+    "latestTitle": "Latest Post",
+    "relatedTitle": "Related",
+    "caseStudyTag": "WITH CASE STUDY",
+    "minuteRead": "min read",
+    "backToBlog": "Back to Blog",
+    "publishedBy": "Published by",
+    "tableOfContents": "Table of Contents",
+    "shareOn": "Chia sẻ"
   },
   "seo": {
     "defaultTitle": "VISS International - Giải pháp thương mại quốc tế",
