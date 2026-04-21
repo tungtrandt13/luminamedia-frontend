@@ -130,10 +130,10 @@ export default function Header({ locale, services, globalSettings }: Props) {
   // Figma nav order: Giới thiệu (1) → Blog (2) → Dịch vụ dropdown (3) → Đào tạo (4) → Tuyển dụng (5) → Liên hệ (6)
   const fallbackMenuItems = [
     { label: t('about'), url: `/${locale}/about`, order: 1 },
-    { label: t('blog'), url: `/${locale}/blog`, order: 2 },
     { label: t('training'), url: `/${locale}/training`, order: 4 },
     { label: t('recruitment'), url: `/${locale}/careers`, order: 5 },
-    { label: t('contact'), url: `/${locale}/contact`, order: 6 },
+    { label: t('blog'), url: `/${locale}/blog`, order: 6 },
+    { label: t('contact'), url: `/${locale}/contact`, order: 7 },
   ];
 
   const displayMenuItems = menuItems.length > 0 ? menuItems : fallbackMenuItems;

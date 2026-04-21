@@ -70,7 +70,7 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale}>
       <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <div className="min-h-dvh bg-black text-white flex flex-col">
+          <div className="min-h-dvh text-white flex flex-col">
             <Header locale={locale} services={services} globalSettings={globalSettings} />
             <main className="flex-1">{children}</main>
             <Footer locale={locale} />

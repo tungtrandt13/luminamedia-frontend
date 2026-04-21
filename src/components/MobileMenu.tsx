@@ -44,10 +44,10 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
   // Fallback menu items if not provided - use translations
   const fallbackMenuItems: MenuItem[] = [
     { label: t('about'), url: `/${locale}/about`, order: 1, isExternal: false },
-    { label: t('blog'), url: `/${locale}/blog`, order: 2, isExternal: false },
     { label: t('training'), url: `/${locale}/training`, order: 4, isExternal: false },
     { label: t('recruitment'), url: `/${locale}/careers`, order: 5, isExternal: false },
-    { label: t('contact'), url: `/${locale}/contact`, order: 6, isExternal: false },
+    { label: t('blog'), url: `/${locale}/blog`, order: 6, isExternal: false },
+    { label: t('contact'), url: `/${locale}/contact`, order: 7, isExternal: false },
   ];
 
   const navLinks = menuItems.length > 0 ? menuItems : fallbackMenuItems;

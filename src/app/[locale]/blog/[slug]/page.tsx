@@ -55,7 +55,7 @@ export default async function BlogDetailPage({ params }: Props) {
   const relatedPosts = getRelatedPosts(post, currentLocale);
 
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-black text-white">
+    <div className="flex flex-col w-full overflow-hidden">
       {/* Header: Back link, Title, Meta, Cover */}
       <BlogDetailHeader post={post} locale={currentLocale} />
 

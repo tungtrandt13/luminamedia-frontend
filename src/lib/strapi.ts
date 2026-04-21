@@ -416,6 +416,9 @@ export async function getGlobalSettings(locale: string): Promise<GlobalSettings 
           logo: {
             fields: ['url', 'alternativeText', 'formats', 'name']
           },
+          menu_items: {
+            populate: '*'
+          },
           training_partners: {
             fields: ['url', 'alternativeText', 'formats', 'name']
           }
