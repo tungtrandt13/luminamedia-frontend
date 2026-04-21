@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost } from '@/lib/mock-data/blog-mock';
+import { BlogPost, DEFAULT_BLOG_COVER } from '@/lib/mock-data/blog-mock';
 
 interface Props {
   post: BlogPost;
@@ -29,7 +29,7 @@ export default function BlogCard({ post, locale, featured = false }: Props) {
       {/* Cover Image */}
       <div className={`relative overflow-hidden shrink-0 ${featured ? 'w-full lg:w-[320px] h-[200px] lg:h-[240px]' : 'w-full h-[220px]'}`}>
         <Image
-          src={post.coverImage}
+          src={post.coverImage || DEFAULT_BLOG_COVER}
           alt={post.title}
           fill
           className="object-cover group-hover:scale-[1.03] transition-transform duration-500"

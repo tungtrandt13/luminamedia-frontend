@@ -3,6 +3,11 @@
  * matching Figma design: node-id 792-1409 (listing), 798-1791 (detail).
  */
 
+/** Default cover image used when a blog post has no cover image */
+export const DEFAULT_BLOG_COVER = '/images/blog-default-cover.jpg';
+
+import { getStrapiMedia } from '@/lib/strapi';
+
 export interface BlogAuthor {
   id: number;
   name: string;
@@ -477,7 +482,7 @@ export function buildRelatedPostsFromRaw(rawRelated: any[]): BlogPost[] {
     title: r.title || '',
     subtitle: r.subtitle || '',
     excerpt: r.excerpt || '',
-    coverImage: getStrapiMedia(r.coverImage) || '',
+    coverImage: getStrapiMedia(r.coverImage) || DEFAULT_BLOG_COVER,
     category: r.category || 'Article',
     categoryColor: r.categoryColor || '#AF7E2D',
     hasCaseStudy: r.hasCaseStudy || false,
@@ -486,7 +491,7 @@ export function buildRelatedPostsFromRaw(rawRelated: any[]): BlogPost[] {
     author: {
       id: 1,
       name: r.author?.name || 'Author',
-      avatar: getStrapiMedia(r.author?.avatar) || '',
+      avatar: getStrapiMedia(r.author?.avatar) || DEFAULT_BLOG_COVER,
       role: r.author?.role || '',
     },
     relatedIds: [],

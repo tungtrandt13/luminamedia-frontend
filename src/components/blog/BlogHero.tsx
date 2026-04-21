@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { BlogPost } from '@/lib/mock-data/blog-mock';
+import { BlogPost, DEFAULT_BLOG_COVER } from '@/lib/mock-data/blog-mock';
 
 interface Props {
   post?: BlogPost;
@@ -78,7 +78,14 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
                     sizes="467px"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#e0e0e0] to-[#c0c0c0]" />
+                  <Image
+                    src={DEFAULT_BLOG_COVER}
+                    alt={post.title || 'Blog'}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="467px"
+                  />
                 )}
               </div>
 

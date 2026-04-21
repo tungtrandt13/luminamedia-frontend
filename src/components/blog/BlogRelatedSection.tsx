@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost } from '@/lib/mock-data/blog-mock';
+import { BlogPost, DEFAULT_BLOG_COVER } from '@/lib/mock-data/blog-mock';
 
 interface Props {
   title?: string;
@@ -114,7 +114,7 @@ export default function BlogRelatedSection({ title, posts, locale }: Props) {
                 style={{ height: '240px', borderRadius: '16px' }}
               >
                 <Image
-                  src={post.coverImage}
+                  src={post.coverImage || DEFAULT_BLOG_COVER}
                   alt={post.title}
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
