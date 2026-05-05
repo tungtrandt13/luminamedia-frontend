@@ -7,6 +7,8 @@ interface Props {
     onClose: () => void;
     /** Override the full message. Default: "Bạn đã gửi thành công" */
     title?: string;
+    /** Highlighted text displayed in accent color after the title */
+    highlightText?: string;
     /** Optional subtitle displayed below the main message */
     subtitle?: string;
     /** Override button label. Default: "Đóng" */
@@ -17,6 +19,7 @@ export default function SuccessModal({
     isOpen,
     onClose,
     title = 'Bạn đã gửi thành công',
+    highlightText,
     subtitle = 'Tư vấn viên sẽ liên hệ bạn ngay trong hôm nay, hoặc gọi SĐT 0965509990 để được phản hồi nhanh nhất',
     buttonText = 'Đóng',
 }: Props) {
@@ -56,7 +59,7 @@ export default function SuccessModal({
             >
                 <div className="flex flex-col items-center gap-3">
                     <p className="font-semibold text-xl sm:text-[28px] md:text-[32px] text-black text-center leading-[1.3]">
-                        {title}
+                        {title}{highlightText && <span className="text-[#AF7E2D]"> {highlightText}</span>}
                     </p>
                     {subtitle && (
                         <p className="text-[13px] sm:text-[16px] text-gray-500 text-center leading-relaxed px-2">
