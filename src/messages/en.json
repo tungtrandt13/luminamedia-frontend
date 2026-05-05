@@ -36,7 +36,8 @@
     "address1": "No. 25, Lane 38 Phuc Xa",
     "address2": "Phuc Xa Ward, Ba Dinh District",
     "address3": "Hanoi City, Vietnam",
-    "phoneLabel": "Phone number"
+    "phoneLabel": "Phone number",
+    "phoneNumber": "0384367069"
   },
   "HomePage": {
     "hp_featured_projects": {

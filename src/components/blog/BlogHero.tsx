@@ -18,7 +18,7 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
       {/* Frame 427321353 — outer wrapper */}
       <div
         className="flex flex-col items-center w-full"
-        style={{ padding: '100px 20px', gap: '60px' }}
+        style={{ padding: 'clamp(40px, 8vw, 100px) clamp(12px, 4vw, 20px)', gap: 'clamp(32px, 6vw, 60px)' }}
       >
 
         {/* Frame 427321352 — heading row */}
@@ -30,10 +30,9 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
           <h2
             style={{
               fontFamily: 'Inter, sans-serif',
-              fontStyle: 'normal',
               fontWeight: 600,
-              fontSize: '56px',
-              lineHeight: '68px',
+              fontSize: 'clamp(28px, 6vw, 56px)',
+              lineHeight: 1.2,
               color: '#FFFFFF',
               maxWidth: '596px',
             }}
@@ -56,15 +55,14 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
             {/* Frame 427321417 — image + content row */}
             <div
               className="flex flex-col lg:flex-row items-start w-full"
-              style={{ gap: '106px', justifyContent: 'center' }}
+              style={{ gap: 'clamp(32px, 5vw, 106px)', justifyContent: 'center' }}
             >
 
               {/* Rectangle 81 — cover image */}
               <div
-                className="relative shrink-0 overflow-hidden"
+                className="relative shrink-0 overflow-hidden w-full lg:w-[467px]"
                 style={{
-                  width: '467px',
-                  height: '373px',
+                  height: 'clamp(220px, 40vw, 373px)',
                   borderRadius: '16px',
                 }}
               >
@@ -91,21 +89,20 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
 
               {/* Frame 427321416 — text content */}
               <div
-                className="flex flex-col items-start"
+                className="flex flex-col items-start w-full"
                 style={{
-                  gap: '40px',
+                  gap: 'clamp(16px, 3vw, 40px)',
                   maxWidth: '572px',
-                  flex: '0 0 auto',
+                  flex: '1',
                 }}
               >
                 {/* Post title */}
                 <h1
                   style={{
                     fontFamily: 'Inter, sans-serif',
-                    fontStyle: 'normal',
                     fontWeight: 600,
-                    fontSize: '56px',
-                    lineHeight: '68px',
+                    fontSize: 'clamp(22px, 4vw, 48px)',
+                    lineHeight: 1.2,
                     color: '#000000',
                   }}
                 >
@@ -117,10 +114,9 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
                   <p
                     style={{
                       fontFamily: 'Inter, sans-serif',
-                      fontStyle: 'normal',
                       fontWeight: 300,
-                      fontSize: '20px',
-                      lineHeight: '27px',
+                      fontSize: 'clamp(14px, 2vw, 20px)',
+                      lineHeight: 1.5,
                       color: '#000000',
                     }}
                   >
@@ -133,15 +129,14 @@ export default function BlogHero({ post, locale = 'vi' }: Props) {
                   href={post.slug ? `/${locale}/blog/${post.slug}` : `/${locale}/blog`}
                   className="inline-flex flex-row justify-center items-center hover:opacity-90 transition-opacity"
                   style={{
-                    padding: '20px 40px',
+                    padding: 'clamp(12px, 2vw, 20px) clamp(20px, 4vw, 40px)',
                     gap: '10px',
                     background: '#AF7E2D',
                     borderRadius: '8px',
                     fontFamily: 'Inter, sans-serif',
-                    fontStyle: 'normal',
                     fontWeight: 500,
-                    fontSize: '16px',
-                    lineHeight: '19px',
+                    fontSize: 'clamp(13px, 1.5vw, 16px)',
+                    lineHeight: 1.2,
                     textAlign: 'center',
                     color: '#FFFFFF',
                   }}

@@ -52,8 +52,8 @@ export default function BlogLatestSection({ title, posts, locale }: Props) {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontWeight: 700,
-              fontSize: '36px',
-              lineHeight: '44px',
+              fontSize: 'clamp(24px, 4vw, 36px)',
+              lineHeight: 1.2,
               color: '#000000',
             }}
           >

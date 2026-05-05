@@ -77,6 +77,7 @@ export default async function RentAdsPage({ params }: Props) {
                 tiers={data.rent_pricing.tiers}
                 benefitsTitle={data.rent_pricing.benefits_title}
                 benefits={data.rent_pricing.benefits}
+                consultCtaText={data.rent_pricing.consult_cta_text}
             />
 
             {/* 5. Process Steps */}

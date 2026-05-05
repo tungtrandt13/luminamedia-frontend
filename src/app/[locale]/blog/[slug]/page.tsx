@@ -60,8 +60,8 @@ export default async function BlogDetailPage({ params }: Props) {
       <BlogDetailHeader post={post} locale={currentLocale} />
 
       {/* Body + TOC */}
-      <div className="mx-auto w-full max-w-[1500px] px-5 lg:px-10 pb-[60px] lg:pb-[100px]">
-        <div className="flex gap-[60px] items-start">
+      <div className="mx-auto w-full px-4 lg:px-10 pb-[60px] lg:pb-[100px]">
+        <div className="flex gap-[40px] lg:gap-[60px] items-start">
           {/* TOC Sidebar */}
           <BlogTOC items={post.toc || []} />
 

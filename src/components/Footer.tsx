@@ -44,7 +44,7 @@ export default function Footer({ locale }: Props) {
 
               <div className="flex items-center gap-2">
                 <CallEnd className="h-[24px] w-[24px] shrink-0 text-white" />
-                <span className="text-[18px] font-semibold text-white">{tFooter('phoneLabel')}: 0384367069</span>
+                <span className="text-[18px] font-semibold text-white">{tFooter('phoneLabel')} {tFooter('phoneNumber')}</span>
               </div>
             </div>
           </div>

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
 import { normalizeStrapiText } from '@/lib/strapi';
 
@@ -19,6 +18,9 @@ export default function TiktokAdsHero({
     ctaText,
     image,
 }: TiktokAdsHeroProps) {
+    const scrollToContact = () => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
         <section className="relative w-full bg-[#000000] text-white overflow-hidden py-[60px] md:py-[100px] px-5 flex items-center justify-center min-h-[500px] md:min-h-[730px]">
@@ -51,12 +53,12 @@ export default function TiktokAdsHero({
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                         >
-                            <Link
-                                href="#contact"
+                            <button
+                                onClick={scrollToContact}
                                 className="inline-flex items-center justify-center border border-white hover:bg-white hover:text-black text-white px-[40px] py-[20px] rounded-[8px] font-medium text-[16px] transition-colors duration-300"
                             >
                                 {ctaText}
-                            </Link>
+                            </button>
                         </motion.div>
                     )}
                 </motion.div>

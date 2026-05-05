@@ -782,7 +782,8 @@ export async function getRentAdsPage(locale: string): Promise<RentAdsPageData | 
           budget_range: pkg.budget_range || ''
         })),
         benefits_title: formatStrapiText(raw.rent_pricing?.benefits_title),
-        benefits: (raw.rent_pricing?.benefits || []).map((b: any) => formatStrapiText(b.text))
+        benefits: (raw.rent_pricing?.benefits || []).map((b: any) => formatStrapiText(b.text)),
+        consult_cta_text: raw.rent_pricing?.consult_cta_text || (locale === 'en' ? 'Get Detailed Deployment Consultation' : 'Nhận Tư Vấn Triển Khai Chi Tiết')
       },
       rent_process: {
         title: formatStrapiText(raw.rent_process?.title),

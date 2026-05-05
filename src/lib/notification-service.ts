@@ -3,6 +3,11 @@ import {
   renderContactNotificationTemplate,
 } from "@/lib/email-templates";
 import { sendEmail } from "@/lib/email/resend-provider";
+import {
+  sendTelegramMessage,
+  buildContactTelegramText,
+  buildCareerTelegramText,
+} from "@/lib/telegram/telegram-provider";
 
 interface ContactNotificationInput {
   email: string;
@@ -110,12 +115,25 @@ export async function sendContactNotification(input: ContactNotificationInput) {
     website: input.website,
   });
 
-  return sendEmail({
+  await sendEmail({
     html,
     replyTo: getReplyTo(input.email),
     subject,
     to: getContactRecipients(),
   });
+
+  const telegramText = buildContactTelegramText({
+    email: input.email,
+    message: input.message,
+    name: input.name,
+    phone: input.phone,
+    service: input.service,
+    sourceLabel,
+    website: input.website,
+    submittedAt: input.submittedAt,
+  });
+
+  await sendTelegramMessage(telegramText);
 }
 
 export async function sendCareerNotification(input: CareerNotificationInput) {
@@ -139,10 +157,26 @@ export async function sendCareerNotification(input: CareerNotificationInput) {
     submittedAt: input.submittedAt,
   });
 
-  return sendEmail({
+  await sendEmail({
     html,
     replyTo: getReplyTo(input.email),
     subject,
     to: getCareerRecipients(),
   });
+
+  const telegramText = buildCareerTelegramText({
+    name: input.name,
+    email: input.email,
+    phone: input.phone || "N/A",
+    jobTitle: input.jobTitle,
+    jobSlug: input.jobSlug,
+    linkedin: input.linkedin,
+    portfolio: input.portfolio,
+    cvFileName: input.cvFileName,
+    cvUrl: input.cvUrl,
+    sourceLabel,
+    submittedAt: input.submittedAt,
+  });
+
+  await sendTelegramMessage(telegramText);
 }

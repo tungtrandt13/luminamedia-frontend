@@ -36,7 +36,8 @@
     "address1": "Số 25 ngõ 38 phố Phúc Xá",
     "address2": "Phường Phúc Xá, Quận Ba Đình",
     "address3": "Thành phố Hà Nội, Việt Nam",
-    "phoneLabel": "Số điện thoại"
+    "phoneLabel": "Số điện thoại",
+    "phoneNumber": "0384367069"
   },
   "HomePage": {
     "hp_featured_projects": {

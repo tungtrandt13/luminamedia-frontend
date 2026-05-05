@@ -48,10 +48,10 @@ export default async function BlogPage({ params }: Props) {
         locale={currentLocale}
       />
 
-      {/* Latest Posts — all posts (including hero post for grid) */}
+      {/* Latest Posts — all posts except hero (posts[0]) */}
       <BlogLatestSection
         title={mockData.latest.title}
-        posts={posts}
+        posts={posts.slice(1)}
         locale={currentLocale}
       />
     </div>

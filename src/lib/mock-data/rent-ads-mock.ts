@@ -17,6 +17,7 @@ export interface RentAdsPricing {
     tiers: RentAdsPricingTier[];
     benefits_title: string;
     benefits: string[];
+    consult_cta_text: string;
 }
 
 export interface RentAdsWhyUsCard {
@@ -108,7 +109,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 "Hỗ trợ xử lý các vấn đề vận hành tài khoản",
                 "Xuất hóa đơn VAT đầy đủ, rõ ràng",
                 "Theo dõi chi phí & đối soát minh bạch"
-            ]
+            ],
+            consult_cta_text: "Get Detailed Deployment Consultation"
         },
         rent_why_us: {
             title: "Vì sao nên dùng tài khoản\nGoogle ads đối tác từ VISSCOM",
@@ -235,7 +237,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 "Support handling account operational issues",
                 "Full and clear VAT invoice issuance",
                 "Transparent cost tracking & reconciliation"
-            ]
+            ],
+            consult_cta_text: "Get Detailed Deployment Consultation"
         },
         rent_why_us: {
             title: "Why use a partner Google Ads\naccount from VISSCOM",

@@ -10,6 +10,10 @@ interface Props {
 }
 
 export default function AdsHero({ title, description, ctaText, image }: Props) {
+    const scrollToContact = () => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     return (
         <section className="w-full bg-black text-white">
             <div className="mx-auto w-full max-w-[1500px] px-[20px] py-[60px] lg:py-[100px]">
@@ -31,9 +35,9 @@ export default function AdsHero({ title, description, ctaText, image }: Props) {
                         </div>
 
                         {ctaText && (
-                            <a href="#contact" className="self-center lg:self-start flex items-center justify-center border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors">
+                            <button onClick={scrollToContact} className="self-center lg:self-start flex items-center justify-center border border-white px-[40px] py-[20px] rounded-[8px] text-white font-medium text-[16px] hover:bg-white hover:text-black transition-colors">
                                 {ctaText}
-                            </a>
+                            </button>
                         )}
                     </div>
 

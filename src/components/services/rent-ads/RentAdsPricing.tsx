@@ -16,6 +16,7 @@ interface RentAdsPricingProps {
     tiers: RentAdsPricingTier[];
     benefitsTitle: string;
     benefits: string[];
+    consultCtaText: string;
 }
 
 export default function RentAdsPricing({
@@ -24,6 +25,7 @@ export default function RentAdsPricing({
     tiers,
     benefitsTitle,
     benefits,
+    consultCtaText,
 }: RentAdsPricingProps) {
     const fadeUpVariant = {
         hidden: { opacity: 0, y: 30 },
@@ -129,6 +131,27 @@ export default function RentAdsPricing({
                     </motion.div>
 
                 </div>
+
+                {/* CTA Button */}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={fadeUpVariant}
+                    className="flex justify-center"
+                >
+                    <button
+                        onClick={() => {
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="inline-flex items-center justify-center bg-[#AF7E2D] hover:bg-[#8F6622] text-white px-[40px] py-[16px] rounded-[8px] font-medium text-[16px] transition-colors duration-300"
+                    >
+                        {consultCtaText}
+                        <svg className="ml-2 w-4 h-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.33337 8H12.6667M12.6667 8L8.66671 4M12.6667 8L8.66671 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
+                </motion.div>
             </div>
         </section>
     );

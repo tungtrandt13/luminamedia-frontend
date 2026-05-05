@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Geist, JetBrains_Mono, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StickyBubble from "@/components/shared/StickyBubble";
 import { getServices, getGlobalSettings } from "@/lib/strapi";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
@@ -75,6 +76,7 @@ export default async function RootLayout({ children, params }: Props) {
             <main className="flex-1">{children}</main>
             <Footer locale={locale} />
           </div>
+          <StickyBubble />
         </NextIntlClientProvider>
       </body>
     </html>

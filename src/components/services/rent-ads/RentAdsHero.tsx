@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { normalizeStrapiText } from '@/lib/strapi';
 
 interface RentAdsHeroProps {
@@ -18,6 +17,10 @@ export default function RentAdsHero({
     description,
     ctaText,
 }: RentAdsHeroProps) {
+    const scrollToContact = () => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     return (
         <section className="relative w-full bg-[#000000] text-white overflow-hidden py-[60px] md:py-[100px] px-5 flex items-center justify-center min-h-[500px] md:min-h-[600px]">
 
@@ -56,12 +59,12 @@ export default function RentAdsHero({
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                     >
-                        <Link
-                            href="#contact"
+                        <button
+                            onClick={scrollToContact}
                             className="inline-flex items-center justify-center bg-[#AF7E2D] hover:bg-[#c28c32] text-white px-8 md:px-10 py-3 md:py-4 rounded-[8px] font-medium text-[16px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(175,126,45,0.4)]"
                         >
                             {ctaText}
-                        </Link>
+                        </button>
                     </motion.div>
                 )}
             </div>
