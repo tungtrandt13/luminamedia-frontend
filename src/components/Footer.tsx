@@ -30,16 +30,33 @@ export default function Footer({ locale }: Props) {
         <div className="grid gap-12 lg:gap-[120px] lg:grid-cols-[auto_1fr_auto] items-start">
 
           {/* Cột 1: Address & Phone */}
-          <div className="flex flex-col gap-6 w-full lg:w-[320px]">
+          <div className="flex flex-col gap-6 w-full lg:w-[420px]">
             <div className="flex flex-col gap-[32px]">
+              <div>
+                <h4 className="text-[18px] font-semibold text-white mb-2">{tFooter('directorLabel')}</h4>
+                <p className="text-[16px] text-[#A3A3A3] font-light leading-[1.6]">
+                  {tFooter('directorName')}
+                </p>
+              </div>
+
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <LocationOn className="h-[24px] w-[24px] shrink-0 text-white" />
                   <h4 className="text-[18px] font-semibold text-white">{tFooter('addressTitle')}</h4>
                 </div>
                 <p className="text-[16px] text-[#A3A3A3] font-light leading-[1.6]">
-                  {tFooter('address1')}, {tFooter('address2')}, {tFooter('address3')}
+                  {tFooter('address')}
                 </p>
+              </div>
+
+              <div>
+                <h4 className="text-[18px] font-semibold text-white mb-2">{tFooter('emailLabel')}</h4>
+                <Link
+                  href={`mailto:${tFooter('emailAddress')}`}
+                  className="text-[16px] text-[#A3A3A3] font-light leading-[1.6] hover:text-white transition-colors"
+                >
+                  {tFooter('emailAddress')}
+                </Link>
               </div>
 
               <div className="flex items-center gap-2">

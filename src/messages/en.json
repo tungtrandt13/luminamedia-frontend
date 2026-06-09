@@ -32,12 +32,14 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "companyName": "LUMINA MEDIA AGENCY\nTRADING & SERVICE CO., LTD",
-    "addressTitle": "Hanoi - Headquarters",
-    "address1": "No. 25, Lane 38 Phuc Xa",
-    "address2": "Phuc Xa Ward, Ba Dinh District",
-    "address3": "Hanoi City, Vietnam",
-    "phoneLabel": "Phone number",
-    "phoneNumber": "0384367069"
+    "directorLabel": "Director:",
+    "directorName": "RATBUHOM CHUTAMAT",
+    "addressTitle": "Address:",
+    "address": "RM 1006, 10/F., PO YIP BLDG 23 HING YIP STREET, KWUN TONG - HONGKONG",
+    "emailLabel": "Email:",
+    "emailAddress": "support@luminamedia.me",
+    "phoneLabel": "Phone:",
+    "phoneNumber": "(+84) 356 107 047"
   },
   "HomePage": {
     "hp_featured_projects": {
