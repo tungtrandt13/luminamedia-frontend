@@ -1,6 +1,6 @@
 /**
  * Mock data cho trang "Đào tạo" (Training) - Google Ads CONVERSION
- * Bám sát bản thiết kế Figma VISSCOM – node 263:1409.
+ * Bám sát bản thiết kế Figma Lumina Media Agency – node 263:1409.
  * Dùng cho route `/[locale]/training` (hoặc tương đương).
  */
 
@@ -57,7 +57,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         training_hero: {
             title: "Google Ads CONVERSION",
             description:
-                "Không dạy chạy Google Ads theo lý thuyết. Chương trình Google Ads CONVERSION tại VISS International được thiết kế từ thực tế vận hành TMĐT đa quốc gia, giúp bạn hiểu đúng bản chất chuyển đổi, làm chủ dữ liệu và tạo ra doanh thu thật từ quảng cáo.",
+                "Không dạy chạy Google Ads theo lý thuyết. Chương trình Google Ads CONVERSION tại Lumina Media Agency được thiết kế từ thực tế vận hành TMĐT đa quốc gia, giúp bạn hiểu đúng bản chất chuyển đổi, làm chủ dữ liệu và tạo ra doanh thu thật từ quảng cáo.",
             cta_text: "Đăng ký tư vấn miễn phí",
             image: "/images/training/hero-bg.png",
         },
@@ -106,7 +106,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         },
         training_gallery: {
             title: "Hình ảnh các khoá học tại",
-            highlighted_text: "VISS International",
+            highlighted_text: "Lumina Media Agency",
             images: [
                 "/images/training/gallery-1.png",
                 "/images/training/gallery-2.png",
@@ -116,7 +116,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         training_instructor: {
             title: "Thông tin giảng viên",
             name: "Đỗ Hữu Biên",
-            role: "Founder & CEO VISS INTERNATIONAL",
+            role: "Founder & CEO LUMINA MEDIA AGENCY",
             details: [
                 "Trên 10 năm kinh nghiệm chạy quảng cáo Google",
                 "Thiết kế lộ trình đào tạo từ cơ bản đến nâng cao",
@@ -129,7 +129,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         },
         training_contact: {
             title: 'Đăng ký tư vấn khoá học <span class="text-[#AF7E2D]">Google Ads</span>',
-            description: 'Để lại thông tin để đội ngũ VISS International tư vấn lộ trình học Google Ads phù hợp nhất với bạn.',
+            description: 'Để lại thông tin để đội ngũ Lumina Media Agency tư vấn lộ trình học Google Ads phù hợp nhất với bạn.',
             cta_text: 'Gửi đăng ký',
             fields: {
                 name: 'Họ và tên',
@@ -149,7 +149,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         training_hero: {
             title: "Google Ads CONVERSION",
             description:
-                "We don't teach Google Ads in theory. The Google Ads CONVERSION program at VISS International is designed from actual multinational e-commerce operations, helping you truly understand conversion, master data, and generate real revenue from ads.",
+                "We don't teach Google Ads in theory. The Google Ads CONVERSION program at Lumina Media Agency is designed from actual multinational e-commerce operations, helping you truly understand conversion, master data, and generate real revenue from ads.",
             cta_text: "Register for free consultation",
             image: "/images/training/hero-bg.png",
         },
@@ -198,7 +198,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         },
         training_gallery: {
             title: "Course pictures at",
-            highlighted_text: "VISS International",
+            highlighted_text: "Lumina Media Agency",
             images: [
                 "/images/training/gallery-1.png",
                 "/images/training/gallery-2.png",
@@ -208,7 +208,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         training_instructor: {
             title: "Instructor Information",
             name: "Do Huu Bien",
-            role: "Founder & CEO VISS INTERNATIONAL",
+            role: "Founder & CEO LUMINA MEDIA AGENCY",
             details: [
                 "Over 10 years of experience running Google advertising",
                 "Designing training roadmaps from basic to advanced",
@@ -221,7 +221,7 @@ export const trainingMockData: Record<'vi' | 'en', TrainingPageData> = {
         },
         training_contact: {
             title: 'Register for <span class="text-[#AF7E2D]">Google Ads</span> course consultation',
-            description: 'Leave your information and the VISS International team will advise you on the best Google Ads learning path.',
+            description: 'Leave your information and the Lumina Media Agency team will advise you on the best Google Ads learning path.',
             cta_text: 'Submit registration',
             fields: {
                 name: 'Full name',

@@ -115,7 +115,7 @@ export default function TiktokAdsWhyUs({ title, points, image }: TiktokAdsWhyUsP
                     <div className="w-full aspect-[4/5] lg:aspect-[1/1] xl:aspect-[666/666] lg:h-[666px] relative rounded-[16px] overflow-hidden">
                         <Image
                             src={image || "/images/services/tiktok-ads-why-us.png"}
-                            alt="Tiktok Ads - Tại sao chọn Visscom"
+                            alt="Tiktok Ads - Tại sao chọn Lumina Media Agency"
                             fill
                             className="object-cover"
                             sizes="(max-width: 1024px) 100vw, 50vw"

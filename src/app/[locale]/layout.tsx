@@ -26,8 +26,8 @@ const geistMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VISS International",
-  description: "Công ty TNHH Thương mại và Dịch vụ Quốc tế VISS - Đối tác chiến lược cho sự tăng trưởng bền vững",
+  title: "Lumina Media Agency",
+  description: "Lumina Media Agency - Đối tác chiến lược cho tăng trưởng truyền thông, quảng cáo và thương mại điện tử bền vững",
   icons: {
     icon: [
       { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },

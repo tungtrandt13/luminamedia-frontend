@@ -103,7 +103,7 @@ export async function sendContactNotification(input: ContactNotificationInput) {
   getRequiredProvider();
 
   const sourceLabel = getContactSourceLabel(input.source);
-  const subject = `[VISS Contact] ${sourceLabel} - ${input.name}`;
+  const subject = `[Lumina Media Agency Contact] ${sourceLabel} - ${input.name}`;
   const html = renderContactNotificationTemplate({
     email: input.email,
     message: input.message,
@@ -141,7 +141,7 @@ export async function sendCareerNotification(input: CareerNotificationInput) {
 
   const sourceLabel = getCareerSourceLabel(input.source);
   const position = input.jobTitle?.trim() || "Career Application";
-  const subject = `[VISS Career] ${position} - ${input.name}`;
+  const subject = `[Lumina Media Agency Career] ${position} - ${input.name}`;
   const html = renderCareerNotificationTemplate({
     cvFileName: input.cvFileName,
     cvUrl: input.cvUrl,

@@ -58,7 +58,7 @@ export default function AdsTestimonials({ title, reviews = [] }: Props) {
                     <div className="flex items-center justify-between w-full">
                         <h2
                             className="text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] whitespace-pre-line flex-1"
-                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Khách hàng nói gì về\nVISS International') }}
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Khách hàng nói gì về\nLumina Media Agency') }}
                         />
 
                         {/* Navigation Buttons */}

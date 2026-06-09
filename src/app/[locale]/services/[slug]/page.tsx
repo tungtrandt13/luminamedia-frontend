@@ -68,7 +68,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div className="space-y-6">
             <header className="space-y-4">
               <p className="inline-flex items-center rounded-full bg-brand-gold/10 px-4 py-2 text-xs md:text-sm font-medium text-brand-gold uppercase tracking-[0.16em]">
-                {tService('tagline', { fallback: 'Dịch vụ của VISS' })}
+                {tService('tagline', { fallback: 'Dịch vụ của Lumina Media Agency' })}
               </p>
               <h1 className="text-[28px] md:text-[40px] lg:text-[48px] font-semibold leading-tight">
                 {service.name}
@@ -115,7 +115,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </span>
               </div>
               <div className="pt-3 text-[13px] md:text-[14px] text-black/60 leading-relaxed">
-                {tService('contact_description', { fallback: 'Liên hệ đội ngũ VISS để được tư vấn chi tiết về dịch vụ này và cách triển khai phù hợp với doanh nghiệp của bạn.' })}
+                {tService('contact_description', { fallback: 'Liên hệ đội ngũ Lumina Media Agency để được tư vấn chi tiết về dịch vụ này và cách triển khai phù hợp với doanh nghiệp của bạn.' })}
               </div>
             </div>
 
@@ -124,7 +124,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 href={`/${locale}#contact`}
                 className="inline-flex w-full items-center justify-center rounded-[var(--radius-md)] bg-[#171717] px-6 py-3 text-[14px] md:text-[16px] font-semibold text-white transition-all hover:scale-[1.02]"
               >
-                {tService('cta_button', { fallback: 'Nhận tư vấn từ VISS' })}
+                {tService('cta_button', { fallback: 'Nhận tư vấn từ Lumina Media Agency' })}
               </Link>
             </div>
           </aside>

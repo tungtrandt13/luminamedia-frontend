@@ -88,7 +88,7 @@ export default function TiktokShopOpsContact({
               <p className="font-light whitespace-pre-wrap">{description}</p>
               <div className="font-light">
                 <p className="font-semibold">
-                  {isEN ? 'VISSECOM offers you:' : 'VISSECOM mang đến cho bạn:'}
+                  {isEN ? 'Lumina Media Agency offers you:' : 'Lumina Media Agency mang đến cho bạn:'}
                 </p>
                 <ul className="list-disc pl-6 space-y-1">
                   {benefits.map((benefit) => (

@@ -13,17 +13,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://viss.com.vn";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://luminamedia.vn";
 
   return {
     title:
       locale === "vi"
-        ? "Tuyển dụng - VISS International"
-        : "Careers - VISS International",
+        ? "Tuyển dụng - Lumina Media Agency"
+        : "Careers - Lumina Media Agency",
     description:
       locale === "vi"
-        ? "Cơ hội nghề nghiệp tại VISS International."
-        : "Career opportunities at VISS International.",
+        ? "Cơ hội nghề nghiệp tại Lumina Media Agency."
+        : "Career opportunities at Lumina Media Agency.",
     alternates: {
       languages: {
         vi: `${baseUrl}/vi/careers`,

@@ -13,17 +13,17 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminamedia.vn';
 
   return {
     title:
       locale === 'vi'
-        ? 'Dịch vụ vận hành gian hàng TikTok Shop - VISS International'
-        : 'TikTok Shop Operations Service - VISS International',
+        ? 'Dịch vụ vận hành gian hàng TikTok Shop - Lumina Media Agency'
+        : 'TikTok Shop Operations Service - Lumina Media Agency',
     description:
       locale === 'vi'
-        ? 'Dịch vụ vận hành gian hàng TikTok Shop toàn diện từ VISS International.'
-        : 'Comprehensive TikTok Shop operations service by VISS International.',
+        ? 'Dịch vụ vận hành gian hàng TikTok Shop toàn diện từ Lumina Media Agency.'
+        : 'Comprehensive TikTok Shop operations service by Lumina Media Agency.',
     alternates: {
       languages: {
         vi: `${baseUrl}/vi/services/tiktok-shop-ops`,

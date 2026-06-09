@@ -16,7 +16,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminamedia.vn';
 
   const post =
     (await getStrapiPost(slug, locale)) ||
@@ -24,12 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return {
       title:
-        locale === 'vi' ? 'Bài viết - VISS International' : 'Article - VISS International',
+        locale === 'vi' ? 'Bài viết - Lumina Media Agency' : 'Article - Lumina Media Agency',
     };
   }
 
   return {
-    title: `${post.title} - VISS International`,
+    title: `${post.title} - Lumina Media Agency`,
     description: post.excerpt,
     alternates: {
       languages: {

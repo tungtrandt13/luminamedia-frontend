@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import ServicesDropdown from '@/components/ServicesDropdown';
 import MobileMenu from '@/components/MobileMenu';
-import { getStrapiMedia, StrapiImage } from '@/lib/strapi';
 
-import { Service } from '@/lib/strapi';
+import type { Service, StrapiImage } from '@/lib/strapi';
 
 type MenuItem = {
   label: string;
@@ -45,10 +43,6 @@ export default function Header({ locale, services, globalSettings }: Props) {
       console.log('[Header] Current pathname:', pathname, 'Locale:', locale);
     }
   }, [pathname, locale, mounted]);
-
-  const logoUrl = globalSettings?.logo
-    ? getStrapiMedia(globalSettings.logo)
-    : '/logo.png';
 
   // Map menu items from Strapi to use translations
   // This ensures menu labels change based on locale
@@ -146,16 +140,12 @@ export default function Header({ locale, services, globalSettings }: Props) {
   return (
     <header className="w-full bg-black sticky top-0 z-50 border-b border-white/5">
       <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-4 md:py-5 lg:px-10">
-        {/* Logo */}
-        <Link href={`/${locale}`} className="shrink-0">
-          <Image
-            src={logoUrl || '/logo.png'}
-            alt="VISSCOM"
-            width={98}
-            height={40}
-            priority
-            className="h-8 md:h-10 w-auto object-contain"
-          />
+        <Link
+          href={`/${locale}`}
+          className="shrink-0 text-[18px] md:text-[22px] font-semibold leading-none tracking-[-0.02em] text-white"
+          aria-label="Lumina Media Agency"
+        >
+          Lumina Media Agency
         </Link>
 
         {/* Navigation - Desktop & iPad */}

@@ -150,7 +150,7 @@ export default function CareerDetailClient({ job, relatedJobs, applyFormData, lo
                 {isEN ? "Company" : "Công ty"}
               </span>
               <span className="font-semibold text-[32px] leading-[40px] text-[#FFFFFF]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                {companyLabel || "Viss International"}
+                {companyLabel || "Lumina Media Agency"}
               </span>
             </div>
             <div className="flex flex-col gap-[8px]">

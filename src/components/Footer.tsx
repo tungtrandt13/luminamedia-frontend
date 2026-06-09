@@ -74,7 +74,7 @@ export default function Footer({ locale }: Props) {
 
           {/* Cột 3: Socials */}
           <div className="flex items-center gap-[20px]">
-            <Link href="https://www.facebook.com/Viss.ecom" target="_blank" rel="noopener noreferrer" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
+            <Link href="https://www.facebook.com/luminamedia" target="_blank" rel="noopener noreferrer" className="inline-flex h-[43px] w-[43px] items-center justify-center bg-[#D9D9D9] hover:bg-white transition-colors">
               <Facebook className="h-[20px] w-[20px] text-black" />
             </Link>
           </div>

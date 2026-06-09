@@ -34,7 +34,7 @@ export default function AdsPackages({ title, packages = [] }: Props) {
 
                     {/* Title */}
                     <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-semibold text-center leading-tight max-w-[816px]">
-                        {title || 'Lựa chọn gói dịch vụ Google Ads cùng VISSCOM'}
+                        {title || 'Lựa chọn gói dịch vụ Google Ads cùng Lumina Media Agency'}
                     </h2>
 
                     {/* Cards */}

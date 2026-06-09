@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Not Found" };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://viss.com.vn";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://luminamedia.vn";
 
   return {
-    title: `${job.title} | VISS International`,
-    description: job.description ?? `${job.title} tại VISS International`,
+    title: `${job.title} | Lumina Media Agency`,
+    description: job.description ?? `${job.title} tại Lumina Media Agency`,
     alternates: {
       languages: {
         vi: `${baseUrl}/vi/careers/${slug}`,

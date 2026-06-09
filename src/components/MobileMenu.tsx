@@ -85,7 +85,7 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex items-center justify-between mb-12">
-            <div className="text-[20px] font-bold text-brand-gold">VISSCOM</div>
+            <div className="text-[20px] font-bold text-brand-gold">Lumina Media Agency</div>
             <button
               onClick={() => setIsOpen(false)}
               className="text-white p-1"

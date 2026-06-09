@@ -44,7 +44,7 @@ export default function AboutStory({ subtitle, title, description, commitments =
                             />
                         ) : (
                             <p className="text-[18px] md:text-[20px] text-[#4A4A4A] font-normal leading-[1.6]">
-                                Ngay từ những ngày đầu, VISS lựa chọn con đường kinh doanh quốc tế...
+                                Ngay từ những ngày đầu, Lumina Media Agency lựa chọn con đường kinh doanh quốc tế...
                             </p>
                         )}
 

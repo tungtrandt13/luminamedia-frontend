@@ -17,12 +17,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminamedia.vn';
 
     return {
         title: locale === 'vi'
-            ? 'Thuê tài khoản Google Ads đối tác - VISS International'
-            : 'Rent Partner Google Ads Account - VISS International',
+            ? 'Thuê tài khoản Google Ads đối tác - Lumina Media Agency'
+            : 'Rent Partner Google Ads Account - Lumina Media Agency',
         description: locale === 'vi'
             ? 'Cung cấp giải pháp tài khoản Google Ads đối tác, giúp chiến dịch hoạt động ổn định, minh bạch và an toàn.'
             : 'Providing partner Google Ads account solutions to help campaigns run stably, transparently, and securely.',

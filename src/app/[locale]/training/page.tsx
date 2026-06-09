@@ -14,12 +14,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminamedia.vn';
 
     return {
         title: locale === 'vi'
-            ? 'Đào tạo Google Ads CONVERSION - VISS International'
-            : 'Google Ads CONVERSION Training - VISS International',
+            ? 'Đào tạo Google Ads CONVERSION - Lumina Media Agency'
+            : 'Google Ads CONVERSION Training - Lumina Media Agency',
         description: locale === 'vi'
             ? 'Chương trình đào tạo Google Ads CONVERSION thực hành trên số liệu thật.'
             : 'Google Ads CONVERSION training program based on real data.',

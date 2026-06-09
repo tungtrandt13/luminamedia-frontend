@@ -1,6 +1,6 @@
 /**
  * Mock data cho trang "Dịch vụ quảng cáo Google" (Google Ads),
- * bám sát bản thiết kế Figma VISSCOM – node 105:546.
+ * bám sát bản thiết kế Figma Lumina Media Agency – node 105:546.
  * Dùng cho route `/[locale]/services/google-ads` (hoặc tương đương).
  */
 
@@ -81,7 +81,7 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
         ads_hero: {
             title: "Dịch vụ quảng cáo\nGoogle",
             description:
-                "VISS International là agency tập trung vào chiến lược Google Ads lấy chuyển đổi làm trung tâm, đồng hành cùng doanh nghiệp bán lẻ trong hành trình tăng trưởng đơn hàng và mở rộng quy mô kinh doanh.",
+                "Lumina Media Agency là agency tập trung vào chiến lược Google Ads lấy chuyển đổi làm trung tâm, đồng hành cùng doanh nghiệp bán lẻ trong hành trình tăng trưởng đơn hàng và mở rộng quy mô kinh doanh.",
             cta_text: "Đặt lịch tư vấn",
             image: "/images/services/google-ads-hero.png",
         },
@@ -147,10 +147,10 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
             ],
         },
 
-        // ─── 3. Tại sao chọn VISSCOM ──────────────────────
+        // ─── 3. Tại sao chọn Lumina Media Agency ──────────────────────
         ads_why_us: {
             title: "Tại sao nên\nchọn ",
-            highlighted_text: "VISSCOM",
+            highlighted_text: "Lumina Media Agency",
             points: [
                 { id: 1, text: "Triển khai Google Ads đúng chiến lược" },
                 { id: 2, text: "Tối ưu dựa trên dữ liệu & KPIs" },
@@ -161,7 +161,7 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 4. Gói dịch vụ ───────────────────────────────
         ads_packages: {
-            title: "Lựa chọn gói dịch vụ  Google Ads cùng VISSCOM",
+            title: "Lựa chọn gói dịch vụ  Google Ads cùng Lumina Media Agency",
             packages: [
                 {
                     id: 1,
@@ -201,25 +201,25 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 5. Testimonials ──────────────────────────────
         ads_testimonials: {
-            title: "Khách hàng nói gì về\nVISS International",
+            title: "Khách hàng nói gì về\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "\u201CChiến dịch Google Ads được triển khai bài bản, minh bạch và bám sát KPIs. VISSECOM giúp chúng tôi cải thiện rõ rệt chuyển đổi và doanh thu.\u201D",
+                    quote: "\u201CChiến dịch Google Ads được triển khai bài bản, minh bạch và bám sát KPIs. Lumina Media Agency giúp chúng tôi cải thiện rõ rệt chuyển đổi và doanh thu.\u201D",
                     author: "Mr. Nguyễn Hoàng Long",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/services/google-ads-testimonial-1.png",
                 },
                 {
                     id: 2,
-                    quote: "\u201CTừ khi hợp tác với VISSECOM, chiến dịch Google Ads ổn định hơn và dễ scale. Đội ngũ phản hồi nhanh, chủ động đề xuất giải pháp phù hợp từng giai đoạn.\u201D",
+                    quote: "\u201CTừ khi hợp tác với Lumina Media Agency, chiến dịch Google Ads ổn định hơn và dễ scale. Đội ngũ phản hồi nhanh, chủ động đề xuất giải pháp phù hợp từng giai đoạn.\u201D",
                     author: "Mr. Lê Quốc Bảo",
                     role: "E-commerce Manager – Thương hiệu tiêu dùng",
                     avatar: "/images/services/google-ads-testimonial-2.png",
                 },
                 {
                     id: 3,
-                    quote: "\u201CĐiểm chúng tôi đánh giá cao nhất là tư duy performance và khả năng scale. VISSECOM luôn chủ động đề xuất giải pháp mới để tối ưu hiệu quả lâu dài.\u201D",
+                    quote: "\u201CĐiểm chúng tôi đánh giá cao nhất là tư duy performance và khả năng scale. Lumina Media Agency luôn chủ động đề xuất giải pháp mới để tối ưu hiệu quả lâu dài.\u201D",
                     author: "Ms. Lê Thu Hương",
                     role: "Founder – Thương hiệu bán lẻ online",
                     avatar: "/images/services/google-ads-testimonial-3.png",
@@ -229,9 +229,9 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 6. CTA Contact ──────────────────────────────
         ads_contact: {
-            title: 'Bắt đầu tối ưu Google Ads cùng <span class="text-[#AF7E2D]">VISSECOM</span>',
+            title: 'Bắt đầu tối ưu Google Ads cùng <span class="text-[#AF7E2D]">Lumina Media Agency</span>',
             description:
-                "Chia sẻ mục tiêu kinh doanh của bạn\nĐội ngũ VISSECOM sẽ lắng nghe, phân tích và đề xuất hướng triển khai Google Ads phù hợp với giai đoạn tăng trưởng của doanh nghiệp.",
+                "Chia sẻ mục tiêu kinh doanh của bạn\nĐội ngũ Lumina Media Agency sẽ lắng nghe, phân tích và đề xuất hướng triển khai Google Ads phù hợp với giai đoạn tăng trưởng của doanh nghiệp.",
             cta_text: "Gửi",
             fields: {
                 name: "Họ và tên",
@@ -249,7 +249,7 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
         ads_hero: {
             title: "Google\nAdvertising Services",
             description:
-                "VISS International is an agency focused on conversion-centered Google Ads strategy, partnering with retail businesses on their journey to grow orders and expand business scale.",
+                "Lumina Media Agency is an agency focused on conversion-centered Google Ads strategy, partnering with retail businesses on their journey to grow orders and expand business scale.",
             cta_text: "Book a Consultation",
             image: "/images/services/google-ads-hero.png",
         },
@@ -315,10 +315,10 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
             ],
         },
 
-        // ─── 3. Why Choose VISSCOM ────────────────────────
+        // ─── 3. Why Choose Lumina Media Agency ────────────────────────
         ads_why_us: {
             title: "Why choose\n",
-            highlighted_text: "VISSCOM",
+            highlighted_text: "Lumina Media Agency",
             points: [
                 { id: 1, text: "Deploy Google Ads with the right strategy" },
                 { id: 2, text: "Optimize based on data & KPIs" },
@@ -329,7 +329,7 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 4. Service Packages ──────────────────────────
         ads_packages: {
-            title: "Choose a Google Ads service package with VISSCOM",
+            title: "Choose a Google Ads service package with Lumina Media Agency",
             packages: [
                 {
                     id: 1,
@@ -369,25 +369,25 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 5. Testimonials ──────────────────────────────
         ads_testimonials: {
-            title: "What clients say about\nVISS International",
+            title: "What clients say about\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "\u201CThe Google Ads campaign was deployed methodically, transparently and closely aligned with KPIs. VISSECOM helped us significantly improve conversions and revenue.\u201D",
+                    quote: "\u201CThe Google Ads campaign was deployed methodically, transparently and closely aligned with KPIs. Lumina Media Agency helped us significantly improve conversions and revenue.\u201D",
                     author: "Mr. Nguyen Hoang Long",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/services/review-avatar-1.png",
                 },
                 {
                     id: 2,
-                    quote: "\u201CSince partnering with VISSECOM, Google Ads campaigns have been more stable and easier to scale. The team responds quickly and proactively proposes suitable solutions for each phase.\u201D",
+                    quote: "\u201CSince partnering with Lumina Media Agency, Google Ads campaigns have been more stable and easier to scale. The team responds quickly and proactively proposes suitable solutions for each phase.\u201D",
                     author: "Mr. Le Quoc Bao",
                     role: "E-commerce Manager – Consumer Brand",
                     avatar: "/images/services/review-avatar-2.png",
                 },
                 {
                     id: 3,
-                    quote: "\u201CWhat we value most is the performance mindset and scaling capability. VISSECOM always proactively proposes new solutions for long-term effectiveness.\u201D",
+                    quote: "\u201CWhat we value most is the performance mindset and scaling capability. Lumina Media Agency always proactively proposes new solutions for long-term effectiveness.\u201D",
                     author: "Ms. Le Thu Huong",
                     role: "Founder – Online Retail Brand",
                     avatar: "/images/services/review-avatar-3.png",
@@ -397,9 +397,9 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
 
         // ─── 6. CTA Contact ──────────────────────────────
         ads_contact: {
-            title: 'Start optimizing Google Ads with <span class="text-[#AF7E2D]">VISSECOM</span>',
+            title: 'Start optimizing Google Ads with <span class="text-[#AF7E2D]">Lumina Media Agency</span>',
             description:
-                "Share your business goals\nThe VISSECOM team will listen, analyze and propose Google Ads implementation strategies suitable for your business growth stage.",
+                "Share your business goals\nThe Lumina Media Agency team will listen, analyze and propose Google Ads implementation strategies suitable for your business growth stage.",
             cta_text: "Submit",
             fields: {
                 name: "Full name",

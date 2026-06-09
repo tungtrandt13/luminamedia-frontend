@@ -80,11 +80,11 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
     vi: {
         tiktok_hero: {
             title: "Dịch vụ quảng cáo Tiktok Ads",
-            description: "Hãy để VISSECOM đồng hành cùng doanh nghiệp bạn trong hành trình chinh phục TikTok.\nVới kinh nghiệm triển khai TikTok Ads cho nhiều ngành hàng, VISSECOM xây dựng chiến lược quảng cáo toàn diện, từ tăng nhận diện thương hiệu đến tối ưu chuyển đổi và tăng trưởng GMV bền vững.",
+            description: "Hãy để Lumina Media Agency đồng hành cùng doanh nghiệp bạn trong hành trình chinh phục TikTok.\nVới kinh nghiệm triển khai TikTok Ads cho nhiều ngành hàng, Lumina Media Agency xây dựng chiến lược quảng cáo toàn diện, từ tăng nhận diện thương hiệu đến tối ưu chuyển đổi và tăng trưởng GMV bền vững.",
             cta_text: "Đăng ký ngay"
         },
         tiktok_why_us: {
-            title: "Tại sao nên chọn VISSCOM",
+            title: "Tại sao nên chọn Lumina Media Agency",
             points: [
                 {
                     id: 1,
@@ -99,7 +99,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_growth: {
-            title: "VISSCOM giúp bạn giải quyết toàn bộ bài toán Tiktok Ads",
+            title: "Lumina Media Agency giúp bạn giải quyết toàn bộ bài toán Tiktok Ads",
             cards: [
                 {
                     id: 1,
@@ -131,7 +131,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_process: {
-            title: "Quy trình triển khai TikTok Ads\ntại VISSECOM",
+            title: "Quy trình triển khai TikTok Ads\ntại Lumina Media Agency",
             steps: [
                 {
                     id: 1,
@@ -178,25 +178,25 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_testimonials: {
-            title: "Khách hàng nói gì về\nVISS International",
+            title: "Khách hàng nói gì về\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "“VISSECOM không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 2,
-                    quote: "“VISSECOM không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 3,
-                    quote: "“VISSECOM không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy TikTok Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
@@ -204,8 +204,8 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_contact: {
-            title: "Trình tăng trưởng doanh thu và Leads với quảng cáo Tiktok tại VISSCOM",
-            description: "VISSECOM đồng hành cùng doanh nghiệp xây dựng chiến lược TikTok Ads bài bản, tối ưu ngân sách và mở rộng tăng trưởng bền vững theo dữ liệu. Tiếp cận đúng khách hàng mục tiêu Tối ưu chi phí & hiệu suất quảng cáo Đội ngũ chuyên gia TikTok Ads của VISSECOM",
+            title: "Trình tăng trưởng doanh thu và Leads với quảng cáo Tiktok tại Lumina Media Agency",
+            description: "Lumina Media Agency đồng hành cùng doanh nghiệp xây dựng chiến lược TikTok Ads bài bản, tối ưu ngân sách và mở rộng tăng trưởng bền vững theo dữ liệu. Tiếp cận đúng khách hàng mục tiêu Tối ưu chi phí & hiệu suất quảng cáo Đội ngũ chuyên gia TikTok Ads của Lumina Media Agency",
             cta_text: "Đăng ký tư vấn miễn phí",
             fields: {
                 name: "Họ và tên",
@@ -220,11 +220,11 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
     en: {
         tiktok_hero: {
             title: "Tiktok Ads Service",
-            description: "Let VISSECOM accompany your business on the journey to conquer TikTok.\nWith experience implementing TikTok Ads for many industries, VISSECOM builds comprehensive advertising strategies, from increasing brand awareness to optimizing conversions and sustainable GMV growth.",
+            description: "Let Lumina Media Agency accompany your business on the journey to conquer TikTok.\nWith experience implementing TikTok Ads for many industries, Lumina Media Agency builds comprehensive advertising strategies, from increasing brand awareness to optimizing conversions and sustainable GMV growth.",
             cta_text: "Register now"
         },
         tiktok_why_us: {
-            title: "Why choose VISSCOM",
+            title: "Why choose Lumina Media Agency",
             points: [
                 {
                     id: 1,
@@ -239,7 +239,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_growth: {
-            title: "VISSCOM helps you solve all TikTok Ads problems",
+            title: "Lumina Media Agency helps you solve all TikTok Ads problems",
             cards: [
                 {
                     id: 1,
@@ -271,7 +271,7 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_process: {
-            title: "TikTok Ads implementation process\nat VISSECOM",
+            title: "TikTok Ads implementation process\nat Lumina Media Agency",
             steps: [
                 {
                     id: 1,
@@ -318,25 +318,25 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_testimonials: {
-            title: "What customers say about\nVISS International",
+            title: "What customers say about\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "“VISSECOM not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
+                    quote: "“Lumina Media Agency not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 2,
-                    quote: "“VISSECOM not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
+                    quote: "“Lumina Media Agency not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 3,
-                    quote: "“VISSECOM not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
+                    quote: "“Lumina Media Agency not only runs TikTok Ads but also acts as a growth partner. The team clearly understands business goals and always optimizes based on actual data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
@@ -344,8 +344,8 @@ export const mockTiktokAdsPageData: Record<string, TiktokAdsPageData> = {
             ]
         },
         tiktok_contact: {
-            title: "Increase revenue and Leads with Tiktok ads at VISSCOM",
-            description: "VISSECOM accompanies businesses to build structured TikTok Ads strategies, optimize budgets, and expand sustainable growth driven by data. Reach the right target audience Optimize advertising costs & performance VISSECOM's team of TikTok Ads experts",
+            title: "Increase revenue and Leads with Tiktok ads at Lumina Media Agency",
+            description: "Lumina Media Agency accompanies businesses to build structured TikTok Ads strategies, optimize budgets, and expand sustainable growth driven by data. Reach the right target audience Optimize advertising costs & performance Lumina Media Agency's team of TikTok Ads experts",
             cta_text: "Submit request",
             fields: {
                 name: "Full Name",

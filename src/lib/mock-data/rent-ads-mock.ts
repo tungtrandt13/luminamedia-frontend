@@ -89,21 +89,21 @@ export interface RentAdsPageData {
 export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
     vi: {
         rent_hero: {
-            title: "Google Partner Account by VISSECOM",
+            title: "Google Partner Account by Lumina Media Agency",
             headline: "Giải pháp Tài khoản\nQuảng cáo Google uy tín",
             description: "Triển khai Google Ads ổn định, an toàn và sẵn sàng scale\nvới hệ thống tài khoản đạt chuẩn đối tác Google.",
             cta_text: "Nhận báo giá"
         },
         rent_pricing: {
-            title: "Bảng giá thuê dịch vụ Thuê tài khoản Google Ads tại VISSECOM",
-            description: "VISSECOM cung cấp tài khoản Google Ads đối tác với quy trình minh bạch, đã xác minh nhà quảng cáo và phù hợp cho nhiều mô hình kinh doanh. Giải pháp được thiết kế nhằm giúp doanh nghiệp vận hành ổn định, kiểm soát chi phí và mở rộng quảng cáo an toàn.",
+            title: "Bảng giá thuê dịch vụ Thuê tài khoản Google Ads tại Lumina Media Agency",
+            description: "Lumina Media Agency cung cấp tài khoản Google Ads đối tác với quy trình minh bạch, đã xác minh nhà quảng cáo và phù hợp cho nhiều mô hình kinh doanh. Giải pháp được thiết kế nhằm giúp doanh nghiệp vận hành ổn định, kiểm soát chi phí và mở rộng quảng cáo an toàn.",
             tiers: [
                 { id: 1, fee_percentage: "5%", budget_range: "<200 triệu" },
                 { id: 2, fee_percentage: "4%", budget_range: "200 - 499 triệu" },
                 { id: 3, fee_percentage: "3%", budget_range: "500 - 999 triệu" },
                 { id: 4, fee_percentage: "2%", budget_range: ">1 tỷ" }
             ],
-            benefits_title: "Quyền lợi khi sử dụng dịch vụ\ntại VISSECOM:",
+            benefits_title: "Quyền lợi khi sử dụng dịch vụ\ntại Lumina Media Agency:",
             benefits: [
                 "Miễn phí thiết lập & mở tài khoản",
                 "Hỗ trợ xử lý các vấn đề vận hành tài khoản",
@@ -113,7 +113,7 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             consult_cta_text: "Get Detailed Deployment Consultation"
         },
         rent_why_us: {
-            title: "Vì sao nên dùng tài khoản\nGoogle ads đối tác từ VISSCOM",
+            title: "Vì sao nên dùng tài khoản\nGoogle ads đối tác từ Lumina Media Agency",
             cards: [
                 { id: 1, title: "Vận hành\nổn định", points: ["Giảm rủi ro gián đoạn chiến dịch", "Duy trì hoạt động quảng cáo liên tục"] },
                 { id: 2, title: "Kiểm soát\nchi phí", points: ["Chủ động ngân sách quảng cáo", "Hạn chế chi phí phát sinh"] },
@@ -122,8 +122,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_advantages: {
-            title: "Ưu điểm của tài khoản Google Ads đối tác tại VISSECOM",
-            description: "Giải pháp tài khoản Google Ads do VISSECOM cung cấp giúp doanh nghiệp triển khai quảng cáo ổn định, minh bạch và tối ưu hiệu quả vận hành trong suốt quá trình tăng trưởng.",
+            title: "Ưu điểm của tài khoản Google Ads đối tác tại Lumina Media Agency",
+            description: "Giải pháp tài khoản Google Ads do Lumina Media Agency cung cấp giúp doanh nghiệp triển khai quảng cáo ổn định, minh bạch và tối ưu hiệu quả vận hành trong suốt quá trình tăng trưởng.",
             points: [
                 "Vận hành ổn định",
                 "Xác minh đầy đủ",
@@ -135,7 +135,7 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_process: {
-            title: "Quy trình thuê tài khoản Google Ads tại VISSECOM",
+            title: "Quy trình thuê tài khoản Google Ads tại Lumina Media Agency",
             steps: [
                 {
                     id: 1,
@@ -146,8 +146,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 {
                     id: 2,
                     step_number: "02",
-                    title: "VISSECOM kiểm tra & đánh giá tính phù hợp",
-                    description: "Đội ngũ VISSECOM rà soát website, nội dung và sản phẩm theo chính sách Google Ads."
+                    title: "Lumina Media Agency kiểm tra & đánh giá tính phù hợp",
+                    description: "Đội ngũ Lumina Media Agency rà soát website, nội dung và sản phẩm theo chính sách Google Ads."
                 },
                 {
                     id: 3,
@@ -176,25 +176,25 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_testimonials: {
-            title: "Khách hàng nói gì về\nVISS International",
+            title: "Khách hàng nói gì về\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "“VISSECOM không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 2,
-                    quote: "“VISSECOM không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 3,
-                    quote: "“VISSECOM không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
+                    quote: "“Lumina Media Agency không chỉ chạy Google Ads mà còn đồng hành như một đối tác tăng trưởng. Đội ngũ hiểu rất rõ mục tiêu kinh doanh và luôn tối ưu dựa trên dữ liệu thực.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
@@ -202,8 +202,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_contact: {
-            title: "Bắt đầu tối ưu Google Ads cùng VISSECOM",
-            description: "Chia sẻ mục tiêu kinh doanh của bạn Đội ngũ VISSECOM sẽ lắng nghe, phân tích và đề xuất hướng triển khai Google Ads phù hợp với giai đoạn tăng trưởng của doanh nghiệp.",
+            title: "Bắt đầu tối ưu Google Ads cùng Lumina Media Agency",
+            description: "Chia sẻ mục tiêu kinh doanh của bạn Đội ngũ Lumina Media Agency sẽ lắng nghe, phân tích và đề xuất hướng triển khai Google Ads phù hợp với giai đoạn tăng trưởng của doanh nghiệp.",
             cta_text: "Gửi yêu cầu",
             fields: {
                 name: "Họ và tên",
@@ -217,21 +217,21 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
     },
     en: {
         rent_hero: {
-            title: "Google Partner Account by VISSECOM",
+            title: "Google Partner Account by Lumina Media Agency",
             headline: "Reputable Google Ads\nAccount Solution",
             description: "Deploy Google Ads stably, safely, and ready to scale\nwith an account system that meets Google Partner standards.",
             cta_text: "Get a Quote"
         },
         rent_pricing: {
-            title: "Google Ads Account Rental Pricing at VISSECOM",
-            description: "VISSECOM provides Google Ads Partner accounts with a transparent process, verified advertisers, suitable for various business models. The solution is designed to help businesses operate stably, control costs, and scale advertising safely.",
+            title: "Google Ads Account Rental Pricing at Lumina Media Agency",
+            description: "Lumina Media Agency provides Google Ads Partner accounts with a transparent process, verified advertisers, suitable for various business models. The solution is designed to help businesses operate stably, control costs, and scale advertising safely.",
             tiers: [
                 { id: 1, fee_percentage: "5%", budget_range: "<200 million" },
                 { id: 2, fee_percentage: "4%", budget_range: "200 - 499 million" },
                 { id: 3, fee_percentage: "3%", budget_range: "500 - 999 million" },
                 { id: 4, fee_percentage: "2%", budget_range: ">1 billion" }
             ],
-            benefits_title: "Benefits of using services\nat VISSECOM:",
+            benefits_title: "Benefits of using services\nat Lumina Media Agency:",
             benefits: [
                 "Free account setup & opening",
                 "Support handling account operational issues",
@@ -241,7 +241,7 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             consult_cta_text: "Get Detailed Deployment Consultation"
         },
         rent_why_us: {
-            title: "Why use a partner Google Ads\naccount from VISSCOM",
+            title: "Why use a partner Google Ads\naccount from Lumina Media Agency",
             cards: [
                 { id: 1, title: "Stable\nOperation", points: ["Reduce campaign disruption risk", "Maintain continuous ad operation"] },
                 { id: 2, title: "Cost\nControl", points: ["Proactive ad budget", "Limit incurred costs"] },
@@ -250,8 +250,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_advantages: {
-            title: "Advantages of partner Google Ads account at VISSECOM",
-            description: "The Google Ads account solution provided by VISSECOM helps businesses deploy stable, transparent advertising and optimize operational efficiency throughout the growth process.",
+            title: "Advantages of partner Google Ads account at Lumina Media Agency",
+            description: "The Google Ads account solution provided by Lumina Media Agency helps businesses deploy stable, transparent advertising and optimize operational efficiency throughout the growth process.",
             points: [
                 "Stable operation",
                 "Full verification",
@@ -263,7 +263,7 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_process: {
-            title: "Google Ads account rental process at VISSECOM",
+            title: "Google Ads account rental process at Lumina Media Agency",
             steps: [
                 {
                     id: 1,
@@ -274,8 +274,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
                 {
                     id: 2,
                     step_number: "02",
-                    title: "VISSECOM reviews & evaluates suitability",
-                    description: "VISSECOM team reviews the website, content, and products according to Google Ads policies."
+                    title: "Lumina Media Agency reviews & evaluates suitability",
+                    description: "Lumina Media Agency team reviews the website, content, and products according to Google Ads policies."
                 },
                 {
                     id: 3,
@@ -304,25 +304,25 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_testimonials: {
-            title: "What customers say about\nVISS International",
+            title: "What customers say about\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "“VISSECOM not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
+                    quote: "“Lumina Media Agency not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 2,
-                    quote: "“VISSECOM not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
+                    quote: "“Lumina Media Agency not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
                 },
                 {
                     id: 3,
-                    quote: "“VISSECOM not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
+                    quote: "“Lumina Media Agency not only runs Google Ads but also accompanies as a growth partner. The team clearly understands business goals and always optimizes based on real data.”",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: "/images/testimonial-avatar.svg"
@@ -330,8 +330,8 @@ export const mockRentAdsPageData: Record<string, RentAdsPageData> = {
             ]
         },
         rent_contact: {
-            title: "Start optimizing Google Ads with VISSECOM",
-            description: "Share your business goals. VISSECOM team will listen, analyze and propose a Google Ads deployment direction suitable for your business's growth stage.",
+            title: "Start optimizing Google Ads with Lumina Media Agency",
+            description: "Share your business goals. Lumina Media Agency team will listen, analyze and propose a Google Ads deployment direction suitable for your business's growth stage.",
             cta_text: "Submit request",
             fields: {
                 name: "Full Name",

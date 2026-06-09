@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function AboutTestimonials({ title, reviews = [] }: Props) {
-    const defaultTitle = 'Khách hàng nói gì về\nVISS International';
+    const defaultTitle = 'Khách hàng nói gì về\nLumina Media Agency';
     const displayReviews = reviews.length > 0 ? reviews : [];
 
     const [activeIndex, setActiveIndex] = useState(0);

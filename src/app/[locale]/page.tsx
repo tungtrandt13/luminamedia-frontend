@@ -18,15 +18,15 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!routing.locales.includes(locale as typeof routing.locales[number])) notFound();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://viss.com.vn';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminamedia.vn';
 
   return {
     title: locale === 'vi'
-      ? 'VISS International - Giải pháp thương mại quốc tế'
-      : 'VISS International - International Trade Solutions',
+      ? 'Lumina Media Agency - Giải pháp thương mại quốc tế'
+      : 'Lumina Media Agency - International Trade Solutions',
     description: locale === 'vi'
-      ? 'Công ty TNHH Thương mại và Dịch vụ Quốc tế VISS - Đối tác chiến lược cho sự tăng trưởng bền vững'
-      : 'VISS International Trading and Services Company - Strategic partner for sustainable growth',
+      ? 'Lumina Media Agency - Đối tác chiến lược cho tăng trưởng truyền thông, quảng cáo và thương mại điện tử bền vững'
+      : 'Lumina Media Agency Trading and Services Company - Strategic partner for sustainable growth',
     alternates: {
       languages: {
         'vi': `${baseUrl}/vi`,

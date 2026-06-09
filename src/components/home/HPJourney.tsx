@@ -64,7 +64,7 @@ export default function HPJourney({
                   ))
                 ) : (
                   <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#737373] text-center lg:text-left">
-                    VISS International được thành lập năm 2020 từ niềm đam mê thương mại điện tử và khát vọng chinh phục thị trường quốc tế.
+                    Lumina Media Agency được thành lập năm 2020 từ niềm đam mê thương mại điện tử và khát vọng chinh phục thị trường quốc tế.
                   </p>
                 )}
               </div>

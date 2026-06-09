@@ -1,20 +1,20 @@
 import type { AboutPageData } from "@/lib/strapi";
 
 /**
- * Mock data cho trang About Us, bám sát bản thiết kế Figma VISSCOM.
+ * Mock data cho trang About Us, bám sát bản thiết kế Figma Lumina Media Agency.
  * Dùng cho route `/[locale]/about` để có thể chạy độc lập không cần Strapi.
  */
 export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
     vi: {
         about_hero: {
-            title: "Về VISS International",
+            title: "Về Lumina Media Agency",
             headline: 'Hành trình 5 năm\nvươn ra <span class="text-[#AF7E2D]">thị trường\nquốc tế</span>',
             bg_image: "/images/about/about-hero-bg.png"
         },
         about_story: {
             subtitle: "Câu chuyện thương hiệu",
             title: 'Tiên phong mở rộng\nthị trường quốc tế với\n<span class="text-[#AF7E2D]">niềm tin phát triển\nbền vững</span>',
-            description: "Ngay từ những ngày đầu, VISS lựa chọn con đường kinh doanh quốc tế, tập trung vào sản phẩm FMCG và đồ bếp gia dụng mang chất lượng quốc tế. Chúng tôi tin rằng tăng trưởng bền vững được xây dựng từ sản phẩm tốt – hệ thống vững – con người mạnh.\n\nVISS kiên định phát triển với tư duy dài hạn, vận hành bài bản, minh bạch tài chính và lấy con người làm trọng tâm, tạo nền tảng để mở rộng thị trường và thích ứng toàn cầu.\n\n<b>VISS International hướng đến trở thành</b>",
+            description: "Ngay từ những ngày đầu, Lumina Media Agency lựa chọn con đường kinh doanh quốc tế, tập trung vào sản phẩm FMCG và đồ bếp gia dụng mang chất lượng quốc tế. Chúng tôi tin rằng tăng trưởng bền vững được xây dựng từ sản phẩm tốt – hệ thống vững – con người mạnh.\n\nLumina Media Agency kiên định phát triển với tư duy dài hạn, vận hành bài bản, minh bạch tài chính và lấy con người làm trọng tâm, tạo nền tảng để mở rộng thị trường và thích ứng toàn cầu.\n\n<b>Lumina Media Agency hướng đến trở thành</b>",
             commitments: [
                 "Doanh nghiệp thương mại điện tử quốc tế phát triển bền vững dựa trên giá trị con người",
                 "Nơi mỗi thành viên làm việc với tinh thần chủ động – trách nhiệm – dám nghĩ lớn, dám làm"
@@ -96,25 +96,25 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_testimonials: {
-            title: "Khách hàng nói gì về\nVISS International",
+            title: "Khách hàng nói gì về\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "“VISS có đội ngũ trẻ, chủ động và làm việc rất trách nhiệm. Quá trình phối hợp rõ ràng, phản hồi nhanh và luôn tập trung vào hiệu quả thực tế cho doanh nghiệp.”",
+                    quote: "“Lumina Media Agency có đội ngũ trẻ, chủ động và làm việc rất trách nhiệm. Quá trình phối hợp rõ ràng, phản hồi nhanh và luôn tập trung vào hiệu quả thực tế cho doanh nghiệp.”",
                     author: "Mr. Minh Hoàng",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: ""
                 },
                 {
                     id: 2,
-                    quote: "Chúng tôi đánh giá cao tư duy vận hành và khả năng thích ứng thị trường quốc tế của VISS. Mọi hạng mục đều được triển khai bài bản và minh bạch.",
+                    quote: "Chúng tôi đánh giá cao tư duy vận hành và khả năng thích ứng thị trường quốc tế của Lumina Media Agency. Mọi hạng mục đều được triển khai bài bản và minh bạch.",
                     author: "Ms. Thu Trang",
                     role: "Business Development Manager – Retail Group",
                     avatar: ""
                 },
                 {
                     id: 3,
-                    quote: "VISS không chỉ triển khai công việc mà còn đồng hành tư vấn, giúp đội ngũ nội bộ hiểu rõ hơn về thị trường và hướng phát triển dài hạn.",
+                    quote: "Lumina Media Agency không chỉ triển khai công việc mà còn đồng hành tư vấn, giúp đội ngũ nội bộ hiểu rõ hơn về thị trường và hướng phát triển dài hạn.",
                     author: "Mr. Đức Anh",
                     role: "Founder – Online Brand",
                     avatar: ""
@@ -122,21 +122,21 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_contact: {
-            title: "Hãy để VISS International\nhiểu hơn về bạn",
-            description: "VISS International luôn sẵn sàng lắng nghe và cùng bạn xây dựng giải pháp quảng cáo & thương mại điện tử phù hợp với mục tiêu kinh doanh.",
+            title: "Hãy để Lumina Media Agency\nhiểu hơn về bạn",
+            description: "Lumina Media Agency luôn sẵn sàng lắng nghe và cùng bạn xây dựng giải pháp quảng cáo & thương mại điện tử phù hợp với mục tiêu kinh doanh.",
             cta_text: "Gửi thông tin"
         }
     },
     en: {
         about_hero: {
-            title: "About VISS International",
+            title: "About Lumina Media Agency",
             headline: 'A 5-year journey\nreaching out to the\n<span class="text-[#AF7E2D]">international market</span>',
             bg_image: "/images/about/about-hero-bg.png"
         },
         about_story: {
             subtitle: "Brand story",
             title: 'Pioneering international\nmarket expansion with\n<span class="text-[#AF7E2D]">belief in sustainable\ndevelopment</span>',
-            description: "From the early days, VISS chose the international business path, focusing on FMCG products and household kitchenware of international quality. We believe sustainable growth is built on good products – a strong system – capable people.\n\nVISS consistently develops with long-term thinking, systematic operation, financial transparency, and a people-centric approach, creating a foundation for market expansion and global adaptation.\n\n<b>VISS International aims to become</b>",
+            description: "From the early days, Lumina Media Agency chose the international business path, focusing on FMCG products and household kitchenware of international quality. We believe sustainable growth is built on good products – a strong system – capable people.\n\nLumina Media Agency consistently develops with long-term thinking, systematic operation, financial transparency, and a people-centric approach, creating a foundation for market expansion and global adaptation.\n\n<b>Lumina Media Agency aims to become</b>",
             commitments: [
                 "A sustainable international e-commerce enterprise based on human values",
                 "A place where every member works with a proactive spirit - responsibility - dare to think big, dare to do"
@@ -219,25 +219,25 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_testimonials: {
-            title: "What Clients Say About\nVISS International",
+            title: "What Clients Say About\nLumina Media Agency",
             reviews: [
                 {
                     id: 1,
-                    quote: "\"VISS has a young, proactive, and highly accountable team. The coordination process is clear, feedback is fast, and they always focus on practical efficiency for the business.\"",
+                    quote: "\"Lumina Media Agency has a young, proactive, and highly accountable team. The coordination process is clear, feedback is fast, and they always focus on practical efficiency for the business.\"",
                     author: "Mr. Minh Hoang",
                     role: "E-commerce Manager – FMCG Brand",
                     avatar: ""
                 },
                 {
                     id: 2,
-                    quote: "We highly value VISS's operational mindset and ability to adapt to international markets. All items are deployed methodically and transparently.",
+                    quote: "We highly value Lumina Media Agency's operational mindset and ability to adapt to international markets. All items are deployed methodically and transparently.",
                     author: "Ms. Thu Trang",
                     role: "Business Development Manager – Retail Group",
                     avatar: ""
                 },
                 {
                     id: 3,
-                    quote: "VISS not only implements work but also accompanies in consulting, helping the internal team better understand the market and long-term development direction.",
+                    quote: "Lumina Media Agency not only implements work but also accompanies in consulting, helping the internal team better understand the market and long-term development direction.",
                     author: "Mr. Duc Anh",
                     role: "Founder – Online Brand",
                     avatar: ""
@@ -245,8 +245,8 @@ export const aboutUsMockData: Record<'vi' | 'en', AboutPageData> = {
             ]
         },
         about_contact: {
-            title: "Let VISS International\nbetter understand you",
-            description: "VISS International is always ready to listen and build advertising & e-commerce solutions tailored to your business goals.",
+            title: "Let Lumina Media Agency\nbetter understand you",
+            description: "Lumina Media Agency is always ready to listen and build advertising & e-commerce solutions tailored to your business goals.",
             cta_text: "Submit Infomation"
         }
     }

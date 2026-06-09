@@ -33,7 +33,7 @@ export default function HPHero({ headline, ctaText, ctaUrl, background }: Props)
         <div className="max-w-[800px] xl:max-w-[1000px]">
           <h1
             className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] lg:leading-[52px] text-white whitespace-pre-line tracking-tight"
-            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline || '"Khởi nguồn từ đam mê thương mại\nđiện tử – VISS International vươn mình\nchinh phục thị trường toàn cầu"') }}
+            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(headline || '"Khởi nguồn từ đam mê thương mại\nđiện tử – Lumina Media Agency vươn mình\nchinh phục thị trường toàn cầu"') }}
           />
 
           <div className="mt-10 md:mt-[60px] flex justify-center">

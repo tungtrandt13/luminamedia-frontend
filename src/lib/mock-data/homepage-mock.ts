@@ -1,13 +1,13 @@
 import type { HomepageData } from "@/lib/strapi";
 
 /**
- * Mock data cho trang Homepage, bám sát bản thiết kế Figma VISSCOM.
+ * Mock data cho trang Homepage, bám sát bản thiết kế Figma Lumina Media Agency.
  * Dùng cho route `/[locale]/mock` để có thể chạy độc lập không cần Strapi.
  */
 export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
   vi: {
     hp_hero: {
-      headline: "Khởi nguồn từ đam mê thương mại điện tử – VISS International vươn mình chinh phục thị trường toàn cầu",
+      headline: "Khởi nguồn từ đam mê thương mại điện tử – Lumina Media Agency vươn mình chinh phục thị trường toàn cầu",
       cta_text: "Liên hệ ngay",
       cta_url: "#contact",
       background: {
@@ -25,18 +25,18 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       body: [
         {
           id: 1,
-          text: "VISS International được thành lập năm 2020 từ niềm đam mê thương mại điện tử và khát vọng chinh phục thị trường quốc tế.",
+          text: "Lumina Media Agency được thành lập năm 2020 từ niềm đam mê thương mại điện tử và khát vọng chinh phục thị trường quốc tế.",
         },
         {
           id: 2,
-          text: "Trải qua hành trình 4 năm không ngừng nỗ lực, VISS tự hào là đối tác chiến lược của nhiều thương hiệu lớn về vận hành và phát triển kênh eCommerce tại thị trường Việt Nam cũng như khu vực Đông Nam Á (Thái Lan, Malaysia, Philippines, Singapore).",
+          text: "Trải qua hành trình 4 năm không ngừng nỗ lực, Lumina Media Agency tự hào là đối tác chiến lược của nhiều thương hiệu lớn về vận hành và phát triển kênh eCommerce tại thị trường Việt Nam cũng như khu vực Đông Nam Á (Thái Lan, Malaysia, Philippines, Singapore).",
         },
       ],
       cta_text: "Tìm hiểu thêm",
       cta_url: "#about",
     },
     hp_partners: {
-      title: "VISS International – Đối tác của các thương hiệu và doanh nghiệp quốc tế",
+      title: "Lumina Media Agency – Đối tác của các thương hiệu và doanh nghiệp quốc tế",
       logos: {
         data: [
           {
@@ -136,7 +136,7 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       cta_url: "#projects",
     },
     hp_services: {
-      title: "Các dịch vụ của VISS International",
+      title: "Các dịch vụ của Lumina Media Agency",
       description: "Giải pháp thương mại điện tử toàn diện cho doanh nghiệp của bạn.",
       services: [
         {
@@ -216,11 +216,11 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       cta_url: "#services",
     },
     hp_why_us: {
-      title: "VISSER Tận tâm &\nChuyên nghiệp",
+      title: "Lumina Media Agency Team Tận tâm &\nChuyên nghiệp",
       description: "Đội ngũ Digital Marketing & E-commerce với kinh nghiệm triển khai thực chiến tại nhiều thị trường quốc tế và đa dạng ngành hàng.",
       primary_cta_text: "Tìm hiểu thêm",
       primary_cta_url: "#",
-      secondary_cta_text: "Trở thành VISSER",
+      secondary_cta_text: "Trở thành Lumina Media Agency Team",
       secondary_cta_url: "#",
       stats: [
         { id: 1, value: "5+", label: "Năm kinh nghiệm" },
@@ -231,21 +231,21 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       image: {
         data: {
           attributes: {
-            url: "/images/hp-visser.png",
+            url: "/images/hp-lumina-team.png",
           },
         },
       },
     },
     hp_contact: {
-      title: "Hãy để VISS International\nhiểu hơn về bạn",
-      description: "VISS International luôn sẵn sàng lắng nghe và cùng bạn xây dựng giải pháp quảng cáo & thương mại điện tử phù hợp với mục tiêu kinh doanh.",
+      title: "Hãy để Lumina Media Agency\nhiểu hơn về bạn",
+      description: "Lumina Media Agency luôn sẵn sàng lắng nghe và cùng bạn xây dựng giải pháp quảng cáo & thương mại điện tử phù hợp với mục tiêu kinh doanh.",
       cta_text: "Gửi thông tin",
       cta_url: "#",
     },
   },
   en: {
     hp_hero: {
-      headline: "Born from e-commerce passion – VISS International reaches out to conquer the global market",
+      headline: "Born from e-commerce passion – Lumina Media Agency reaches out to conquer the global market",
       cta_text: "Contact us now",
       cta_url: "#contact",
       background: {
@@ -263,18 +263,18 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       body: [
         {
           id: 1,
-          text: "VISS International was established in 2020 from a passion for e-commerce and the aspiration to conquer the international market.",
+          text: "Lumina Media Agency was established in 2020 from a passion for e-commerce and the aspiration to conquer the international market.",
         },
         {
           id: 2,
-          text: "Through a 4-year journey of continuous effort, VISS is proud to be a strategic partner of many major brands in operating and developing eCommerce channels in the Vietnam market as well as Southeast Asia (Thailand, Malaysia, Philippines, Singapore).",
+          text: "Through a 4-year journey of continuous effort, Lumina Media Agency is proud to be a strategic partner of many major brands in operating and developing eCommerce channels in the Vietnam market as well as Southeast Asia (Thailand, Malaysia, Philippines, Singapore).",
         },
       ],
       cta_text: "Learn more",
       cta_url: "#about",
     },
     hp_partners: {
-      title: "VISS International – Partner of international brands and businesses",
+      title: "Lumina Media Agency – Partner of international brands and businesses",
       logos: {
         data: [
           {
@@ -374,7 +374,7 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       cta_url: "#projects",
     },
     hp_services: {
-      title: "Services of VISS International",
+      title: "Services of Lumina Media Agency",
       description: "Comprehensive e-commerce solutions for your business.",
       services: [
         {
@@ -454,11 +454,11 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       cta_url: "#services",
     },
     hp_why_us: {
-      title: "Dedicated & Professional\nVISSER",
+      title: "Dedicated & Professional\nLumina Media Agency Team",
       description: "Digital Marketing & E-commerce team with practical implementation experience in many international markets and diverse industries.",
       primary_cta_text: "Learn more",
       primary_cta_url: "#",
-      secondary_cta_text: "Become a VISSER",
+      secondary_cta_text: "Become a Lumina Media Agency Team",
       secondary_cta_url: "#",
       stats: [
         { id: 1, value: "5+", label: "Years of experience" },
@@ -469,14 +469,14 @@ export const homepageMockData: Record<'vi' | 'en', HomepageData> = {
       image: {
         data: {
           attributes: {
-            url: "/images/hp-visser.png",
+            url: "/images/hp-lumina-team.png",
           },
         },
       },
     },
     hp_contact: {
-      title: "Let VISS International\nunderstand you better",
-      description: "VISS International is always ready to listen and work with you to build advertising & e-commerce solutions tailored to your business goals.",
+      title: "Let Lumina Media Agency\nunderstand you better",
+      description: "Lumina Media Agency is always ready to listen and work with you to build advertising & e-commerce solutions tailored to your business goals.",
       cta_text: "Submit",
       cta_url: "#",
     },

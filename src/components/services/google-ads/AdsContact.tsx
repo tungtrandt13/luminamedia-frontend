@@ -68,7 +68,7 @@ export default function AdsContact({ title, description, ctaText, fields, locale
                                 ) : (
                                     <h2 className="text-[28px] sm:text-[32px] lg:text-[40px] font-semibold leading-[1.3] whitespace-pre-line text-center lg:text-left">
                                         Bắt đầu tối ưu Google Ads cùng{' '}
-                                        <span className="text-[#AF7E2D]">VISSECOM</span>
+                                        <span className="text-[#AF7E2D]">Lumina Media Agency</span>
                                     </h2>
                                 )}
                                 {description && (

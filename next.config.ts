@@ -25,7 +25,7 @@ const nextConfig: import("next").NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'admin.vissecom.com',
+        hostname: 'admin.luminamedia.vn',
         pathname: '/uploads/**',
       },
     ],

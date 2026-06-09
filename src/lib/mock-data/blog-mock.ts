@@ -99,7 +99,7 @@ export const blogPosts: Record<'vi' | 'en', BlogPost[]> = {
 <p><strong>Từ khóa thông tin (Informational):</strong> "how to optimize supply chain", "what is CRM software". Được sử dụng ở giai đoạn đầu của hành trình khách hàng (Awareness).</p>
 <p><strong>Từ khóa so sánh (Comparison):</strong> "SAP vs Oracle ERP", "HubSpot vs Salesforce pricing". Được sử dụng ở giai đoạn Consideration.</p>
 <p><strong>Từ khóa chuyển đổi (Transactional/Commercial):</strong> "ERP software demo", "request Salesforce pricing". Được sử dụng ở giai đoạn Decision.</p>
-<p><strong>Từ khóa thương hiệu (Brand):</strong> "VISS International Google Ads services", "VISS Google Ads case study".</p>
+<p><strong>Từ khóa thương hiệu (Brand):</strong> "Lumina Media Agency Google Ads services", "Lumina Media Agency Google Ads case study".</p>
 
 <h2 id="step-1">Bước 1: Xác định chủ đề cốt lõi</h2>
 <p>Trước khi tìm từ khóa, bạn cần hiểu rõ:</p>
@@ -153,7 +153,7 @@ export const blogPosts: Record<'vi' | 'en', BlogPost[]> = {
 
 <h2 id="conclusion">Kết luận</h2>
 <p>Nghiên cứu từ khóa B2B không phải là một lần làm xong — đây là một quá trình liên tục. Thị trường thay đổi, đối thủ cạnh tranh, và hành vi tìm kiếm của khách hàng cũng thay đổi. Hãy đặt lịch review từ khóa định kỳ (ít nhất mỗi quý) để đảm bảo chiến lược của bạn luôn được tối ưu.</p>
-<p>Liên hệ VISS International để được tư vấn chiến lược Google Ads và B2B Keyword Research phù hợp với doanh nghiệp của bạn.</p>
+<p>Liên hệ Lumina Media Agency để được tư vấn chiến lược Google Ads và B2B Keyword Research phù hợp với doanh nghiệp của bạn.</p>
       `,
     },
     {
@@ -280,7 +280,7 @@ export const blogPosts: Record<'vi' | 'en', BlogPost[]> = {
 <p><strong>Informational Keywords:</strong> "how to optimize supply chain", "what is CRM software". Used at the early stage of the customer journey (Awareness).</p>
 <p><strong>Comparison Keywords:</strong> "SAP vs Oracle ERP", "HubSpot vs Salesforce pricing". Used at the Consideration stage.</p>
 <p><strong>Transactional/Commercial Keywords:</strong> "ERP software demo", "request Salesforce pricing". Used at the Decision stage.</p>
-<p><strong>Brand Keywords:</strong> "VISS International Google Ads services", "VISS Google Ads case study".</p>
+<p><strong>Brand Keywords:</strong> "Lumina Media Agency Google Ads services", "Lumina Media Agency Google Ads case study".</p>
 
 <h2 id="step-1">Step 1: Identify Core Topics</h2>
 <p>Before finding keywords, you need to clearly understand:</p>
@@ -334,7 +334,7 @@ export const blogPosts: Record<'vi' | 'en', BlogPost[]> = {
 
 <h2 id="conclusion">Conclusion</h2>
 <p>B2B keyword research is not a one-time task — it's an ongoing process. Markets change, competitors compete, and customer search behavior also changes. Schedule keyword reviews periodically (at least quarterly) to ensure your strategy is always optimized.</p>
-<p>Contact VISS International for Google Ads and B2B Keyword Research strategy consulting tailored to your business.</p>
+<p>Contact Lumina Media Agency for Google Ads and B2B Keyword Research strategy consulting tailored to your business.</p>
       `,
     },
     {

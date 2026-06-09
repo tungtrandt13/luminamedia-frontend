@@ -21,7 +21,7 @@ export default function AdsWhyUs({ title, highlightedText, points = [], image }:
                         {/* Title */}
                         <h2
                             className="text-[36px] sm:text-[48px] lg:text-[56px] font-semibold leading-[normal] whitespace-pre-line text-center lg:text-left"
-                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Tại sao nên\nchọn ') + `<span class="text-[#AF7E2D]">${highlightedText || 'VISSCOM'}</span>` }}
+                            dangerouslySetInnerHTML={{ __html: normalizeStrapiText(title || 'Tại sao nên\nchọn ') + `<span class="text-[#AF7E2D]">${highlightedText || 'Lumina Media Agency'}</span>` }}
                         />
 
                         {/* Checklist */}
@@ -59,14 +59,14 @@ export default function AdsWhyUs({ title, highlightedText, points = [], image }:
                         {image ? (
                             <img
                                 src={image}
-                                alt="Why choose VISSCOM"
+                                alt="Why choose Lumina Media Agency"
                                 className="w-full h-full object-cover rounded-[16px] pointer-events-none"
                             />
                         ) : (
                             <div className="w-full h-full min-h-[300px] bg-gradient-to-br from-[#2a2015] to-[#1a1510] flex items-center justify-center rounded-[16px] border border-white/10">
                                 <div className="text-center p-8">
                                     <div className="text-[60px] mb-4">🏆</div>
-                                    <p className="text-white/40 text-[18px] font-light">VISSCOM</p>
+                                    <p className="text-white/40 text-[18px] font-light">Lumina Media Agency</p>
                                 </div>
                             </div>
                         )}

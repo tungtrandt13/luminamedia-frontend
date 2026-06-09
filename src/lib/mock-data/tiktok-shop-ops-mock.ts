@@ -72,15 +72,15 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
     hero: {
       title: "Dịch vụ Vận hành Gian hàng TikTok Shop",
       description:
-        "VISSECOM đồng hành xây dựng gian hàng chuẩn TikTok, tối ưu từ nội dung, quảng cáo đến vận hành để tăng trưởng bền vững.",
+        "Lumina Media Agency đồng hành xây dựng gian hàng chuẩn TikTok, tối ưu từ nội dung, quảng cáo đến vận hành để tăng trưởng bền vững.",
       cta_text: "Đăng ký tư vấn miễn phí",
       image: "/images/services/tiktok-shop-ops-hero.png",
     },
     about: {
-      title: "Về VISSCOM",
+      title: "Về Lumina Media Agency",
       paragraphs: [
-        "VISSECOM là đối tác đồng hành của TikTok tại Việt Nam, chuyên tư vấn và triển khai các giải pháp quảng cáo & bán hàng trên hệ sinh thái TikTok.",
-        "Với sự am hiểu sâu về TikTok Ads, TikTok Shop và các chính sách nền tảng, VISSECOM hỗ trợ doanh nghiệp xây dựng gian hàng chính thống, vận hành chiến dịch hiệu quả và mở rộng doanh thu bền vững trên TikTok.",
+        "Lumina Media Agency là đối tác đồng hành của TikTok tại Việt Nam, chuyên tư vấn và triển khai các giải pháp quảng cáo & bán hàng trên hệ sinh thái TikTok.",
+        "Với sự am hiểu sâu về TikTok Ads, TikTok Shop và các chính sách nền tảng, Lumina Media Agency hỗ trợ doanh nghiệp xây dựng gian hàng chính thống, vận hành chiến dịch hiệu quả và mở rộng doanh thu bền vững trên TikTok.",
       ],
       images: [
         "/images/services/tiktok-shop-ops-about.png",
@@ -89,9 +89,9 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
       ],
     },
     solution: {
-      title: "Giải pháp thương mại vận hành Tiktok shop toàn diện cùng Visscom",
+      title: "Giải pháp thương mại vận hành Tiktok shop toàn diện cùng Lumina Media Agency",
       description:
-        "VISSECOM đồng hành cùng doanh nghiệp từ xây dựng nền tảng đến tăng trưởng doanh thu, giúp TikTok Shop vận hành hiệu quả, tối ưu chi phí và sẵn sàng scale.",
+        "Lumina Media Agency đồng hành cùng doanh nghiệp từ xây dựng nền tảng đến tăng trưởng doanh thu, giúp TikTok Shop vận hành hiệu quả, tối ưu chi phí và sẵn sàng scale.",
       steps: [
         {
           id: 1,
@@ -158,7 +158,7 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
     case_studies: {
       title: "Dự án đã triển khai",
       description:
-        "VISSECOM đã đồng hành cùng 1.000+ doanh nghiệp và chủ shop trong quá trình xây dựng – vận hành – tăng trưởng TikTok Shop một cách bài bản và bền vững.",
+        "Lumina Media Agency đã đồng hành cùng 1.000+ doanh nghiệp và chủ shop trong quá trình xây dựng – vận hành – tăng trưởng TikTok Shop một cách bài bản và bền vững.",
       items: [
         {
           id: 1,
@@ -208,7 +208,7 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
       ],
     },
     contact: {
-      title: "Đăng ký tư vấn miễn phí cùng VISSCOM",
+      title: "Đăng ký tư vấn miễn phí cùng Lumina Media Agency",
       description:
         "Nhận tư vấn chiến lược vận hành & quảng cáo TikTok phù hợp với mô hình kinh doanh của bạn.",
       benefits: [
@@ -231,15 +231,15 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
     hero: {
       title: "TikTok Shop Store Operation Service",
       description:
-        "VISSECOM helps you build a TikTok-standard store, optimizing from content and advertising to operations for sustainable growth.",
+        "Lumina Media Agency helps you build a TikTok-standard store, optimizing from content and advertising to operations for sustainable growth.",
       cta_text: "Get a free consultation",
       image: "/images/services/tiktok-shop-ops-hero.png",
     },
     about: {
-      title: "About VISSCOM",
+      title: "About Lumina Media Agency",
       paragraphs: [
-        "VISSECOM is a TikTok partner in Vietnam, specializing in consulting and implementing advertising and sales solutions on the TikTok ecosystem.",
-        "With deep expertise in TikTok Ads, TikTok Shop and platform policies, VISSECOM supports businesses in building official stores, running effective campaigns and sustainably scaling revenue on TikTok.",
+        "Lumina Media Agency is a TikTok partner in Vietnam, specializing in consulting and implementing advertising and sales solutions on the TikTok ecosystem.",
+        "With deep expertise in TikTok Ads, TikTok Shop and platform policies, Lumina Media Agency supports businesses in building official stores, running effective campaigns and sustainably scaling revenue on TikTok.",
       ],
       images: [
         "/images/services/tiktok-shop-ops-about.png",
@@ -248,9 +248,9 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
       ],
     },
     solution: {
-      title: "End-to-end TikTok Shop commerce operations with Visscom",
+      title: "End-to-end TikTok Shop commerce operations with Lumina Media Agency",
       description:
-        "VISSECOM accompanies businesses from building the foundation to growing revenue, helping TikTok Shops operate efficiently, optimize costs and be ready to scale.",
+        "Lumina Media Agency accompanies businesses from building the foundation to growing revenue, helping TikTok Shops operate efficiently, optimize costs and be ready to scale.",
       steps: [
         {
           id: 1,
@@ -317,7 +317,7 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
     case_studies: {
       title: "Implemented projects",
       description:
-        "VISSECOM has partnered with 1,000+ businesses and shop owners to build, operate and grow TikTok Shops in a structured and sustainable way.",
+        "Lumina Media Agency has partnered with 1,000+ businesses and shop owners to build, operate and grow TikTok Shops in a structured and sustainable way.",
       items: [
         {
           id: 1,
@@ -367,14 +367,14 @@ export const mockTiktokShopOpsPageData: Record<string, TiktokShopOpsPageData> = 
       ],
     },
     contact: {
-      title: "Get a free consultation with VISSCOM",
+      title: "Get a free consultation with Lumina Media Agency",
       description:
         "Receive advice on TikTok operations and ad strategy tailored to your business model.",
       benefits: [
         "Structured TikTok Shop rollout guidance",
         "Optimized ad costs and operating budget",
         "Sustainable GMV growth solutions",
-        "Hands-on support from TikTok experts at VISSECOM",
+        "Hands-on support from TikTok experts at Lumina Media Agency",
       ],
       cta_text: "Get a free consultation",
       fields: {

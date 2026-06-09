@@ -116,7 +116,7 @@ function renderEmailLayout({ previewText, title }: EmailLayoutOptions, content: 
                 <tr>
                   <td style="padding: 28px 32px; background: linear-gradient(135deg, ${TEXT_DARK}, ${BRAND_COLOR}); color: #FFFFFF;">
                     <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.8; margin-bottom: 10px;">
-                      VISS International
+                      Lumina Media Agency
                     </div>
                     <div style="font-size: 28px; line-height: 1.3; font-weight: 700;">
                       ${escapeHtml(title)}
@@ -130,7 +130,7 @@ function renderEmailLayout({ previewText, title }: EmailLayoutOptions, content: 
                 </tr>
                 <tr>
                   <td style="padding: 0 32px 28px; color: ${TEXT_MUTED}; font-size: 12px; line-height: 1.6;">
-                    Email nay duoc gui tu he thong website VISS. Vui long khong reply truc tiep vao dia chi gui mail neu khong can thiet.
+                    Email nay duoc gui tu he thong website Lumina Media Agency. Vui long khong reply truc tiep vao dia chi gui mail neu khong can thiet.
                   </td>
                 </tr>
               </table>
@@ -155,7 +155,7 @@ export function renderContactNotificationTemplate(data: ContactNotificationTempl
 
   const content = `
     <div style="margin-bottom: 20px; color: ${TEXT_MUTED}; font-size: 14px; line-height: 1.7;">
-      He thong vua ghi nhan mot contact submission moi tu website VISS.
+      He thong vua ghi nhan mot contact submission moi tu website Lumina Media Agency.
     </div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
       ${renderInfoRows(rows)}
@@ -190,7 +190,7 @@ export function renderCareerNotificationTemplate(data: CareerNotificationTemplat
 
   const content = `
     <div style="margin-bottom: 20px; color: ${TEXT_MUTED}; font-size: 14px; line-height: 1.7;">
-      He thong vua ghi nhan mot career application moi tu website VISS.
+      He thong vua ghi nhan mot career application moi tu website Lumina Media Agency.
     </div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
       ${renderInfoRows(rows)}
