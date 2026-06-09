@@ -69,7 +69,7 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale}>
-      <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} resend-theme antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <div className="min-h-dvh text-white flex flex-col">
             <Header locale={locale} services={services} globalSettings={globalSettings} />

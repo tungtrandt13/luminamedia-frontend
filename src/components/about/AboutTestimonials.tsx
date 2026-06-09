@@ -34,21 +34,8 @@ export default function AboutTestimonials({ title, reviews = [] }: Props) {
             const scrollLeft = card.offsetLeft - container.offsetLeft;
             container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
         }
-        if (resetTimer) {
-            setActiveIndex(idx);
-            // Reset auto-scroll timer when user manually navigates
-            if (autoScrollRef.current) {
-                clearInterval(autoScrollRef.current);
-                autoScrollRef.current = setInterval(() => {
-                    setActiveIndex((prev) => {
-                        const next = (prev + 1) % displayReviews.length;
-                        scrollToIndex(next, false);
-                        return next;
-                    });
-                }, 4000);
-            }
-        }
-    }, [displayReviews.length]);
+        if (resetTimer) setActiveIndex(idx);
+    }, []);
 
     // Auto-scroll effect
     useEffect(() => {

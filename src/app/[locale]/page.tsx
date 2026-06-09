@@ -9,6 +9,7 @@ import HPFeaturedProjects from '@/components/home/HPFeaturedProjects';
 import HPServices from '@/components/home/HPServices';
 import HPWhyUs from '@/components/home/HPWhyUs';
 import HPContact from '@/components/home/HPContact';
+import { homepageMockData } from '@/lib/mock-data/homepage-mock';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -38,15 +39,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   if (!routing.locales.includes(locale as typeof routing.locales[number])) notFound();
-  const homepage = await getHomepage(locale);
-
-  if (!homepage) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-black text-white">
-        <p>No homepage data found for locale: {locale}</p>
-      </div>
-    );
-  }
+  const currentLocale = (locale as 'vi' | 'en') || 'vi';
+  const homepage = await getHomepage(locale) || homepageMockData[currentLocale] || homepageMockData.vi;
 
   return (
     <div className="flex flex-col w-full overflow-hidden bg-black text-white">
