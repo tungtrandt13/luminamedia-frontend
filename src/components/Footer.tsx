@@ -86,6 +86,15 @@ export default function Footer({ locale }: Props) {
               <Link href={`/${locale}/contact`} className="hover:text-white transition-colors w-fit">
                 {t('contact')}
               </Link>
+              <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors w-fit">
+                {tFooter('privacyPolicy')}
+              </Link>
+              <Link href={`/${locale}/terms`} className="hover:text-white transition-colors w-fit">
+                {tFooter('termsOfService')}
+              </Link>
+              <Link href={`/${locale}/google-ads-api`} className="hover:text-white transition-colors w-fit">
+                {tFooter('googleAdsApiUsage')}
+              </Link>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ import AdsServicesList from '@/components/services/google-ads/AdsServicesList';
 import AdsWhyUs from '@/components/services/google-ads/AdsWhyUs';
 import AdsPackages from '@/components/services/google-ads/AdsPackages';
 import AdsTestimonials from '@/components/services/google-ads/AdsTestimonials';
+import AdsApiUsage from '@/components/services/google-ads/AdsApiUsage';
 import AdsContact from '@/components/services/google-ads/AdsContact';
 import { getGoogleAdsPage } from '@/lib/strapi';
 import { googleAdsMockData } from '@/lib/mock-data/google-ads-mock';
@@ -80,7 +81,10 @@ export default async function GoogleAdsPage({ params }: Props) {
                 reviews={data.ads_testimonials.reviews}
             />
 
-            {/* 6. Contact */}
+            {/* 6. Google Ads API / MCC Usage */}
+            <AdsApiUsage locale={currentLocale} />
+
+            {/* 7. Contact */}
             <AdsContact
                 title={data.ads_contact.title}
                 description={data.ads_contact.description}
