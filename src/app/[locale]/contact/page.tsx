@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import CompanyTrustSection from "@/components/compliance/CompanyTrustSection";
 import HPContact from "@/components/home/HPContact";
 import { strapiFetch, type StrapiResponse } from "@/lib/strapi";
 import { contactMockData, type ContactPageData } from "@/lib/mock-data/contact-mock";
@@ -64,6 +65,7 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <div className="flex flex-col w-full overflow-hidden bg-black text-white">
+      <CompanyTrustSection locale={currentLocale} />
       <HPContact title={data.title} description={data.description} ctaText={data.cta_text} />
     </div>
   );

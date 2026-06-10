@@ -21,11 +21,84 @@ export type CompliancePageContent = {
 };
 
 export const companyIdentity = {
-  name: "Lumina Media Agency Trading & Service Co., Ltd",
+  name: "LUMINA MEDIA AGENCY TRADING & SERVICE CO., LTD",
   director: "RATBUHOM CHUTAMAT",
   address: "RM 1006, 10/F., PO YIP BLDG 23 HING YIP STREET, KWUN TONG - HONGKONG",
   email: "support@luminamedia.me",
   phone: "(+84) 356 107 047",
+};
+
+export type CompanyProfileContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  identityTitle: string;
+  identityItems: Array<{
+    label: string;
+    value: string;
+    href?: string;
+  }>;
+  operationsTitle: string;
+  operations: string[];
+  links: Array<{
+    label: string;
+    href: string;
+  }>;
+};
+
+export const companyProfileContent: Record<ComplianceLocale, CompanyProfileContent> = {
+  vi: {
+    eyebrow: "Business Verification",
+    title: "Thông tin doanh nghiệp và phạm vi vận hành Google Ads",
+    description:
+      "Lumina Media Agency công khai thông tin pháp nhân, đầu mối liên hệ và cách dữ liệu Google Ads được sử dụng trong phạm vi dịch vụ quảng cáo đã được khách hàng cấp quyền.",
+    identityTitle: "Thông tin công ty",
+    identityItems: [
+      { label: "Company", value: companyIdentity.name },
+      { label: "Director", value: companyIdentity.director },
+      { label: "Address", value: companyIdentity.address },
+      { label: "Email", value: companyIdentity.email, href: `mailto:${companyIdentity.email}` },
+      { label: "Phone", value: companyIdentity.phone, href: `tel:${companyIdentity.phone.replace(/[^+\d]/g, "")}` },
+    ],
+    operationsTitle: "Google Ads operations",
+    operations: [
+      "Quản lý và báo cáo chiến dịch Google Ads cho các tài khoản khách hàng đã cấp quyền hợp lệ.",
+      "Theo dõi spend, impressions, clicks, conversions, campaign status và account hierarchy qua MCC.",
+      "Chỉ sử dụng dữ liệu Google Ads để vận hành, báo cáo và tối ưu chiến dịch trong phạm vi dịch vụ đã thỏa thuận.",
+      "Không bán, resell hoặc chia sẻ dữ liệu Google Ads cho bên thứ ba.",
+    ],
+    links: [
+      { label: "Chính sách bảo mật", href: "/privacy" },
+      { label: "Điều khoản dịch vụ", href: "/terms" },
+      { label: "Cách sử dụng Google Ads API", href: "/google-ads-api" },
+    ],
+  },
+  en: {
+    eyebrow: "Business Verification",
+    title: "Business information and Google Ads operations scope",
+    description:
+      "Lumina Media Agency publishes its legal business information, contact point, and how Google Ads data is used within authorized advertising services.",
+    identityTitle: "Company information",
+    identityItems: [
+      { label: "Company", value: companyIdentity.name },
+      { label: "Director", value: companyIdentity.director },
+      { label: "Address", value: companyIdentity.address },
+      { label: "Email", value: companyIdentity.email, href: `mailto:${companyIdentity.email}` },
+      { label: "Phone", value: companyIdentity.phone, href: `tel:${companyIdentity.phone.replace(/[^+\d]/g, "")}` },
+    ],
+    operationsTitle: "Google Ads operations",
+    operations: [
+      "Manage and report Google Ads campaigns for customer accounts with valid authorization.",
+      "Monitor spend, impressions, clicks, conversions, campaign status, and account hierarchy through MCC.",
+      "Use Google Ads data only for campaign operations, reporting, and optimization within the agreed service scope.",
+      "Do not sell, resell, or share Google Ads data with third parties.",
+    ],
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Google Ads API Usage", href: "/google-ads-api" },
+    ],
+  },
 };
 
 export const privacyContent: Record<ComplianceLocale, CompliancePageContent> = {

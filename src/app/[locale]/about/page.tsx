@@ -6,6 +6,7 @@ import AboutPhilosophy from '@/components/about/AboutPhilosophy';
 import AboutCoreValues from '@/components/about/AboutCoreValues';
 import AboutTeam from '@/components/about/AboutTeam';
 import AboutTestimonials from '@/components/about/AboutTestimonials';
+import CompanyTrustSection from '@/components/compliance/CompanyTrustSection';
 import HPContact from '@/components/home/HPContact';
 import { getAboutPage } from '@/lib/strapi';
 import { aboutUsMockData } from '@/lib/mock-data/about-us-mock';
@@ -64,32 +65,35 @@ export default async function AboutPage({ params }: Props) {
                 commitments={data.about_story?.commitments}
             />
 
-            {/* 3. Philosophy Section */}
+            {/* 3. Business Verification Section */}
+            <CompanyTrustSection locale={locale} />
+
+            {/* 4. Philosophy Section */}
             <AboutPhilosophy
                 title={data.about_philosophy?.title}
                 principles={data.about_philosophy?.principles}
                 images={data.about_philosophy?.images}
             />
 
-            {/* 4. Core Values Section */}
+            {/* 5. Core Values Section */}
             <AboutCoreValues
                 title={data.about_core_values?.title}
                 values={data.about_core_values?.values}
             />
 
-            {/* 5. Team Section */}
+            {/* 6. Team Section */}
             <AboutTeam
                 title={data.about_team?.title}
                 members={data.about_team?.members}
             />
 
-            {/* 6. Testimonials Section */}
+            {/* 7. Testimonials Section */}
             <AboutTestimonials
                 title={data.about_testimonials?.title}
                 reviews={data.about_testimonials?.reviews}
             />
 
-            {/* 7. Contact Section */}
+            {/* 8. Contact Section */}
             <HPContact
                 title={data.about_contact?.title}
                 description={data.about_contact?.description}
