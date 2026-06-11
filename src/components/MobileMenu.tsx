@@ -23,6 +23,7 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations('common');
+  const tHeader = useTranslations('header');
 
   // Close menu when route changes
   useEffect(() => {
@@ -54,13 +55,37 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
 
   // Fallback services matching Figma pages when Strapi returns empty
   const fallbackServiceItems: Service[] = [
-    { id: 1, documentId: 'rent-ads', name: locale === 'vi' ? 'Thuê tài khoản quảng cáo' : 'Rent Ads Account', slug: 'rent-ads', locale },
-    { id: 2, documentId: 'google-ads', name: locale === 'vi' ? 'Dịch vụ quảng cáo Google' : 'Google Advertising', slug: 'google-ads', locale },
-    { id: 3, documentId: 'tiktok-ads', name: locale === 'vi' ? 'Dịch vụ quảng cáo TikTok' : 'TikTok Advertising', slug: 'tiktok-ads', locale },
-    { id: 4, documentId: 'tiktok-shop-ops', name: locale === 'vi' ? 'Vận hành gian hàng TikTok Shop' : 'TikTok Shop Operations', slug: 'tiktok-shop-ops', locale },
+    { id: 1, documentId: 'google-ads', name: tHeader('servicesDropdown.googleAds'), slug: 'google-ads', locale },
+    { id: 2, documentId: 'tiktok-ads', name: tHeader('servicesDropdown.tiktokAds'), slug: 'tiktok-ads', locale },
+    { id: 3, documentId: 'tiktok-shop-ops', name: tHeader('servicesDropdown.tiktokShopOps'), slug: 'tiktok-shop-ops', locale },
   ];
 
   const displayServices = services.length > 0 ? services : fallbackServiceItems;
+  const serviceLabelBySlug: Record<string, string> = {
+    'google-ads': tHeader('servicesDropdown.googleAds'),
+    'tiktok-ads': tHeader('servicesDropdown.tiktokAds'),
+    'tiktok-shop-ops': tHeader('servicesDropdown.tiktokShopOps'),
+  };
+  const serviceLinks = displayServices
+    .filter((service) => service.slug !== 'rent-ads')
+    .map((service) => ({
+      key: service.slug,
+      name: serviceLabelBySlug[service.slug] || service.name,
+      href: `/${locale}/services/${service.slug}`,
+    }));
+  const googleAdsIndex = serviceLinks.findIndex((service) => service.key === 'google-ads');
+  const apiToolLink = {
+    key: 'google-ads-api-tool',
+    name: tHeader('servicesDropdown.apiTool'),
+    href: `/${locale}/google-ads-api-tool`,
+  };
+  const displayServiceLinks = googleAdsIndex === -1
+    ? [apiToolLink, ...serviceLinks]
+    : [
+      ...serviceLinks.slice(0, googleAdsIndex + 1),
+      apiToolLink,
+      ...serviceLinks.slice(googleAdsIndex + 1),
+    ];
 
   // Split menu items: before services (order < 3) and after services (order >= 3)
   const navLinksBefore = navLinks.filter(link => link.order < 3);
@@ -113,12 +138,12 @@ export default function MobileMenu({ locale, services, menuItems = [] }: Props) 
 
             {/* Services section */}
             <div className="pt-2 pb-2 border-t border-b border-white/10">
-              <div className="text-[14px] text-white/40 uppercase tracking-widest mb-6">{t('services')}</div>
+              <div className="text-[14px] text-white/40 uppercase mb-6">{t('services')}</div>
               <div className="flex flex-col space-y-6">
-                {displayServices.map((s) => (
+                {displayServiceLinks.map((s) => (
                   <Link
-                    key={s.slug}
-                    href={`/${locale}/services/${s.slug}`}
+                    key={s.key}
+                    href={s.href}
                     className="text-[18px] font-medium text-white/80"
                   >
                     {s.name}

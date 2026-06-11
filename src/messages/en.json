@@ -17,7 +17,8 @@
       "title": "Services",
       "viewAll": "View all",
       "googleAds": "Google Advertising",
-      "rentAds": "Rent Ads Account",
+      "rentAds": "Ad Account Operations Support",
+      "apiTool": "Google Ads API Tool",
       "tiktokAds": "TikTok Advertising",
       "tiktokShopOps": "TikTok Shop Operations"
     }
@@ -32,6 +33,7 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "googleAdsApiUsage": "Google Ads API Usage",
+    "apiTool": "Google Ads API Tool",
     "companyName": "LUMINA MEDIA AGENCY TRADING & SERVICE CO., LTD",
     "directorLabel": "Director:",
     "directorName": "RATBUHOM CHUTAMAT",

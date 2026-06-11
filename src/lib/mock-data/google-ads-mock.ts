@@ -128,11 +128,11 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
                 },
                 {
                     id: 5,
-                    title: "Cho thuê tài khoản google partner",
+                    title: "Dashboard báo cáo Google Ads API",
                     features: [
-                        "Chi phí dịch vụ cạnh tranh",
-                        "Phê duyệt nhanh chóng, hoạt động ổn định",
-                        "Luôn hỗ trợ khách hàng liên tục 24/7",
+                        "Đọc dữ liệu chiến dịch đã được ủy quyền",
+                        "Theo dõi chi phí, chuyển đổi, CPA và ROAS",
+                        "Tổng hợp báo cáo minh bạch cho khách hàng",
                     ],
                 },
                 {
@@ -187,13 +187,13 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
                 },
                 {
                     id: 3,
-                    title: "Thuê tài khoản\nGoogle Ads",
+                    title: "Báo cáo & vận hành\nGoogle Ads API",
                     items: [
-                        "Phí thuê tài khoản: 3% – 5%",
-                        "Cung cấp tài khoản Google Ads uy tín, ổn định",
-                        "Phê duyệt nhanh, hạn chế rủi ro",
-                        "Hỗ trợ kỹ thuật & vận hành",
-                        "Phù hợp doanh nghiệp cần chạy nhanh, ngân sách lớn",
+                        "Công cụ nội bộ cho tài khoản đã ủy quyền",
+                        "Đọc metrics campaign, ad group, keyword",
+                        "Theo dõi ngân sách, chuyển đổi, CPA, ROAS",
+                        "Không bán, cho thuê hoặc chuyển nhượng tài khoản",
+                        "Phù hợp doanh nghiệp cần báo cáo minh bạch",
                     ],
                 },
             ],
@@ -296,11 +296,11 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
                 },
                 {
                     id: 5,
-                    title: "Google Partner Account Rental",
+                    title: "Google Ads API Reporting Dashboard",
                     features: [
-                        "Competitive service pricing",
-                        "Fast approval, stable operation",
-                        "24/7 continuous customer support",
+                        "Retrieve authorized campaign data",
+                        "Track cost, conversions, CPA, and ROAS",
+                        "Prepare transparent reports for clients",
                     ],
                 },
                 {
@@ -355,13 +355,13 @@ export const googleAdsMockData: Record<'vi' | 'en', GoogleAdsPageData> = {
                 },
                 {
                     id: 3,
-                    title: "Google Ads\nAccount Rental",
+                    title: "Google Ads API\nReporting & Operations",
                     items: [
-                        "Account rental fee: 3% – 5%",
-                        "Provide trusted, stable Google Ads accounts",
-                        "Fast approval, reduced risk",
-                        "Technical & operational support",
-                        "Suitable for businesses needing fast launch with large budgets",
+                        "Internal tool for authorized accounts",
+                        "Read campaign, ad group, and keyword metrics",
+                        "Monitor budget, conversions, CPA, and ROAS",
+                        "No sale, rental, or transfer of ad accounts",
+                        "Suitable for transparent performance reporting",
                     ],
                 },
             ],

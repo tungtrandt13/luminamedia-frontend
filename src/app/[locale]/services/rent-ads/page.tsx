@@ -21,11 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     return {
         title: locale === 'vi'
-            ? 'Thuê tài khoản Google Ads đối tác - Lumina Media Agency'
-            : 'Rent Partner Google Ads Account - Lumina Media Agency',
+            ? 'Hỗ trợ vận hành tài khoản Google Ads - Lumina Media Agency'
+            : 'Google Ads Account Operations Support - Lumina Media Agency',
         description: locale === 'vi'
-            ? 'Cung cấp giải pháp tài khoản Google Ads đối tác, giúp chiến dịch hoạt động ổn định, minh bạch và an toàn.'
-            : 'Providing partner Google Ads account solutions to help campaigns run stably, transparently, and securely.',
+            ? 'Hỗ trợ rà soát, vận hành và báo cáo tài khoản Google Ads theo hướng minh bạch, an toàn và tuân thủ chính sách.'
+            : 'Supporting Google Ads account review, operations, and reporting with transparent, secure, policy-aligned workflows.',
+        robots: {
+            index: false,
+            follow: false,
+        },
         alternates: {
             languages: {
                 'vi': `${baseUrl}/vi/services/rent-ads`,

@@ -1,6 +1,7 @@
 'use client';
 
 import CallEnd from '@/components/icons/CallEnd';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function StickyBubble() {
@@ -8,6 +9,19 @@ export default function StickyBubble() {
   const phoneNumber = t('phoneNumber');
   const phoneHref = phoneNumber.replace(/[^+\d]/g, '');
   const zaloHref = phoneNumber.replace(/\D/g, '');
+  const pathname = usePathname();
+  const isCompliancePage = [
+    '/google-ads-api',
+    '/google-ads-api-tool',
+    '/privacy',
+    '/privacy-policy',
+    '/terms',
+    '/terms-of-service',
+  ].some((path) => pathname.endsWith(path));
+
+  if (isCompliancePage) {
+    return null;
+  }
 
   return (
     <div className="fixed right-4 bottom-6 z-[9980] flex flex-col gap-3 md:hidden">

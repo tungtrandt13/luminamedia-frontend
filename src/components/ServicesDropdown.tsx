@@ -32,25 +32,45 @@ export default function ServicesDropdown({ locale, services, label }: Props) {
 
   // Fallback services matching Figma pages, in correct order
   const fallbackServices = useMemo(() => [
-    { name: t('servicesDropdown.rentAds'), href: `/${locale}/services/rent-ads` },
     { name: t('servicesDropdown.googleAds'), href: `/${locale}/services/google-ads` },
+    { name: t('servicesDropdown.apiTool'), href: `/${locale}/google-ads-api-tool` },
     { name: t('servicesDropdown.tiktokAds'), href: `/${locale}/services/tiktok-ads` },
     { name: t('servicesDropdown.tiktokShopOps'), href: `/${locale}/services/tiktok-shop-ops` },
   ], [locale, t]);
 
   const items = useMemo(() => {
-    const serviceOrder = ['rent-ads', 'google-ads', 'tiktok-ads', 'tiktok-shop-ops'];
+    const serviceOrder = ['google-ads', 'tiktok-ads', 'tiktok-shop-ops'];
+    const serviceLabelBySlug: Record<string, string> = {
+      'google-ads': t('servicesDropdown.googleAds'),
+      'tiktok-ads': t('servicesDropdown.tiktokAds'),
+      'tiktok-shop-ops': t('servicesDropdown.tiktokShopOps'),
+    };
     const strapiItems = (services || [])
       .filter((s) => serviceOrder.includes(s.slug))
       .slice()
       .sort((a, b) => serviceOrder.indexOf(a.slug) - serviceOrder.indexOf(b.slug))
       .map((s) => ({
-        name: s.name,
+        name: serviceLabelBySlug[s.slug] || s.name,
         href: `/${locale}/services/${s.slug}`,
       }));
 
-    return strapiItems.length > 0 ? strapiItems : fallbackServices;
-  }, [locale, services, fallbackServices]);
+    if (strapiItems.length === 0) {
+      return fallbackServices;
+    }
+
+    const apiToolItem = { name: t('servicesDropdown.apiTool'), href: `/${locale}/google-ads-api-tool` };
+    const googleAdsIndex = strapiItems.findIndex((item) => item.href.endsWith('/services/google-ads'));
+
+    if (googleAdsIndex === -1) {
+      return [apiToolItem, ...strapiItems];
+    }
+
+    return [
+      ...strapiItems.slice(0, googleAdsIndex + 1),
+      apiToolItem,
+      ...strapiItems.slice(googleAdsIndex + 1),
+    ];
+  }, [locale, services, fallbackServices, t]);
 
   return (
     <div
