@@ -23,6 +23,9 @@ export type CompliancePageContent = {
 export const companyIdentity = {
   name: "LUMINA MEDIA AGENCY TRADING & SERVICE CO., LTD",
   director: "RATBUHOM CHUTAMAT",
+  registrationNumber: "Pending official company record",
+  taxId: "Pending official company record",
+  registrationCountry: "Hong Kong",
   address: "RM 1006, 10/F., PO YIP BLDG 23 HING YIP STREET, KWUN TONG - HONGKONG",
   email: "support@luminamedia.me",
   phone: "(+84) 356 107 047",
@@ -56,6 +59,9 @@ export const companyProfileContent: Record<ComplianceLocale, CompanyProfileConte
     identityItems: [
       { label: "Company", value: companyIdentity.name },
       { label: "Director", value: companyIdentity.director },
+      { label: "Company registration number", value: companyIdentity.registrationNumber },
+      { label: "Tax ID / Business license number", value: companyIdentity.taxId },
+      { label: "Country/region of registration", value: companyIdentity.registrationCountry },
       { label: "Address", value: companyIdentity.address },
       { label: "Email", value: companyIdentity.email, href: `mailto:${companyIdentity.email}` },
       { label: "Phone", value: companyIdentity.phone, href: `tel:${companyIdentity.phone.replace(/[^+\d]/g, "")}` },
@@ -82,6 +88,9 @@ export const companyProfileContent: Record<ComplianceLocale, CompanyProfileConte
     identityItems: [
       { label: "Company", value: companyIdentity.name },
       { label: "Director", value: companyIdentity.director },
+      { label: "Company registration number", value: companyIdentity.registrationNumber },
+      { label: "Tax ID / Business license number", value: companyIdentity.taxId },
+      { label: "Country/region of registration", value: companyIdentity.registrationCountry },
       { label: "Address", value: companyIdentity.address },
       { label: "Email", value: companyIdentity.email, href: `mailto:${companyIdentity.email}` },
       { label: "Phone", value: companyIdentity.phone, href: `tel:${companyIdentity.phone.replace(/[^+\d]/g, "")}` },
@@ -314,6 +323,15 @@ export const googleAdsApiContent: Record<ComplianceLocale, CompliancePageContent
         ],
       },
       {
+        title: "How access is granted",
+        bullets: [
+          "Client links Google Ads account to Lumina MCC.",
+          "Internal staff access dashboard after role-based approval.",
+          "Data is read via Google Ads API for reporting and operations.",
+          "Client can revoke access anytime by unlinking the account or notifying Lumina Media Agency.",
+        ],
+      },
+      {
         title: "Dữ liệu được truy xuất",
         bullets: [
           "Danh sách client accounts và account hierarchy trong Manager Account.",
@@ -356,6 +374,15 @@ export const googleAdsApiContent: Record<ComplianceLocale, CompliancePageContent
         paragraphs: [
           "The Google Ads API is used by Lumina Media Agency's internal system to help authorized staff monitor and report advertising performance.",
           "The tool connects to the company's Google Ads Manager Account (MCC) to retrieve customer accounts that have been validly authorized.",
+        ],
+      },
+      {
+        title: "How access is granted",
+        bullets: [
+          "Client links Google Ads account to Lumina MCC.",
+          "Internal staff access dashboard after role-based approval.",
+          "Data is read via Google Ads API for reporting and operations.",
+          "Client can revoke access anytime by unlinking the account or notifying Lumina Media Agency.",
         ],
       },
       {

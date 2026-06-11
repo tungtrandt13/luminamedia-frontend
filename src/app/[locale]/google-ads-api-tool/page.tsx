@@ -18,6 +18,8 @@ type Copy = {
   identityItems: { label: string; value: string }[];
   purposeTitle: string;
   purposeBody: string;
+  accessTitle: string;
+  accessSteps: string[];
   featureTitle: string;
   features: { title: string; body: string }[];
   governanceTitle: string;
@@ -41,6 +43,9 @@ const copies: Record<Locale, Copy> = {
     identityItems: [
       { label: "Pháp nhân", value: companyProfile.displayNameVi },
       { label: "Tên thương mại", value: companyProfile.brandName },
+      { label: "Company registration number", value: companyProfile.registrationNumber },
+      { label: "Tax ID / Business license number", value: companyProfile.taxId },
+      { label: "Country/region of registration", value: companyProfile.registrationCountry },
       { label: "Website", value: companyProfile.domain },
       { label: "API contact email", value: companyProfile.apiContactEmail },
       { label: "Địa chỉ", value: companyProfile.addressVi },
@@ -48,6 +53,13 @@ const copies: Record<Locale, Copy> = {
     purposeTitle: "Mục đích sử dụng API",
     purposeBody:
       "Dashboard chỉ phục vụ hoạt động quản lý, báo cáo và tối ưu chiến dịch Google Ads cho các khách hàng đã có thỏa thuận dịch vụ với Lumina Media Agency. Công cụ không phải nền tảng tự phục vụ công khai, không cho thuê, bán lại hoặc chuyển nhượng tài khoản Google Ads.",
+    accessTitle: "How access is granted",
+    accessSteps: [
+      "Client links Google Ads account to Lumina MCC.",
+      "Internal staff access dashboard after role-based approval.",
+      "Data is read via Google Ads API for reporting and operations.",
+      "Client can revoke access anytime by unlinking the account or notifying Lumina Media Agency.",
+    ],
     featureTitle: "Các chức năng sử dụng Google Ads API",
     features: [
       {
@@ -95,6 +107,9 @@ const copies: Record<Locale, Copy> = {
     identityItems: [
       { label: "Legal entity", value: companyProfile.legalNameEn },
       { label: "Business name", value: companyProfile.brandName },
+      { label: "Company registration number", value: companyProfile.registrationNumber },
+      { label: "Tax ID / Business license number", value: companyProfile.taxId },
+      { label: "Country/region of registration", value: companyProfile.registrationCountry },
       { label: "Website", value: companyProfile.domain },
       { label: "API contact email", value: companyProfile.apiContactEmail },
       { label: "Address", value: companyProfile.addressEn },
@@ -102,6 +117,13 @@ const copies: Record<Locale, Copy> = {
     purposeTitle: "API usage purpose",
     purposeBody:
       "The dashboard is used only for management, reporting, and optimization of Google Ads campaigns for clients that have a service agreement with Lumina Media Agency. It is not a public self-service platform and is not used to rent, resell, or transfer Google Ads accounts.",
+    accessTitle: "How access is granted",
+    accessSteps: [
+      "Client links Google Ads account to Lumina MCC.",
+      "Internal staff access dashboard after role-based approval.",
+      "Data is read via Google Ads API for reporting and operations.",
+      "Client can revoke access anytime by unlinking the account or notifying Lumina Media Agency.",
+    ],
     featureTitle: "Google Ads API functionality",
     features: [
       {
@@ -215,6 +237,24 @@ export default async function GoogleAdsApiToolPage({ params }: Props) {
             <p className="text-[18px] font-light leading-[1.8] text-black/75">
               {copy.purposeBody}
             </p>
+          </div>
+
+          <div className="rounded-[8px] border border-black/12 bg-white p-6">
+            <h2 className="text-[28px] font-semibold leading-tight md:text-[36px]">
+              {copy.accessTitle}
+            </h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {copy.accessSteps.map((step, index) => (
+                <div key={step} className="border-t border-black/12 pt-4">
+                  <p className="text-sm font-semibold uppercase text-black/45">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-2 text-[16px] leading-[1.75] text-black/72">
+                    {step}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col gap-6">
